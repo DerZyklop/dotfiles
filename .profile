@@ -2,7 +2,9 @@
 
 # Create a symlink to the Cloud:
 # # cd ~
-# # ln -s /PATH_TO_THE_CLOUD/library/Terminal/.profile .profile
+# # cd ~/PATH_TO_THE_CLOUD/
+# # git clone https://github.com/DerZyklop/terminal-boilerplate.git
+# # ln -s ~/PATH_TO_THE_CLOUD/terminal-boilerplate/.profile ~/.profile
 
 
 ### Tools that should be set up on a zyklop-machine ###
@@ -122,16 +124,17 @@ function create() {
         echo "Possible project types:"
         echo "- html"
         echo "- kirby"
+        echo "- hoodie"
         echo "––––––––––––––––"
     else
         cd ~/Dropbox/server/pxwrk.dorado.uberspace.de
-        git clone --recursiv https://github.com/DerZyklop/boilerplate.pxwrk.de.git ./$1.pxwrk.de/
-        rm -r assets/sass/sass-boilerplate/demo
-        rm -r assets/sass/sass-boilerplate/Gruntfile.coffee
-        rm -r assets/sass/sass-boilerplate/package.json
-        rm -r assets/sass/sass-boilerplate/README.markdown
-        cd $1.pxwrk.de/
         if [ "$2" == 'kirby' ]; then
+            git clone --recursiv https://github.com/DerZyklop/boilerplate.pxwrk.de.git ./$1.pxwrk.de/
+            rm -r assets/sass/sass-boilerplate/demo
+            rm -r assets/sass/sass-boilerplate/Gruntfile.coffee
+            rm -r assets/sass/sass-boilerplate/package.json
+            rm -r assets/sass/sass-boilerplate/README.markdown
+            cd $1.pxwrk.de/
             mkdir kirbycms
             git clone https://github.com/bastianallgeier/kirbycms.git kirbycms
             ln -s kirbycms/kirby
@@ -139,6 +142,18 @@ function create() {
             cp -r kirbycms/content content
             cp -r kirbycms/site site
             ln -s kirbycms/.htaccess
+        elif [ "$2" == 'hoodie' ]; then
+            hoodie new $1.pxwrk.de
+            cd $1.pxwrk.de/
+            git clone --recursiv https://github.com/DerZyklop/boilerplate.pxwrk.de.git ./temp_www/
+            cp -r temp_www/ www/
+            rm temp_www/
+            cd www/
+            rm -r assets/sass/sass-boilerplate/demo
+            rm -r assets/sass/sass-boilerplate/Gruntfile.coffee
+            rm -r assets/sass/sass-boilerplate/package.json
+            rm -r assets/sass/sass-boilerplate/README.markdown
+            hoodie start
         fi
         echo -e '
 {
@@ -233,7 +248,7 @@ function profile() {
   if [ -f ~/.bashrc ]; then
     subl ~/.bashrc
   fi
-  subl ~/Dropbox/library/Terminal/.profile
+  subl ~/Dropbox/server/github-derzyklop/terminal-boilerplate/.profile
 }
 
 
