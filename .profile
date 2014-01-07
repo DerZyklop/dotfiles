@@ -194,6 +194,17 @@ alias z="cd ~/Dropbox/server/github-derzyklop/der-zyklop.de"
 ## der-zyklop.de server
 alias zuber="ssh zyklop@pisces.uberspace.de"
 
+## Searches if the requested project is located in Dropbox or ownCloud
+function navToDevPath() {
+  if [ -d ~/Dropbox/server/$1 ]; then
+    cd ~/Dropbox/server/$1
+  elif [ -d ~/ownCloud/dev/$1 ]; then
+    cd ~/ownCloud/dev/$1
+  else
+    echo "Error: Project not found!"
+  fi
+}
+
 ## pxwrk.de folder
 function p() {
   if [ $# -gt 1 ]; then
@@ -203,14 +214,7 @@ function p() {
     echo "USAGE: p projectname"
     echo "Minimum one param!"
   else
-    if [ -d ~/Dropbox/server/pxwrk.dorado.uberspace.de/$1.pxwrk.de ]; then
-      cd ~/Dropbox/server/pxwrk.dorado.uberspace.de/
-      cd $1.pxwrk.de
-    elif [ -d ~/ownCloud/dev/pxwrk.dorado.uberspace.de/$1.pxwrk.de ]; then
-      cd ~/ownCloud/dev/pxwrk.dorado.uberspace.de/$1.pxwrk.de
-    else
-      echo "Error: Project not found!"
-    fi
+    navToDevPath pxwrk.dorado.uberspace.de/$1.pxwrk.de
   fi
 }
 
@@ -219,13 +223,14 @@ alias puber="ssh pxwrk@dorado.uberspace.de"
 
 ## Navigates to GitHub folder or sub if param
 function g() {
-  cd ~/Dropbox/server/github-derzyklop/
   if [ $# -gt 1 ]; then
-    echo "USAGE: p projectname"
-    echo "Just one param!"
-  fi
-  if [ $# -gt 0 ]; then
-    cd $1
+    echo "USAGE: g projectname"
+    echo "Maximum one param!"
+  elif [ $# -lt 1 ]; then
+    echo "USAGE: g projectname"
+    echo "Minimum one param!"
+  else
+    navToDevPath github-derzyklop/$1
   fi
 }
 
