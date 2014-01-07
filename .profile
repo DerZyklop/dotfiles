@@ -1,6 +1,7 @@
 ### DerZyklop's .profile ###
 ### Documentation: https://github.com/DerZyklop/terminal-boilerplate ###
 
+
 ### SET CONFIG ###
 
 # Show some butiful colors
@@ -195,18 +196,24 @@ alias zuber="ssh zyklop@pisces.uberspace.de"
 
 ## pxwrk.de folder
 function p() {
-  cd ~/Dropbox/server/pxwrk.dorado.uberspace.de/
   if [ $# -gt 1 ]; then
     echo "USAGE: p projectname"
-    echo "Just one param!"
-  fi
-
-  if [ $# -gt 0 ]; then
-    cd $1.pxwrk.de
-  # else
-    # cd html
+    echo "Maximum one param!"
+  elif [ $# -lt 1 ]; then
+    echo "USAGE: p projectname"
+    echo "Minimum one param!"
+  else
+    if [ -d ~/Dropbox/server/pxwrk.dorado.uberspace.de/$1.pxwrk.de ]; then
+      cd ~/Dropbox/server/pxwrk.dorado.uberspace.de/
+      cd $1.pxwrk.de
+    elif [ -d ~/ownCloud/dev/pxwrk.dorado.uberspace.de/$1.pxwrk.de ]; then
+      cd ~/ownCloud/dev/pxwrk.dorado.uberspace.de/$1.pxwrk.de
+    else
+      echo "Error: Project not found!"
+    fi
   fi
 }
+
 ## pxwrk.de server
 alias puber="ssh pxwrk@dorado.uberspace.de"
 
