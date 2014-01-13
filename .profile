@@ -153,6 +153,10 @@ function create() {
     "grunt-php": "0.2.x",
     "grunt-contrib-cssmin": "0.6.x",
     "grunt-autoprefixer": "0.6.x"
+  },
+  "scripts": {
+    "start": "grunt server",
+    "watch": "grunt watch"
   }
 }' > ~/Dropbox/server/pxwrk.dorado.uberspace.de/$1.pxwrk.de/package.json
         label 2 .
