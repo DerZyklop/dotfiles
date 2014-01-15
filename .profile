@@ -52,9 +52,11 @@ function gh() {
 # Some other often-used git stuff
 alias "gs"="git status"
 alias "gd"="git diff "
-alias "ga"="git add"
+alias "ga"="git add -A"
 alias "gc"="git commit -m "
 alias "gp"="git push"
+alias "gl"="git log --oneline"
+
 function gi() {
   git init
   touch README.md

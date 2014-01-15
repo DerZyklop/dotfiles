@@ -27,6 +27,7 @@ brew install git
 git config --global color.ui true
 git config --global user.name "Nils Neumann"
 git config --global user.email mail@der-zyklop.de
+git config --global format.pretty oneline
 ```
 
 More usefull git-stuff at <http://git-scm.com/book/en/Customizing-Git-Git-Configuration>
