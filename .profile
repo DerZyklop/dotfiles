@@ -248,7 +248,8 @@ function profile() {
   if [ -f ~/.bashrc ]; then
     subl ~/.bashrc
   fi
-  subl ~/Dropbox/server/github-derzyklop/terminal-boilerplate/.profile
+  navToDevPath terminal
+  subl .profile
 }
 
 
