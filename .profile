@@ -193,20 +193,28 @@ function rm () {
 # Open current folder
 alias o="open ."
 
-## PlaceWorkers folder
-alias pw="cd ~/Dropbox/server/placeworkers_ftp/placeworkers.com/"
-
-## der-zyklop.de folder
-alias z="cd ~/Dropbox/server/github-derzyklop/der-zyklop.de"
 ## der-zyklop.de server
 alias zuber="ssh zyklop@pisces.uberspace.de"
 
 ## Searches if the requested project is located in Dropbox or ownCloud
 function navToDevPath() {
-  if [ -d ~/Dropbox/server/$1 ]; then
-    cd ~/Dropbox/server/$1
+  if [ -d ~/Dropbox/server/pxwrk.dorado.uberspace.de/$1.pxwrk.de ]; then
+    cd ~/Dropbox/server/pxwrk.dorado.uberspace.de/$1.pxwrk.de
+  elif [ -d ~/Dropbox/server/github-derzyklop/$1 ]; then
+    cd ~/Dropbox/server/github-derzyklop/$1
+  elif [ -d ~/Dropbox/server/pxwrk.dorado.uberspace.de/git.pxwrk.de/$1 ]; then
+    cd ~/Dropbox/server/pxwrk.dorado.uberspace.de/git.pxwrk.de/$1
+
+  elif [ -d ~/ownCloud/dev/pxwrk.de/$1.pxwrk.de ]; then
+    cd ~/ownCloud/dev/pxwrk.de/$1.pxwrk.de
+  elif [ -d ~/ownCloud/dev/github-derzyklop/$1 ]; then
+    cd ~/ownCloud/dev/github-derzyklop/$1
+  elif [ -d ~/ownCloud/dev/pxwrk.de/git.pxwrk.de/$1 ]; then
+    cd ~/ownCloud/dev/pxwrk.de/git.pxwrk.de/$1
+
   elif [ -d ~/ownCloud/dev/$1 ]; then
     cd ~/ownCloud/dev/$1
+
   else
     echo "Error: Project not found!"
   fi
@@ -221,25 +229,19 @@ function p() {
     echo "USAGE: p projectname"
     echo "Minimum one param!"
   else
-    navToDevPath pxwrk.dorado.uberspace.de/$1.pxwrk.de
+    navToDevPath $1
   fi
 }
 
 ## pxwrk.de server
-alias puber="ssh pxwrk@dorado.uberspace.de"
-
-## Navigates to GitHub folder or sub if param
-function g() {
-  if [ $# -gt 1 ]; then
-    echo "USAGE: g projectname"
-    echo "Maximum one param!"
-  elif [ $# -lt 1 ]; then
-    echo "USAGE: g projectname"
-    echo "Minimum one param!"
+function puber() {
+  if [ "$1" == '-f' ]; then
+    ssh pxwrk@pxwrk.de -o PubkeyAuthentication=no
   else
-    navToDevPath github-derzyklop/$1
+    ssh pxwrk@pxwrk.de
   fi
 }
+
 
 # Opens my personal Terminal configuration
 function profile() {
