@@ -46,7 +46,7 @@ function s() {
 }
 
 # Opens current git-project on github.com
-function gh() {
+function gopen() {
   open $(git config --get remote.origin.url)
 }
 # Some other often-used git stuff
