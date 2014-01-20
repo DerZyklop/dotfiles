@@ -255,7 +255,6 @@ function profile() {
 
 ### THE END ###
 
-
 # ...and now load .bashrc if it exists
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
