@@ -1,5 +1,4 @@
 ### DerZyklop's .profile ###
-### Documentation: https://github.com/DerZyklop/terminal-boilerplate ###
 
 
 ### SET CONFIG ###
@@ -29,14 +28,21 @@ export PATH=/usr/local/php5/bin:$PATH
 
 ### COMMAND-SHORTCUTS ###
 
+# ls mit versteckten dateien und slashes an ordnern
+alias ls="ls -pa"
 # Check reboot times
 alias re="last reboot"
 # Clear up the terminal window
 alias c="clear"
 # get all ports
 alias ports="sudo lsof -i -P | grep -i LISTEN"
+# change owner to current user
+alias access="sudo chown -R $USER "
+
+
 # open stuff with Sublime Text 2
 alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
+
 function s() {
   if [ $# -lt 1 ]; then
     subl .
@@ -74,14 +80,23 @@ function label() {
     echo "USAGE: label [0-7] file1 [file2] ..."
     echo "Sets the Finder label (color) for files"
     echo "Default colors:"
+    tput setaf 0
     echo " 0  No color"
+    tput setaf 9
     echo " 1  Orange"
+    tput setaf 1
     echo " 2  Red"
+    tput setaf 3
     echo " 3  Yellow"
+    tput setaf 6
     echo " 4  Blue"
+    tput setaf 4
     echo " 5  Purple"
+    tput setaf 2
     echo " 6  Green"
+    tput setaf 8
     echo " 7  Gray"
+    tput sgr0
   else
     osascript - "$@" << EOF
     on run argv
@@ -216,7 +231,9 @@ function navToDevPath() {
     cd ~/ownCloud/dev/$1
 
   else
+    tput setaf 1
     echo "Error: Project not found!"
+    tput sgr0
   fi
 }
 
@@ -224,10 +241,14 @@ function navToDevPath() {
 function p() {
   if [ $# -gt 1 ]; then
     echo "USAGE: p projectname"
+    tput setaf 1
     echo "Maximum one param!"
+    tput sgr0
   elif [ $# -lt 1 ]; then
     echo "USAGE: p projectname"
+    tput setaf 1
     echo "Minimum one param!"
+    tput sgr0
   else
     navToDevPath $1
   fi
