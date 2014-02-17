@@ -20,6 +20,12 @@ ln -s ~/PATH_TO_THE_CLOUD/terminal-boilerplate/.profile ~/.profile
 
 ## Tools that should be set up on a zyklop-machine
 
+mysql
+
+```
+bash <(curl -Ls http://git.io/eUx7rg)
+```
+
 ```
 brew update
 
