@@ -197,12 +197,12 @@ alias zuber="ssh zyklop@pisces.uberspace.de"
 
 ## Searches if the requested project is located in Dropbox or ownCloud
 function navToDevPath() {
-  if [ -d ~/Dropbox/server/pxwrk.dorado.uberspace.de/$1.pxwrk.de ]; then
-    cd ~/Dropbox/server/pxwrk.dorado.uberspace.de/$1.pxwrk.de
+  if [ -d ~/Dropbox/server/pxwrk.de/$1.pxwrk.de ]; then
+    cd ~/Dropbox/server/pxwrk.de/$1.pxwrk.de
   elif [ -d ~/Dropbox/server/github-derzyklop/$1 ]; then
     cd ~/Dropbox/server/github-derzyklop/$1
-  elif [ -d ~/Dropbox/server/pxwrk.dorado.uberspace.de/git.pxwrk.de/$1 ]; then
-    cd ~/Dropbox/server/pxwrk.dorado.uberspace.de/git.pxwrk.de/$1
+  elif [ -d ~/Dropbox/server/pxwrk.de/git.pxwrk.de/$1 ]; then
+    cd ~/Dropbox/server/pxwrk.de/git.pxwrk.de/$1
 
   elif [ -d ~/ownCloud/dev/pxwrk.de/$1.pxwrk.de ]; then
     cd ~/ownCloud/dev/pxwrk.de/$1.pxwrk.de
@@ -213,6 +213,8 @@ function navToDevPath() {
 
   elif [ -d ~/ownCloud/dev/$1 ]; then
     cd ~/ownCloud/dev/$1
+  elif [ -d ~/Dropbox/server/$1 ]; then
+    cd ~/Dropbox/server/$1
 
   else
     tput setaf 1
