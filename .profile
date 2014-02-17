@@ -39,9 +39,8 @@ alias ports="sudo lsof -i -P | grep -i LISTEN"
 # change owner to current user
 alias access="sudo chown -R $USER "
 
-
-# open stuff with Sublime Text 2
-alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
+# open stuff with Sublime Text
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
 function s() {
   if [ $# -lt 1 ]; then
