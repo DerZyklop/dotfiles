@@ -123,27 +123,35 @@ function create() {
         echo "- hoodie"
         echo "––––––––––––––––"
     else
-        cd ~/Dropbox/server/pxwrk.dorado.uberspace.de
+        cd ~/Dropbox/server/pxwrk.de
         if [ "$2" == 'kirby' ]; then
-            git clone --recursiv https://github.com/DerZyklop/boilerplate.pxwrk.de.git ./$1.pxwrk.de/
+            git clone --recursiv https://github.com/DerZyklop/boilerplate.pxwrk.de.git ./$1.pxwrk.de/submodules/boilerplate
+            cd $1.pxwrk.de/
+            cp -r submodules/boilerplate/ ./
+            rm -r .git
+            rm -r .gitignore
+            rm -r .gitmodules
             rm -r assets/sass/sass-boilerplate/demo
             rm -r assets/sass/sass-boilerplate/Gruntfile.coffee
             rm -r assets/sass/sass-boilerplate/package.json
             rm -r assets/sass/sass-boilerplate/README.markdown
-            cd $1.pxwrk.de/
-            mkdir kirbycms
             git clone https://github.com/bastianallgeier/kirbycms.git kirbycms
             ln -s kirbycms/kirby
             cp kirbycms/index.php index.php
             cp -r kirbycms/content content
             cp -r kirbycms/site site
             ln -s kirbycms/.htaccess
+        elif [ "$2" == 'wordpress' ]; then
+            curl -o wordpress-2.6.1.tar.gz http://wordpress.org/latest.tar.gz
+            tar -xzvf wordpress-2.6.1.tar.gz
+            rm wordpress-2.6.1.tar.gz
+            mv wordpress/ $1.pxwrk.de/
+            cd $1.pxwrk.de/
         elif [ "$2" == 'hoodie' ]; then
             hoodie new $1.pxwrk.de
             cd $1.pxwrk.de/
             git clone --recursiv https://github.com/DerZyklop/boilerplate.pxwrk.de.git ./temp_www/
-            cp -r temp_www/ www/
-            rm temp_www/
+            mv temp_www/ www/
             cd www/
             rm -r assets/sass/sass-boilerplate/demo
             rm -r assets/sass/sass-boilerplate/Gruntfile.coffee
@@ -151,32 +159,9 @@ function create() {
             rm -r assets/sass/sass-boilerplate/README.markdown
             hoodie start
         fi
-        echo -e '
-{
-  "name": "'$1'.pxwrk.de",
-  "description": "Project by @DerZyklop",
-  "version": "0.0.1",
-  "private": true,
-  "devDependencies": {
-    "grunt": "0.4.x",
-    "matchdep": "0.1.x",
-    "grunt-open": "0.2.x",
-    "grunt-contrib-watch": "0.5.x",
-    "grunt-contrib-coffee": "0.7.x",
-    "grunt-contrib-sass": "0.4.x",
-    "grunt-contrib-uglify": "0.2.x",
-    "grunt-contrib-copy": "0.4.x",
-    "grunt-php": "0.2.x",
-    "grunt-contrib-cssmin": "0.6.x",
-    "grunt-autoprefixer": "0.6.x"
-  },
-  "scripts": {
-    "start": "grunt server",
-    "watch": "grunt watch"
-  }
-}' > ~/Dropbox/server/pxwrk.dorado.uberspace.de/$1.pxwrk.de/package.json
         label 2 .
         npm install
+        gi
         subl .
     fi
 }
