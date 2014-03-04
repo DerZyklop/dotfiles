@@ -264,6 +264,12 @@ function p() {
   fi
 }
 
+function start() {
+  if [ -f gruntfile.coffee ]; then
+    grunt server
+  fi
+}
+
 ## pxwrk.de server
 function puber() {
   if [ "$1" == '-f' ]; then
