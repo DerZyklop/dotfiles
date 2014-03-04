@@ -135,12 +135,21 @@ function create() {
             rm -r assets/sass/sass-boilerplate/Gruntfile.coffee
             rm -r assets/sass/sass-boilerplate/package.json
             rm -r assets/sass/sass-boilerplate/README.markdown
-            git clone https://github.com/bastianallgeier/kirbycms.git kirbycms
-            ln -s kirbycms/kirby
-            cp kirbycms/index.php index.php
-            cp -r kirbycms/content content
-            cp -r kirbycms/site site
-            ln -s kirbycms/.htaccess
+
+            mkdir submodules
+            cd submodules
+            git clone https://github.com/bastianallgeier/kirbycms.git
+            git clone https://github.com/bastianallgeier/kirbycms-extensions.git
+            cd ..
+
+            ln -s submodules/kirbycms/kirby
+            cp submodules/kirbycms/index.php index.php
+            cp -r submodules/kirbycms/content content
+            cp -r submodules/kirbycms/site site
+            ln -s submodules/kirbycms/.htaccess
+
+            cp submodules/kirbycms-extensions/plugins/thumb/thumb.php site/plugins/
+            mkdir thumbs
         elif [ "$2" == 'wordpress' ]; then
             curl -o wordpress-2.6.1.tar.gz http://wordpress.org/latest.tar.gz
             tar -xzvf wordpress-2.6.1.tar.gz
@@ -166,6 +175,21 @@ function create() {
     fi
 }
 
+function sub() {
+  if [ $# -lt 1 ]; then
+    echo "––––––––––––––––-------"
+    echo "USAGE: sub [modulename]"
+    echo "––––––––––––––––-------"
+  elif [ "$1" == 'panel' ]; then
+    mkdir submodules
+    cd submodules
+    git clone https://github.com/bastianallgeier/kirbycms-panel.git
+    cd ..
+    cp -r submodules/kirbycms-panel/ ./panel
+    mv panel/defaults/ ./site/panel
+    echo "–––––––––DONE!––-------"
+  fi
+}
 
 ### IMPROVEMENTS ###
 
