@@ -26,6 +26,26 @@ shopt -s histappend
 export PATH=/usr/local/php5/bin:$PATH
 
 
+### IMPROVEMENTS ###
+
+# Put stuff into trash instead of delete them
+function rm () {
+  local path
+  for path in "$@"; do
+    # ignore any arguments
+    if [[ "$path" = -* ]]; then :
+    else
+      local dst=${path##*/}
+      # append the time if necessary
+      while [ -e ~/.Trash/"$dst" ]; do
+        dst="$dst "$(date +%H-%M-%S)
+      done
+      mv "$path" ~/.Trash/"$dst"
+    fi
+  done
+}
+
+
 ### COMMAND-SHORTCUTS ###
 
 # ls mit versteckten dateien und slashes an ordnern
@@ -111,6 +131,43 @@ EOF
   fi
 }
 
+# install submodules
+function sub() {
+  if [ $# -lt 1 ]; then
+    echo "––––––––––––––––-------"
+    echo "USAGE: sub [modulename]"
+    echo "––––––––––––––––-------"
+  elif [ "$1" == 'panel' ]; then
+    mkdir submodules
+    cd submodules
+    git clone https://github.com/bastianallgeier/kirbycms-panel.git
+    cd ..
+    cp -r submodules/kirbycms-panel/ ./panel
+    mv panel/defaults/ ./site/panel
+    echo "–––––––––Installed $1!––-------"
+  elif [ "$1" == 'kirby' ]; then
+    mkdir submodules
+    cd submodules
+    git clone https://github.com/bastianallgeier/kirbycms.git
+    cd ..
+    cp -r submodules/kirbycms/kirby ./kirby
+    cp submodules/kirbycms/index.php index.php
+    cp -r submodules/kirbycms/content content
+    cp -r submodules/kirbycms/site site
+    cp submodules/kirbycms/.htaccess .htaccess
+    echo "–––––––––Installed $1!––-------"
+  elif [ "$1" == 'thumbs' ]; then
+    mkdir submodules
+    cd submodules
+    git clone https://github.com/bastianallgeier/kirbycms-extensions.git
+    cd ..
+    cp submodules/kirbycms-extensions/plugins/thumb/thumb.php site/plugins/
+    mkdir thumbs
+    echo "–––––––––Installed $1!––-------"
+  fi
+
+}
+
 # Create a new project
 function create() {
     if [ $# -lt 2 ]; then
@@ -136,20 +193,10 @@ function create() {
             rm -r assets/sass/sass-boilerplate/package.json
             rm -r assets/sass/sass-boilerplate/README.markdown
 
-            mkdir submodules
-            cd submodules
-            git clone https://github.com/bastianallgeier/kirbycms.git
-            git clone https://github.com/bastianallgeier/kirbycms-extensions.git
-            cd ..
+            sub kirby
+            sub panel
+            sub thumbs
 
-            ln -s submodules/kirbycms/kirby
-            cp submodules/kirbycms/index.php index.php
-            cp -r submodules/kirbycms/content content
-            cp -r submodules/kirbycms/site site
-            ln -s submodules/kirbycms/.htaccess
-
-            cp submodules/kirbycms-extensions/plugins/thumb/thumb.php site/plugins/
-            mkdir thumbs
         elif [ "$2" == 'wordpress' ]; then
             curl -o wordpress-2.6.1.tar.gz http://wordpress.org/latest.tar.gz
             tar -xzvf wordpress-2.6.1.tar.gz
@@ -173,41 +220,6 @@ function create() {
         gi
         subl .
     fi
-}
-
-function sub() {
-  if [ $# -lt 1 ]; then
-    echo "––––––––––––––––-------"
-    echo "USAGE: sub [modulename]"
-    echo "––––––––––––––––-------"
-  elif [ "$1" == 'panel' ]; then
-    mkdir submodules
-    cd submodules
-    git clone https://github.com/bastianallgeier/kirbycms-panel.git
-    cd ..
-    cp -r submodules/kirbycms-panel/ ./panel
-    mv panel/defaults/ ./site/panel
-    echo "–––––––––DONE!––-------"
-  fi
-}
-
-### IMPROVEMENTS ###
-
-# Put stuff into trash instead of delete them
-function rm () {
-  local path
-  for path in "$@"; do
-    # ignore any arguments
-    if [[ "$path" = -* ]]; then :
-    else
-      local dst=${path##*/}
-      # append the time if necessary
-      while [ -e ~/.Trash/"$dst" ]; do
-        dst="$dst "$(date +%H-%M-%S)
-      done
-      mv "$path" ~/.Trash/"$dst"
-    fi
-  done
 }
 
 
