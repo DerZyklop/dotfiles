@@ -26,6 +26,14 @@ mysql
 bash <(curl -Ls http://git.io/eUx7rg)
 ```
 
+show hidden files in finder
+
+```
+defaults write com.apple.finder AppleShowAllFiles TRUE
+```
+
+git stuff
+
 ```
 brew update
 
