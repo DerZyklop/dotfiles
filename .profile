@@ -133,38 +133,83 @@ EOF
 
 # install submodules
 function sub() {
+
+  function addModule() {
+
+    if [ -d "submodules/$2/" ]; then
+      echo 'Gonna update it...'
+      NEW=false
+    else
+      echo 'Gonna install it...'
+      NEW=true
+    fi
+
+
+    if [ "$NEW" == true ]; then
+      mkdir submodules
+      cd submodules
+    else
+      cd submodules
+      rm -rf $2
+    fi
+
+    git clone https://github.com/$1/$2.git
+    cd ..
+    ga submodules/$2/
+
+    if [ "$NEW" == true ]; then
+      gc "added $2 by $1 to Submodules"
+      tput setaf 2
+      echo "-----------––----------------––--------------"
+      echo "Added $2 by $1 to Submodules!"
+      echo "-----------––----------------––--------------"
+      tput sgr0
+    else
+      gc "Updated submodule $2 by $1"
+      tput setaf 2
+      echo "-----------––--------------––--------------"
+      echo "Updated submodule $2 by $1!"
+      echo "-----------––--------------––--------------"
+      tput sgr0
+    fi
+  }
+
   if [ $# -lt 1 ]; then
     echo "––––––––––––––––-------"
     echo "USAGE: sub [modulename]"
     echo "––––––––––––––––-------"
+  elif [ "$1" == 'boilerplate' ]; then
+    addModule DerZyklop boilerplate.pxwrk.de
+    cp -Ri ./submodules/boilerplate.pxwrk.de/ ./
+    rm README.md
+    #cp -r submodules/boilerplate/gruntfile.coffee ./gruntfile.coffee
+    #echo "–––––––– Installed $1! –-------"
   elif [ "$1" == 'panel' ]; then
-    mkdir submodules
-    cd submodules
-    git clone https://github.com/bastianallgeier/kirbycms-panel.git
-    cd ..
+    addModule bastianallgeier kirbycms-panel
     cp -r submodules/kirbycms-panel/ ./panel
     mv panel/defaults/ ./site/panel
-    echo "–––––––––Installed $1!––-------"
+    echo "–––––––– Installed $1! –-------"
   elif [ "$1" == 'kirby' ]; then
-    mkdir submodules
-    cd submodules
-    git clone https://github.com/bastianallgeier/kirbycms.git
-    cd ..
+    addModule bastianallgeier kirbycms
     cp -r submodules/kirbycms/kirby ./kirby
     cp submodules/kirbycms/index.php index.php
     cp -r submodules/kirbycms/content content
     cp -r submodules/kirbycms/site site
     cp submodules/kirbycms/.htaccess .htaccess
-    echo "–––––––––Installed $1!––-------"
+    echo "–––––––– Installed $1! –-------"
   elif [ "$1" == 'thumbs' ]; then
-    mkdir submodules
-    cd submodules
-    git clone https://github.com/bastianallgeier/kirbycms-extensions.git
-    cd ..
+    addModule bastianallgeier kirbycms-extensions
     cp submodules/kirbycms-extensions/plugins/thumb/thumb.php site/plugins/
     mkdir thumbs
-    echo "–––––––––Installed $1!––-------"
+    echo "–––––––– Installed $1! –-------"
+  else
+    tput setaf 1
+    echo "--------------------––-------"
+    echo "Sorry! Can't find that Module"
+    echo "--------------------––-------"
+    tput sgr0
   fi
+
 
 }
 
@@ -254,7 +299,9 @@ function navToDevPath() {
 
   else
     tput setaf 1
+    echo "-------------------------"
     echo "Error: Project not found!"
+    echo "-------------------------"
     tput sgr0
   fi
 }
@@ -277,8 +324,16 @@ function p() {
 }
 
 function start() {
-  if [ -f gruntfile.coffee ]; then
+  if [ -f boilerplate.json ]; then
+    grunt dev
+  elif [ -f gruntfile.coffee ]; then
     grunt server
+  else
+    tput setaf 1
+    echo "--------------------------------------"
+    echo "Error: Is this a Project with Grunt???"
+    echo "--------------------------------------"
+    tput sgr0
   fi
 }
 
