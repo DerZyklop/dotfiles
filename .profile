@@ -58,6 +58,9 @@ alias c="clear"
 alias ports="sudo lsof -i -P | grep -i LISTEN"
 # change owner to current user
 alias access="sudo chown -R $USER "
+# get all processes
+alias processes="lsof -i TCP"
+
 
 # open stuff with Sublime Text
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
