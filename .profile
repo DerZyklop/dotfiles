@@ -184,6 +184,7 @@ function sub() {
   elif [ "$1" == 'boilerplate' ]; then
     addModule DerZyklop boilerplate.pxwrk.de
     cp -Ri ./submodules/boilerplate.pxwrk.de/ ./
+    npm install
     rm README.md
     #cp -r submodules/boilerplate/gruntfile.coffee ./gruntfile.coffee
     #echo "–––––––– Installed $1! –-------"
