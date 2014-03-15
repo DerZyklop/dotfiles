@@ -289,15 +289,15 @@ function navToDevPath() {
   elif [ -d ~/Dropbox/server/pxwrk.de/git.pxwrk.de/$1 ]; then
     cd ~/Dropbox/server/pxwrk.de/git.pxwrk.de/$1
 
-  elif [ -d ~/ownCloud/dev/pxwrk.de/$1.pxwrk.de ]; then
-    cd ~/ownCloud/dev/pxwrk.de/$1.pxwrk.de
-  elif [ -d ~/ownCloud/dev/github-derzyklop/$1 ]; then
-    cd ~/ownCloud/dev/github-derzyklop/$1
-  elif [ -d ~/ownCloud/dev/pxwrk.de/git.pxwrk.de/$1 ]; then
-    cd ~/ownCloud/dev/pxwrk.de/git.pxwrk.de/$1
+  # elif [ -d ~/ownCloud/dev/pxwrk.de/$1.pxwrk.de ]; then
+  #   cd ~/ownCloud/dev/pxwrk.de/$1.pxwrk.de
+  # elif [ -d ~/ownCloud/dev/github-derzyklop/$1 ]; then
+  #   cd ~/ownCloud/dev/github-derzyklop/$1
+  # elif [ -d ~/ownCloud/dev/pxwrk.de/git.pxwrk.de/$1 ]; then
+  #   cd ~/ownCloud/dev/pxwrk.de/git.pxwrk.de/$1
 
-  elif [ -d ~/ownCloud/dev/$1 ]; then
-    cd ~/ownCloud/dev/$1
+  # elif [ -d ~/ownCloud/dev/$1 ]; then
+  #   cd ~/ownCloud/dev/$1
   elif [ -d ~/Dropbox/server/$1 ]; then
     cd ~/Dropbox/server/$1
 
