@@ -206,6 +206,8 @@ function sub() {
     cp submodules/kirbycms-extensions/plugins/thumb/thumb.php site/plugins/
     mkdir thumbs
     echo "–––––––– Installed $1! –-------"
+  elif [ $# == 2 ]; then
+    addModule $1 $2
   else
     tput setaf 1
     echo "--------------------––-------"
