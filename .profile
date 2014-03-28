@@ -25,26 +25,8 @@ shopt -s histappend
 # make sure to take php5
 export PATH=/usr/local/php5/bin:$PATH
 
-
-### IMPROVEMENTS ###
-
-# Put stuff into trash instead of delete them
-function rm () {
-  local path
-  for path in "$@"; do
-    # ignore any arguments
-    if [[ "$path" = -* ]]; then :
-    else
-      local dst=${path##*/}
-      # append the time if necessary
-      while [ -e ~/.Trash/"$dst" ]; do
-        dst="$dst "$(date +%H-%M-%S)
-      done
-      mv "$path" ~/.Trash/"$dst"
-    fi
-  done
-}
-
+# get my own commands
+export PATH=~/Cloud/server/pxwrk.de/terminal.pxwrk.de/bin/:$PATH
 
 ### COMMAND-SHORTCUTS ###
 
