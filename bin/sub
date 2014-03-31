@@ -55,7 +55,7 @@ elif [ "$1" == 'boilerplate' ]; then
 elif [ "$1" == 'panel' ]; then
   addModule bastianallgeier kirbycms-panel
   cp -r submodules/kirbycms-panel/ ./panel
-  mv panel/defaults/ ./site/panel
+  cp -r panel/defaults/ ./site/panel
   echo "–––––––– Installed $1! –-------"
 elif [ "$1" == 'kirby' ]; then
   addModule bastianallgeier kirbycms

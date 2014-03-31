@@ -25,9 +25,6 @@ shopt -s histappend
 # make sure to take php5
 export PATH=/usr/local/php5/bin:$PATH
 
-# get my own commands
-export PATH=~/Cloud/server/pxwrk.de/terminal.pxwrk.de/bin/:$PATH
-
 ### COMMAND-SHORTCUTS ###
 
 # ls mit versteckten dateien und slashes an ordnern
@@ -145,6 +142,10 @@ function profile() {
   navToDevPath terminal
   subl .profile
 }
+
+
+# get my own commands
+export PATH=~/Cloud/server/pxwrk.de/terminal.pxwrk.de/bin/:$PATH
 
 
 ### THE END ###
