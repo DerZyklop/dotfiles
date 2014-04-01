@@ -3,7 +3,11 @@
 # Start server (and maybe grunt)
 if [ -f boilerplate.json ]; then
   grunt dev
+elif [ -f conf/boilerplate.json ]; then
+  grunt dev
 elif [ -f gruntfile.coffee ]; then
+  grunt server
+elif [ -f conf/gruntfile.coffee ]; then
   grunt server
 else
   tput setaf 1
