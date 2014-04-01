@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Start server (and maybe grunt)
+if [ -f boilerplate.json ]; then
+  grunt dev
+elif [ -f gruntfile.coffee ]; then
+  grunt server
+else
+  tput setaf 1
+  echo "--------------------------------------"
+  echo "Error: Is this a Project with Grunt???"
+  echo "--------------------------------------"
+  tput sgr0
+fi
