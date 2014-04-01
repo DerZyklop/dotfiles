@@ -4,10 +4,10 @@
 function addModule() {
 
   if [ -d "submodules/$2/" ]; then
-    echo 'Gonna update '$2
+    echo 'Gonna update it...'
     NEW=false
   else
-    echo 'Gonna install '$2
+    echo 'Gonna install it...'
     NEW=true
   fi
 
@@ -42,7 +42,7 @@ function addModule() {
 }
 
 if [ $# -lt 1 ]; then
-  echo "–––––––––––––––––––––––"
+  echo "––––––––––––––––-------"
   echo "USAGE: sub [modulename]"
   echo "––––––––––––––––-------"
 elif [ "$1" == 'boilerplate' ]; then

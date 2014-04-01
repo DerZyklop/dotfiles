@@ -25,6 +25,9 @@ shopt -s histappend
 # make sure to take php5
 export PATH=/usr/local/php5/bin:$PATH
 
+# i hate vim
+export EDITOR=nano
+
 ### COMMAND-SHORTCUTS ###
 
 # ls mit versteckten dateien und slashes an ordnern
