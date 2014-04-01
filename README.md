@@ -16,6 +16,7 @@ cd ~
 cd ~/PATH_TO_THE_CLOUD/
 git clone https://github.com/DerZyklop/terminal-boilerplate.git
 ln -s ~/PATH_TO_THE_CLOUD/terminal-boilerplate/.profile ~/.profile
+ln -s ~/PATH_TO_THE_CLOUD/terminal-boilerplate/.zshrc ~/.zshrc
 ```
 
 ## Tools that should be set up on a zyklop-machine
@@ -32,7 +33,14 @@ show hidden files in finder
 defaults write com.apple.finder AppleShowAllFiles TRUE
 ```
 
-git stuff
+### Zsh
+
+```
+brew install zsh
+chsh -s /usr/bin/zsh username
+```
+
+### Git
 
 ```
 brew update
@@ -45,6 +53,8 @@ git config --global format.pretty oneline
 ```
 
 More usefull git-stuff at <http://git-scm.com/book/en/Customizing-Git-Git-Configuration>
+
+### Grunt
 
 ```
 brew install node
