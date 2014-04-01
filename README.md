@@ -15,8 +15,8 @@ Create a symlink to the Cloud:
 cd ~
 cd ~/PATH_TO_THE_CLOUD/
 git clone https://github.com/DerZyklop/terminal-boilerplate.git
-ln -s ~/PATH_TO_THE_CLOUD/terminal-boilerplate/.profile ~/.profile
-ln -s ~/PATH_TO_THE_CLOUD/terminal-boilerplate/.zshrc ~/.zshrc
+cd terminal-boilerplate/
+sh init
 ```
 
 ## Tools that should be set up on a zyklop-machine
