@@ -2,3 +2,23 @@
 
 ln -sf $PWD/.zshrc ~/.zshrc
 ln -sf $PWD/.profile ~/.profile
+
+brew update
+
+### Install zsh
+
+brew install zsh
+chsh -s /usr/bin/zsh username
+
+### Install git
+
+brew install git
+
+#### Setup git-stuff
+
+git config --global color.ui true
+git config --global user.name "Nils Neumann"
+git config --global user.email mail@der-zyklop.de
+git config --global format.pretty oneline
+
+# For more usefull git-stuff see <http://git-scm.com/book/en/Customizing-Git-Git-Configuration>

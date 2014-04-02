@@ -24,17 +24,17 @@ function addModule() {
   fi
 
   cd ..
-  ga submodules/$2/
+  git add -A submodules/$2/
 
   if [ "$NEW" == true ]; then
-    gc "added $2 by $1 to Submodules"
+    git commit -m "added $2 by $1 to Submodules"
     tput setaf 2
     echo "-----------––----------------––--------------"
     echo "Added $2 by $1 to Submodules!"
     echo "-----------––----------------––--------------"
     tput sgr0
   else
-    gc "Updated submodule $2 by $1"
+    git commit -m "Updated submodule $2 by $1"
     tput setaf 2
     echo "-----------––--------------––--------------"
     echo "Updated submodule $2 by $1!"
@@ -51,6 +51,9 @@ elif [ "$1" == 'boilerplate' ]; then
   addModule DerZyklop boilerplate.pxwrk.de
   #cp -Ri ./submodules/boilerplate.pxwrk.de/ ./
 
+  if [ -f "boilerplate.json" ]; then
+    rm boilerplate.json
+  fi
   cp -i ./submodules/boilerplate.pxwrk.de/package.json ./package.json
   cp -i ./submodules/boilerplate.pxwrk.de/gruntfile.coffee ./gruntfile.coffee
   cp -Ri ./submodules/boilerplate.pxwrk.de/conf/ ./conf/

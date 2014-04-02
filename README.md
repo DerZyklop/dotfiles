@@ -8,14 +8,7 @@ It's just a collection files and configurations, that i use in my projects.
 
 ## How to install
 
-Place the .profile into your cloud-folder e.g. ownCloud or Dropbox.
-Create a symlink to the Cloud:
-
 ```
-cd ~
-cd ~/PATH_TO_THE_CLOUD/
-git clone https://github.com/DerZyklop/terminal-boilerplate.git
-cd terminal-boilerplate/
 sh init
 ```
 
@@ -31,34 +24,6 @@ show hidden files in finder
 
 ```
 defaults write com.apple.finder AppleShowAllFiles TRUE
-```
-
-### Zsh
-
-```
-brew install zsh
-chsh -s /usr/bin/zsh username
-```
-
-### Git
-
-```
-brew update
-
-brew install git
-git config --global color.ui true
-git config --global user.name "Nils Neumann"
-git config --global user.email mail@der-zyklop.de
-git config --global format.pretty oneline
-```
-
-More usefull git-stuff at <http://git-scm.com/book/en/Customizing-Git-Git-Configuration>
-
-### Grunt
-
-```
-brew install node
-npm install -g grunt-cli
 ```
 
 ## Colors Overview
