@@ -49,7 +49,14 @@ if [ $# -lt 1 ]; then
   echo "––––––––––––––––-------"
 elif [ "$1" == 'boilerplate' ]; then
   addModule DerZyklop boilerplate.pxwrk.de
-  cp -Ri ./submodules/boilerplate.pxwrk.de/ ./
+  #cp -Ri ./submodules/boilerplate.pxwrk.de/ ./
+
+  cp -i ./submodules/boilerplate.pxwrk.de/package.json ./package.json
+  cp -i ./submodules/boilerplate.pxwrk.de/gruntfile.coffee ./gruntfile.coffee
+  cp -Ri ./submodules/boilerplate.pxwrk.de/conf/ ./conf/
+  cp -Ri ./submodules/boilerplate.pxwrk.de/assets/ ./assets/
+
+
   npm install
   rm README.md
   #cp -r submodules/boilerplate/gruntfile.coffee ./gruntfile.coffee
