@@ -40,8 +40,6 @@ export LSCOLORS=dxfxcxdxbxegedabagacad
 export HISTCONTROL=erasedups
 # resize history size
 export HISTSIZE=10000
-# append to bash_history if Terminal.app quits
-shopt -s histappend
 
 # i hate vim
 export EDITOR=nano
