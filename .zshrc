@@ -160,11 +160,11 @@ function profile() {
 }
 
 
-# make sure to take php5
-export PATH=/usr/local/php5/bin:$PATH
 # get my own commands
-export PATH=~/Cloud/server/pxwrk.de/terminal.pxwrk.de/bin/:$PATH
+export PATH=~/Cloud/server/pxwrk.de/terminal.pxwrk.de/bin:$PATH
 
+# make sure that brew-stuff is used instead of system-stuff
+export PATH=/usr/local/bin:$PATH
 
 ### THE END ###
 
