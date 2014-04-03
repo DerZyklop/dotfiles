@@ -16,9 +16,6 @@ SAVEHIST=1000
 
 
 
-
-
-
 ### DerZyklop's .profile ###
 
 

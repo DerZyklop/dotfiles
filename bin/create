@@ -8,6 +8,7 @@ if [ $# -lt 2 ]; then
   echo "Possible project types:"
   echo "- html"
   echo "- kirby"
+  echo "- wordpress"
   echo "- hoodie"
   echo "––––––––––––––––"
 else
