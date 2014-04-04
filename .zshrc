@@ -56,11 +56,6 @@ alias access="sudo chown -R $USER "
 # get all processes
 alias processes="lsof -i TCP"
 
-
-# Opens current git-project on github.com
-function gopen() {
-  open $(git config --get remote.origin.url)
-}
 # Some other often-used git stuff
 alias "gs"="git status"
 alias "gd"="git diff "

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Opens the related git page in browser
+giturl=$(git config --get remote.origin.url)
+giturl=${giturl/git\@github\.com\:/https://github.com/}
+giturl=${giturl/git\@bitbucket\.org\:/https://bitbucket.org/}
+open $giturl
