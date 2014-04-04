@@ -1,7 +1,15 @@
 #!/bin/sh
 
+### Set new dotfiles
+
 ln -sf $PWD/.zshrc ~/.zshrc
 ln -sf $PWD/.profile ~/.profile
+
+### Show hidden files in finder
+
+defaults write com.apple.finder AppleShowAllFiles TRUE
+
+### Update brew
 
 brew update
 

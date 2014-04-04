@@ -12,7 +12,7 @@ It's just a collection files and configurations, that i use in my projects.
 sh init
 ```
 
-## Tools that should be set up on a zyklop-machine
+## Tools that could be useful up on a zyklop-machine
 
 mysql
 
@@ -20,8 +20,4 @@ mysql
 bash <(curl -Ls http://git.io/eUx7rg)
 ```
 
-show hidden files in finder
-
-```
-defaults write com.apple.finder AppleShowAllFiles TRUE
-```
+...
