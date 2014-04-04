@@ -72,44 +72,6 @@ alias o="open ."
 ## der-zyklop.de server
 alias zuber="ssh zyklop@pisces.uberspace.de"
 
-## Searches if the requested project is located in Dropbox or ownCloud
-function navToDevPath() {
-  if [ -d ~/Dropbox/server/pxwrk.de/$1.pxwrk.de ]; then
-    cd ~/Dropbox/server/pxwrk.de/$1.pxwrk.de
-  elif [ -d ~/Dropbox/server/github-derzyklop/$1 ]; then
-    cd ~/Dropbox/server/github-derzyklop/$1
-  elif [ -d ~/Dropbox/server/pxwrk.de/git.pxwrk.de/$1 ]; then
-    cd ~/Dropbox/server/pxwrk.de/git.pxwrk.de/$1
-  elif [ -d ~/Dropbox/server/$1 ]; then
-    cd ~/Dropbox/server/$1
-
-  elif [ -d ~/Cloud/server/pxwrk.de/$1.pxwrk.de ]; then
-    cd ~/Cloud/server/pxwrk.de/$1.pxwrk.de
-  elif [ -d ~/Cloud/server/github-derzyklop/$1 ]; then
-    cd ~/Cloud/server/github-derzyklop/$1
-  elif [ -d ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1 ]; then
-    cd ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1
-  elif [ -d ~/Cloud/server/$1 ]; then
-    cd ~/Cloud/server/$1
-
-  # elif [ -d ~/ownCloud/dev/pxwrk.de/$1.pxwrk.de ]; then
-  #   cd ~/ownCloud/dev/pxwrk.de/$1.pxwrk.de
-  # elif [ -d ~/ownCloud/dev/github-derzyklop/$1 ]; then
-  #   cd ~/ownCloud/dev/github-derzyklop/$1
-  # elif [ -d ~/ownCloud/dev/pxwrk.de/git.pxwrk.de/$1 ]; then
-  #   cd ~/ownCloud/dev/pxwrk.de/git.pxwrk.de/$1
-  # elif [ -d ~/ownCloud/dev/$1 ]; then
-  #   cd ~/ownCloud/dev/$1
-
-  else
-    tput setaf 1
-    echo "-------------------------"
-    echo "Error: Project not found!"
-    echo "-------------------------"
-    tput sgr0
-  fi
-}
-
 ## pxwrk.de folder
 function p() {
   if [ $# -gt 1 ]; then
@@ -123,7 +85,7 @@ function p() {
     echo "Minimum one param!"
     tput sgr0
   else
-    navToDevPath $1
+    navtodevpath $1
   fi
 }
 
@@ -135,17 +97,6 @@ function puber() {
     ssh pxwrk@pxwrk.de
   fi
 }
-
-
-# Opens my personal Terminal configuration
-function profile() {
-  if [ -f ~/.bashrc ]; then
-    subl ~/.bashrc
-  fi
-  navToDevPath terminal
-  subl .profile
-}
-
 
 # get my own commands
 export PATH=~/Cloud/server/pxwrk.de/terminal.pxwrk.de/bin/:$PATH

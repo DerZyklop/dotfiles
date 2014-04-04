@@ -9,6 +9,8 @@ elif [ -f gruntfile.coffee ]; then
   grunt server
 elif [ -f conf/gruntfile.coffee ]; then
   grunt server
+elif [ -f pw_runserver.sh ]; then
+  sh pw_runserver.sh
 elif [ -f runserver.sh ]; then
   sh runserver.sh
 else
