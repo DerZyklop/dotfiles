@@ -111,6 +111,37 @@ function puber() {
   fi
 }
 
+## Searches if the requested project is located in Dropbox or ownCloud
+function navtodevpath() {
+
+  if [ -d ~/Dropbox/server/pxwrk.de/$1.pxwrk.de ]; then
+    cd ~/Dropbox/server/pxwrk.de/$1.pxwrk.de
+  elif [ -d ~/Dropbox/server/github-derzyklop/$1 ]; then
+    cd ~/Dropbox/server/github-derzyklop/$1
+  elif [ -d ~/Dropbox/server/pxwrk.de/git.pxwrk.de/$1 ]; then
+    cd ~/Dropbox/server/pxwrk.de/git.pxwrk.de/$1
+  elif [ -d ~/Dropbox/server/$1 ]; then
+    cd ~/Dropbox/server/$1
+
+  elif [ -d ~/Cloud/server/pxwrk.de/$1.pxwrk.de ]; then
+    cd ~/Cloud/server/pxwrk.de/$1.pxwrk.de
+  elif [ -d ~/Cloud/server/github-derzyklop/$1 ]; then
+    cd ~/Cloud/server/github-derzyklop/$1
+  elif [ -d ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1 ]; then
+    cd ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1
+  elif [ -d ~/Cloud/server/$1 ]; then
+    cd ~/Cloud/server/$1
+
+  else
+    tput setaf 1
+    echo "-------------------------"
+    echo "Error: Project not found!"
+    echo "-------------------------"
+    tput sgr0
+  fi
+
+}
+
 # get my own commands
 export PATH=~/Cloud/server/pxwrk.de/terminal.pxwrk.de/bin:$PATH
 
