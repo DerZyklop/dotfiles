@@ -14,7 +14,7 @@ if [ $# -lt 2 ]; then
 else
   cd ~/Cloud/server/pxwrk.de
   if [ "$2" == 'kirby' ]; then
-    git clone --recursiv https://github.com/DerZyklop/boilerplate.pxwrk.de.git ./$1.pxwrk.de/submodules/boilerplate
+    git clone --recursiv git@github.com:DerZyklop/boilerplate.pxwrk.de.git ./$1.pxwrk.de/submodules/boilerplate
     cd $1.pxwrk.de/
     cp -r submodules/boilerplate/ ./
     rm -r .git
@@ -38,7 +38,7 @@ else
   elif [ "$2" == 'hoodie' ]; then
     hoodie new $1.pxwrk.de
     cd $1.pxwrk.de/
-    git clone --recursiv https://github.com/DerZyklop/boilerplate.pxwrk.de.git ./temp_www/
+    git clone --recursiv git@github.com:DerZyklop/boilerplate.pxwrk.de.git ./temp_www/
     mv temp_www/ www/
     cd www/
     rm -r assets/sass/sass-boilerplate/demo
