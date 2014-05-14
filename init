@@ -11,12 +11,13 @@ defaults write com.apple.finder AppleShowAllFiles TRUE
 
 ### Update brew
 
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew update
 
 ### Install zsh
 
 brew install zsh
-sudo chsh -s /usr/local/bin/zsh Offline
+sudo chsh -s /usr/local/bin/zsh $USER
 
 ### Install git
 
@@ -28,10 +29,19 @@ git config --global color.ui true
 git config --global user.name "Nils Neumann"
 git config --global user.email mail@der-zyklop.de
 git config --global format.pretty oneline
+git config --global push.default simple
 
 # For more usefull git-stuff see <http://git-scm.com/book/en/Customizing-Git-Git-Configuration>
+
+### Sass & Compass
+
+sudo gem install compass --version 0.12.4
 
 ### Grunt
 
 brew install node
 npm install -g grunt-cli
+
+### Fonts
+cp -r submodules/fira/ttf/ /Library/Fonts/
+open DerZyklop.terminal

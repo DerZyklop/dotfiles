@@ -99,11 +99,11 @@ function p() {
 
 ## pxwrk.de server
 function puber() {
-  if [ "$1" == '-f' ]; then
-    ssh pxwrk@pxwrk.de -o PubkeyAuthentication=no
-  else
+  #if [ "$1" == '-f' ]; then
+  #  ssh pxwrk@pxwrk.de -o PubkeyAuthentication=no
+  #else
     ssh pxwrk@pxwrk.de
-  fi
+  #fi
 }
 
 ## Searches if the requested project is located in Dropbox or ownCloud

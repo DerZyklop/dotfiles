@@ -3,7 +3,7 @@
 if [ $1 == 'enbw' ]; then
   open https://trello.com/b/3EZT0YFH/enbw
 elif [ $1 == 'kelag' ]; then
-  open https://trello.com/b/3EZT0YFH/enbw
+  open https://trello.com/b/upTaVaG0/kelag
 elif [ $1 == 'elishes' ]; then
   open https://trello.com/b/VA2PCMeX/elishes-de
 elif [ $1 == 'manisch' ]; then
