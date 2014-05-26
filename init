@@ -17,7 +17,7 @@ brew update
 ### Install zsh
 
 brew install zsh
-sudo chsh -s /usr/local/bin/zsh $USER
+chsh -s $(which zsh) $USER
 
 ### Install git
 
