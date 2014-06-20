@@ -69,9 +69,6 @@ function gi() {
 # Open current folder
 alias o="open ."
 
-## der-zyklop.de server
-alias zuber="ssh zyklop@pisces.uberspace.de"
-
 ## pxwrk.de folder
 function p() {
   if [ $# -gt 1 ]; then
@@ -89,14 +86,10 @@ function p() {
   fi
 }
 
-## pxwrk.de server
-function puber() {
-  if [ "$1" == '-f' ]; then
-    ssh pxwrk@pxwrk.de -o PubkeyAuthentication=no
-  else
-    ssh pxwrk@pxwrk.de
-  fi
-}
+## ssh
+alias zuber="ssh zyklop@der-zyklop.de"
+alias puber="ssh pxwrk@pxwrk.de"
+alias buber="ssh betti@unisono-giessen.de"
 
 # get my own commands
 export PATH=~/Cloud/server/pxwrk.de/terminal.pxwrk.de/bin/:$PATH
