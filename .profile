@@ -53,7 +53,21 @@ alias "gs"="git status"
 alias "gd"="git diff "
 alias "ga"="git add -A"
 alias "gc"="git commit -m "
-alias "gp"="git push"
+
+function gp() {
+  if [ $# -gt 1 ]; then
+    echo "USAGE: gp [commit-msg]"
+    tput setaf 1
+    echo "Maximum one param!"
+    tput sgr0
+  elif [ $# -lt 1 ]; then
+    git push
+  else
+    git commit -m $1
+    git push
+  fi
+}
+
 alias "gl"="git log --oneline"
 
 function gi() {
