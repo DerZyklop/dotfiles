@@ -53,6 +53,7 @@ alias "gs"="git status"
 alias "gd"="git diff "
 alias "ga"="git add -A"
 alias "gc"="git commit -m "
+alias "gl"="git log --oneline"
 
 function gp() {
   if [ $# -gt 1 ]; then
