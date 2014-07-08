@@ -56,7 +56,7 @@ alias access="sudo chown -R $USER "
 # get all processes
 alias processes="lsof -i TCP"
 
-# Some other often-used git stuff
+# Some often-used git stuff
 alias "gs"="git status"
 alias "gd"="git diff "
 alias "ga"="git add -A"
@@ -82,6 +82,12 @@ function gi() {
   touch README.md
   touch .gitignore
   echo -e ".gitignore\n.DS_Store"> .gitignore
+}
+
+
+# color diffs for SVN
+function svndiff () {
+  svn diff ${1+"$@"} | colordiff
 }
 
 
