@@ -1,21 +1,13 @@
-#!/bin/sh
+#! /usr/bin/env node
 
-if [ $1 == 'enbw' ]; then
-  open https://trello.com/b/3EZT0YFH/enbw
-elif [ $1 == 'kelag' ]; then
-  open https://trello.com/b/upTaVaG0/kelag
-elif [ $1 == 'elishes' ]; then
-  open https://trello.com/b/VA2PCMeX/elishes-de
-elif [ $1 == 'manisch' ]; then
-  open https://trello.com/b/dsLimC11/manischapp
-elif [ $1 == 'kelag' ]; then
-  open https://trello.com/b/upTaVaG0/kelag
-elif [ $1 == 'oertel' ]; then
-  open https://trello.com/b/gIlqlVsE/oertel
-else
-  tput setaf 1
-  echo "--------------------------------------"
-  echo "Couldnt find the url for $1"
-  echo "--------------------------------------"
-  tput sgr0
-fi
+var file = require(process.cwd()+'/package.json');
+var pkg = JSON.parse(JSON.stringify(file));
+var spawn = require('child_process').spawn;
+
+if ( pkg.trello ) {
+  spawn('open', [pkg.trello]);
+} else {
+  console.error("--------------------------------------");
+  console.error("Couldnt find the url for "+pkg.name);
+  console.error("--------------------------------------");
+}
