@@ -4,10 +4,10 @@ var file = require(process.cwd()+'/package.json');
 var pkg = JSON.parse(JSON.stringify(file));
 var spawn = require('child_process').spawn;
 
-if ( pkg.trello ) {
-  spawn('open', [pkg.trello]);
+if ( pkg.bugs.url ) {
+  spawn('open', [pkg.bugs.url]);
 } else {
   console.error("--------------------------------------");
-  console.error("Couldnt find the url for "+pkg.name);
+  console.error("Couldnt find the bugs-url for "+pkg.name);
   console.error("--------------------------------------");
 }
