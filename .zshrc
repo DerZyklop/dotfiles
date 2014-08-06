@@ -62,6 +62,7 @@ alias "gd"="git diff "
 alias "ga"="git add -A"
 alias "gc"="git commit -m "
 alias "gl"="git log --oneline"
+alias "gsu" = "git submodule update --init --recursive"
 
 function gp() {
   if [ $# -gt 1 ]; then
