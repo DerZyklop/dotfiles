@@ -19,6 +19,9 @@ brew update
 brew install zsh
 chsh -s $(which zsh) $USER
 
+### npm has an autocomplete-issue on zsh https://github.com/npm/npm/issues/1976
+echo 'eval "`npm completion`" >>~/.zshrc'
+
 ### Install git
 
 brew install git
