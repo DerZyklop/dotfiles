@@ -7,6 +7,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
+if [ ! -f ~/.histfile ]; then
+  touch ~/.histfile
+fi
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -85,7 +88,6 @@ function gi() {
   echo -e ".gitignore\n.DS_Store"> .gitignore
 }
 
-
 # color diffs for SVN
 function svndiff () {
   svn diff ${1+"$@"} | colordiff
@@ -94,10 +96,6 @@ function svndiff () {
 
 ### NAVIGATION ###
 
-# Open current folder
-alias o="open ."
-
-## pxwrk.de folder
 function p() {
   if [ $# -gt 1 ]; then
     echo "USAGE: p projectname"
@@ -110,45 +108,32 @@ function p() {
     echo "Minimum one param!"
     tput sgr0
   else
-    navtodevpath $1
+    if [ -d ~/Cloud/server/pxwrk.de/$1.pxwrk.de ]; then
+      cd ~/Cloud/server/pxwrk.de/$1.pxwrk.de
+    elif [ -d ~/Cloud/server/github-derzyklop/$1 ]; then
+      cd ~/Cloud/server/github-derzyklop/$1
+    elif [ -d ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1 ]; then
+      cd ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1
+    elif [ -d ~/Cloud/server/$1 ]; then
+      cd ~/Cloud/server/$1
+
+    else
+      tput setaf 1
+      echo "-------------------------"
+      echo "Error: Project not found!"
+      echo "-------------------------"
+      tput sgr0
+    fi
   fi
 }
+
+# Open current folder
+alias o="open ."
 
 ## ssh
 alias zuber="ssh zyklop@der-zyklop.de"
 alias puber="ssh pxwrk@pxwrk.de"
 alias buber="ssh betti@unisono-giessen.de"
-
-## Searches if the requested project is located in Dropbox or ownCloud
-function navtodevpath() {
-
-  if [ -d ~/Dropbox/server/pxwrk.de/$1.pxwrk.de ]; then
-    cd ~/Dropbox/server/pxwrk.de/$1.pxwrk.de
-  elif [ -d ~/Dropbox/server/github-derzyklop/$1 ]; then
-    cd ~/Dropbox/server/github-derzyklop/$1
-  elif [ -d ~/Dropbox/server/pxwrk.de/git.pxwrk.de/$1 ]; then
-    cd ~/Dropbox/server/pxwrk.de/git.pxwrk.de/$1
-  elif [ -d ~/Dropbox/server/$1 ]; then
-    cd ~/Dropbox/server/$1
-
-  elif [ -d ~/Cloud/server/pxwrk.de/$1.pxwrk.de ]; then
-    cd ~/Cloud/server/pxwrk.de/$1.pxwrk.de
-  elif [ -d ~/Cloud/server/github-derzyklop/$1 ]; then
-    cd ~/Cloud/server/github-derzyklop/$1
-  elif [ -d ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1 ]; then
-    cd ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1
-  elif [ -d ~/Cloud/server/$1 ]; then
-    cd ~/Cloud/server/$1
-
-  else
-    tput setaf 1
-    echo "-------------------------"
-    echo "Error: Project not found!"
-    echo "-------------------------"
-    tput sgr0
-  fi
-
-}
 
 # get my own commands
 export PATH=~/Cloud/server/pxwrk.de/terminal.pxwrk.de/bin:$PATH
