@@ -153,6 +153,9 @@ function navtodevpath() {
 # get my own commands
 export PATH=~/Cloud/server/pxwrk.de/terminal.pxwrk.de/bin:$PATH
 
+# Add RVM to PATH for node-scripting
+export PATH="$PATH:$HOME/.rvm/bin"
+
 # make sure that brew-stuff is used instead of system-stuff
 export PATH=/usr/local/bin:$PATH
 

@@ -109,6 +109,8 @@ alias buber="ssh betti@unisono-giessen.de"
 # get my own commands
 export PATH=~/Cloud/server/pxwrk.de/terminal.pxwrk.de/bin/:$PATH
 
+# Add RVM to PATH for node-scripting
+export PATH="$PATH:$HOME/.rvm/bin"
 
 ### THE END ###
 
