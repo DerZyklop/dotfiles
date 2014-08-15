@@ -15,6 +15,14 @@ try {
     console.error("--------------------------------------");
     console.error("Couldnt find the bugs-url for "+pkg.name);
     console.error("--------------------------------------");
+
+    // var prompt = require('prompt');
+    // prompt.start();
+
+    // prompt.get(['bugs_url'], function (err, result) {
+    //   console.log('URL for bugs is now: ' + result.bugs_url);
+    // });
+
   }
 
 } catch (err){
@@ -24,4 +32,3 @@ try {
   console.error("--------------------------------------");
 
 }
-
