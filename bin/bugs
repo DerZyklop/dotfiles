@@ -1,37 +1,36 @@
 #! /usr/bin/env node
 
-
 try {
   var filename = process.cwd()+'/package.json'
-  var file = require(filename);
-
-  var pkg = JSON.parse(JSON.stringify(file));
-  var spawn = require('child_process').spawn;
-
-  if ( pkg.bugs && pkg.bugs.url ) {
-      spawn('open', [pkg.bugs.url]);
-  } else {
-    console.error("--------------------------------------");
-    console.error("Couldnt find the bugs-url for "+pkg.name);
-    console.error("--------------------------------------");
-
-    var prompt = require('prompt');
-    prompt.start();
-
-    prompt.get(['bugs_url'], function (err, result) {
-
-      pkg.bugs = {};
-      pkg.bugs.url = result.bugs_url;
-
-      var fs = require('fs');
-      fs.writeFileSync(filename, JSON.stringify(pkg, null, 2));
-    });
-  }
-
-} catch (err){
-
+} catch (err) {
   console.error("--------------------------------------");
-  console.error("Couldnt find a package.json");
+  console.error("---- Do you have a package.json?  ----");
+  console.error("--------------------------------------");
+}
+
+
+function addBugsUrl() {
+  console.error("--------------------------------------");
+  console.error("Couldn‘t find the bugs url for "+pkg.name);
   console.error("--------------------------------------");
 
+  var prompt = require('prompt');
+  prompt.start();
+  prompt.get(['bugs_url'], function (err, result) {
+    pkg.bugs = {};
+    pkg.bugs.url = result.bugs_url;
+    require('fs').writeFileSync(filename, JSON.stringify(pkg, null, 2));
+  });
+}
+
+function openBugsUrlInBrowser() {
+  require('child_process').spawn('open', [pkg.bugs.url])
+}
+
+
+var pkg = JSON.parse(JSON.stringify(require(filename)));
+if ( pkg.bugs && pkg.bugs.url ) {
+  openBugsUrlInBrowser();
+} else {
+  addBugsUrl()
 }
