@@ -2,27 +2,30 @@
 
 
 try {
-  var file = require(process.cwd()+'/package.json');
+  var filename = process.cwd()+'/package.json'
+  var file = require(filename);
 
   var pkg = JSON.parse(JSON.stringify(file));
   var spawn = require('child_process').spawn;
 
-  if ( pkg.bugs ) {
-    if ( pkg.bugs.url ) {
+  if ( pkg.bugs && pkg.bugs.url ) {
       spawn('open', [pkg.bugs.url]);
-    }
   } else {
     console.error("--------------------------------------");
     console.error("Couldnt find the bugs-url for "+pkg.name);
     console.error("--------------------------------------");
 
-    // var prompt = require('prompt');
-    // prompt.start();
+    var prompt = require('prompt');
+    prompt.start();
 
-    // prompt.get(['bugs_url'], function (err, result) {
-    //   console.log('URL for bugs is now: ' + result.bugs_url);
-    // });
+    prompt.get(['bugs_url'], function (err, result) {
 
+      pkg.bugs = {};
+      pkg.bugs.url = result.bugs_url;
+
+      var fs = require('fs');
+      fs.writeFileSync(filename, JSON.stringify(pkg, null, 2));
+    });
   }
 
 } catch (err){
