@@ -1,7 +1,12 @@
 #!/bin/sh
 
 if [ $# -lt 1 ]; then
-  subl .
+  if [ -f *.sublime-project ]; then
+    subl $(find . -depth 1 -type f -name "*.sublime-project")
+  else
+    subl .
+  fi
 else
   subl $1
 fi
+
