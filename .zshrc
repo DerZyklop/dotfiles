@@ -134,6 +134,7 @@ alias o="open ."
 alias zuber="ssh zyklop@der-zyklop.de"
 alias puber="ssh pxwrk@pxwrk.de"
 alias buber="ssh betti@unisono-giessen.de"
+alias synology="ssh root@192.168.188.23"
 
 # get my own commands
 export PATH=~/Cloud/server/pxwrk.de/terminal.pxwrk.de/bin:$PATH
