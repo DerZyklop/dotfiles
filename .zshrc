@@ -1,3 +1,20 @@
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+  [ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
+
+
+
+
+
+
+
+
+
+
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _complete _ignored
@@ -23,17 +40,6 @@ SAVEHIST=1000
 
 
 ### SET CONFIG ###
-
-autoload -U colors && colors
-PS1="%{$fg[black]%}–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-
-%{$fg[black]%}%n @ %M %{$fg_no_bold[cyan]%}%~
-%{$fg[black]%}$ %{$reset_color%}%{$fg[bg-cyan]%}"
-
-# Cli Colors
-export CLICOLOR=1
-
-# use yellow for dir’s
-export LSCOLORS=dxfxcxdxbxegedabagacad
 
 ### history handling
 # Erase duplicates

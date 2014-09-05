@@ -1,0 +1,19 @@
+# This makes it easyer to use colors in bash-output
+autoload colors && colors
+for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
+    eval $COLOR='%{$fg_no_bold[${(L)COLOR}]%}'  #wrap colours between %{ %} to avoid weird gaps in autocomplete
+    eval BOLD_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
+done
+eval RESET='%{$reset_color%}'
+
+
+# This enables zsh-colors like $fg[black] and $fg[bg-cyan]
+PS1="
+${BLACK}%n @ %M ${CYAN}%~
+${BLACK}$ ${RESET}"
+
+# Cli Colors
+export CLICOLOR=1
+
+# use yellow for dir’s
+export LSCOLORS=dxfxcxdxbxegedabagacad

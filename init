@@ -3,6 +3,7 @@
 ### Set new dotfiles
 
 ln -sf $PWD/.zshrc ~/.zshrc
+ln -sf $PWD/.bash_prompt ~/.bash_prompt
 ln -sf $PWD/.profile ~/.profile
 
 ### Show hidden files in finder
