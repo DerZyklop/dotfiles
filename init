@@ -2,7 +2,7 @@
 
 ### Set new dotfiles
 
-ln -sf $PWD/.zshrc ~/.zshrc
+#ln -sf $PWD/.zshrc ~/.zshrc
 ln -sf $PWD/.bash_prompt ~/.bash_prompt
 ln -sf $PWD/.profile ~/.profile
 
@@ -17,11 +17,11 @@ brew update
 
 ### Install zsh
 
-brew install zsh
-chsh -s $(which zsh) $USER
+#brew install zsh
+#chsh -s $(which zsh) $USER
 
 ### npm has an autocomplete-issue on zsh https://github.com/npm/npm/issues/1976
-echo 'eval "`npm completion`" >>~/.zshrc'
+#echo 'eval "`npm completion`" >>~/.zshrc'
 
 ### Install git
 
