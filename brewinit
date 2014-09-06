@@ -1,0 +1,11 @@
+brew update
+
+brew install git
+
+brew install caskroom/cask/brew-cask
+
+brew cask install firefox
+
+brew cask install google-chrome
+
+# easy... brew cask create my-cask

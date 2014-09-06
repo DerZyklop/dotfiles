@@ -4,7 +4,9 @@
 
 #ln -sf $PWD/.zshrc ~/.zshrc
 ln -sf $PWD/.bash_prompt ~/.bash_prompt
+ln -sf $PWD/.aliases ~/.aliases
 ln -sf $PWD/.profile ~/.profile
+ln -sf $PWD/Brewfile ~/Brewfile
 
 ### Show hidden files in finder
 
@@ -13,19 +15,25 @@ defaults write com.apple.finder AppleShowAllFiles TRUE
 ### Update brew
 
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-brew update
 
-### Install zsh
+sh brewinit
 
-#brew install zsh
+
+# XCode Command Line Tools
+if [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; then
+	xcode-select --install &> /dev/null
+
+	# Wait until the XCode Command Line Tools are installed
+	while [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; do
+	    sleep 5
+	done
+fi
+
+print_success "XCode Command Line Tools"
+printf "\n"
+
 #chsh -s $(which zsh) $USER
 
-### npm has an autocomplete-issue on zsh https://github.com/npm/npm/issues/1976
-#echo 'eval "`npm completion`" >>~/.zshrc'
-
-### Install git
-
-brew install git
 
 #### Setup git-stuff
 
