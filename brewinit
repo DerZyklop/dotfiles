@@ -1,11 +1,17 @@
 brew update
+brew upgrade
+brew cleanup
 
-brew install git
+HOMEBREW_FORMULAE=(
+    "bash-completion"
+    "git"
+    "vim --override-system-vi"
+    "nmap"
+)
 
-brew install caskroom/cask/brew-cask
-
-brew cask install firefox
-
-brew cask install google-chrome
-
-# easy... brew cask create my-cask
+for i in ${!HOMEBREW_FORMULAE[*]}; do
+	tmp="${HOMEBREW_FORMULAE[$i]}"
+	echo $i
+	echo $tmp
+	$(brew install $tmp)
+done
