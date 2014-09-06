@@ -91,6 +91,10 @@ function p() {
       cd ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1
     elif [ -d ~/Cloud/server/$1 ]; then
       cd ~/Cloud/server/$1
+    elif [ -d ~/S/$1.pxwrk.de ]; then
+      cd ~/S/$1.pxwrk.de
+    elif [ -d ~/S/$1 ]; then
+      cd ~/S/$1
 
     else
       tput setaf 1
