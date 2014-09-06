@@ -39,7 +39,7 @@ export HISTSIZE=10000
 export EDITOR=nano
 
 # get my own commands
-export PATH=~/Cloud/server/pxwrk.de/terminal.pxwrk.de/bin:$PATH
+export PATH=$PWD/bin:$PATH
 
 # make sure that brew-stuff is used instead of system-stuff
 export PATH=/usr/local/bin:$PATH
