@@ -33,7 +33,7 @@ alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias "gs"="git status"
 alias "gd"="git diff "
 alias "ga"="git add -A"
-alias "gc"="git commit -m $0"
+alias "gc"="git commit -m "
 alias "gl"="git log --oneline"
 alias "gsu"="git submodule update --init --recursive"
 
