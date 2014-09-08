@@ -9,8 +9,15 @@ It's just a collection files and configurations, that i use in my projects.
 
 You have to install OSX command line tools manualy :(
 
-## How to install
+## How to install from sratch
 
 ```
-sh init
+cd ~; mkdir dotfiles; cd dotfiles; curl -#L https://bitbucket.org/DerZyklop/terminal.pxwrk.de/get/master.zip | tar -xzv --strip-components 1; . init;
+```
+
+## How to install with git
+```
+git clone https://bitbucket.org/DerZyklop/terminal.pxwrk.de
+cd terminal.pxwrk.de
+. init
 ```
