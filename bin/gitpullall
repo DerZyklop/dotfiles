@@ -1,5 +1,28 @@
 #!/bin/sh
 
 projectsdir=~/S
-find $projectsdir -type d -depth 2 -name .git | xargs -n 1 dirname | sort | while read line; do echo $line && cd $line && git pull && git submodule update --init --recursive; done
+find $projectsdir -type d -depth 2 -name .git | \
+  xargs -n 1 dirname | \
+  sort | \
+  while read line;
+    do
+      echo $line
+      cd $line
+      git pull
+      if [ "$?" = "0" ]; then
+        echo "${green}Updated $line!${reset}"
+      else
+        echo "${red}Error at $line!${reset}" 1>&2
+        exit 1
+      fi
+      git submodule update --init --recursive
+      if [ "$?" = "0" ]; then
+        echo "${green}Updated submodules of $line!${reset}"
+      else
+        echo "${red}Error at submodules of $line!${reset}" 1>&2
+        exit 1
+      fi
+
+  done
+
 unset projectsdir;
