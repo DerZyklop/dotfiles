@@ -18,10 +18,8 @@ HOMEBREW_CASK_FORMULAE=(
     "caffeine"
     "appcleaner"
     "vlc"
+    "the-unarchiver"
 )
-
-
-
 
 
 
