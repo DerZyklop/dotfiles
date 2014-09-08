@@ -42,27 +42,13 @@ export HISTCONTROL=erasedups
 export HISTSIZE=10000
 
 # get my own commands
-
-SOURCE="${BASH_SOURCE[0]}"
-while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
-  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-  SOURCE="$(readlink "$SOURCE")"
-  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
-done
-DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-
-export PATH=$DIR/bin:$PATH
+export PATH=$DOTFILESDIR/bin:$PATH
 
 # Make Sublime the default editor
 export EDITOR="nano"
 
 # make sure that brew-stuff is used instead of system-stuff
 export PATH=/usr/local/bin:$PATH
-
-
-
-
-
 
 
 
