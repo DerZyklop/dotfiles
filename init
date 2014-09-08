@@ -2,11 +2,22 @@
 
 ### Set new dotfiles
 
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DOTFILESDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
 #ln -sf $PWD/.zshrc ~/.zshrc
-ln -sf $PWD/.bash_prompt ~/.bash_prompt
-ln -sf $PWD/.aliases ~/.aliases
-ln -sf $PWD/.profile ~/.profile
-ln -sf $PWD/Brewfile ~/Brewfile
+ln -sf $DOTFILESDIR/.path ~
+ln -sf $DOTFILESDIR/.bash_prompt ~
+ln -sf $DOTFILESDIR/.aliases ~
+ln -sf $DOTFILESDIR/.profile ~
+ln -sf $DOTFILESDIR/Brewfile ~
+ln -sf $DOTFILESDIR/.gitignore ~
+
 
 ### Show hidden files in finder
 
@@ -14,19 +25,29 @@ defaults write com.apple.finder AppleShowAllFiles TRUE
 
 ### Update brew
 
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+function commandExists() {
+  if ! foobar_loc="$(type -p "$1")" || [ -z "$foobar_loc" ]; then
+    return 1
+  else
+    return 0
+  fi
+}
 
-sh brewinit
+if ! commandExists "brew"; then
+  ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+fi
+
+sh $DOTFILESDIR/brewinit
 
 
 # XCode Command Line Tools
 if [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; then
-	xcode-select --install &> /dev/null
+  xcode-select --install &> /dev/null
 
-	# Wait until the XCode Command Line Tools are installed
-	while [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; do
-	    sleep 5
-	done
+  # Wait until the XCode Command Line Tools are installed
+  while [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; do
+      sleep 5
+  done
 fi
 
 print_success "XCode Command Line Tools"
@@ -42,6 +63,7 @@ git config --global user.name "Nils Neumann"
 git config --global user.email mail@der-zyklop.de
 git config --global format.pretty oneline
 git config --global push.default simple
+git config --global core.excludesfile ~/.gitignore
 
 # For more usefull git-stuff see <http://git-scm.com/book/en/Customizing-Git-Git-Configuration>
 
@@ -55,5 +77,5 @@ brew install node
 npm install -g grunt-cli
 
 ### Fonts
-cp -r submodules/fira/ttf/ /Library/Fonts/
-open DerZyklop.terminal
+cp -r $DOTFILESDIR/submodules/fira/ttf/ /Library/Fonts/
+open $DOTFILESDIR/DerZyklop.terminal
