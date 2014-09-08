@@ -6,7 +6,7 @@ alias skuber="ssh skmobil@sk-mobil.com"
 alias synology="ssh root@192.168.188.23"
 
 # ls mit versteckten dateien und slashes an ordnern
-alias ls="ls -pa"
+alias ls="ls -pa1"
 # Check reboot times
 alias re="last reboot"
 # Clear up the terminal window
