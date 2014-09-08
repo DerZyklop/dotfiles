@@ -17,12 +17,19 @@ unset file;
 # # enable programmable completion features (you don't need to enable
 # # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # # sources /etc/bash.bashrc).
-# if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-#     . /etc/bash_completion
-# fi
 
-if [ hash brew 2>/dev/null && -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+function commandExists() {
+  if ! foobar_loc="$(type -p "$1")" || [ -z "$foobar_loc" ]; then
+    return 1
+  else
+    return 0
+  fi
+}
+
+if commandExists "brew"; then
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+      . $(brew --prefix)/etc/bash_completion
+  fi
 fi
 
 
