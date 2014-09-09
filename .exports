@@ -4,6 +4,9 @@ export HISTCONTROL=erasedups
 # resize history size
 export HISTSIZE=10000
 
+# Always enable colored `grep` output
+export GREP_OPTIONS="--color=auto";
+
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
   DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
