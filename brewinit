@@ -19,6 +19,7 @@ brew cleanup
 HOMEBREW_FORMULAE=(
     "bash-completion"
     "git"
+    "node"
     "vim --override-system-vi"
     "nmap"
 )
