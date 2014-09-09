@@ -1,11 +1,11 @@
 # Load the shell dotfiles, and then some:
-# * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
   #echo "$file"
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
+
 
 
 
@@ -41,15 +41,16 @@ export HISTCONTROL=erasedups
 # resize history size
 export HISTSIZE=10000
 
-# get my own commands
-export PATH=$DOTFILESDIR/bin:$PATH
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DOTFILESDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 # Make Sublime the default editor
 export EDITOR="nano"
-
-# make sure that brew-stuff is used instead of system-stuff
-export PATH=/usr/local/bin:$PATH
-
 
 
 ### THE END ###
