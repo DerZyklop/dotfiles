@@ -1,3 +1,5 @@
+#!/bin/sh
+
 function commandExists() {
   if ! foobar_loc="$(type -p "$1")" || [ -z "$foobar_loc" ]; then
     return 1

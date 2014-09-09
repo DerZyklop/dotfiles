@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # info: http://caskroom.io/
 
 brew install caskroom/cask/brew-cask

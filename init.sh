@@ -2,26 +2,16 @@
 
 ### Set new dotfiles
 
-SOURCE="${BASH_SOURCE[0]}"
-while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
-  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-  SOURCE="$(readlink "$SOURCE")"
-  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
-done
-DOTFILESDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+for file in ~/.{path,exports,bash_prompt,aliases,functions,extra,bashrc}; do
+  [ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
 
 echo "${green}Want to install the new dotfiles?"
 echo "${red}Attention: This will overwrite your current dotfiles!"
 read -p "${green}Should i?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  ln -sf $DOTFILESDIR/.path ~
-  ln -sf $DOTFILESDIR/.bash_prompt ~
-  ln -sf $DOTFILESDIR/.aliases ~
-  ln -sf $DOTFILESDIR/.functions ~
-  ln -sf $DOTFILESDIR/.profile ~
-  ln -sf $DOTFILESDIR/.gitignore ~
-  ln -sf $DOTFILESDIR/.exports ~
+  sh $DOTFILESDIR/init/initsymlinks.sh
 fi
 
 read -p "${green}Want to have bash as your default shell?${reset} [yN] " -n 1 -r
