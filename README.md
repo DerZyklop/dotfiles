@@ -7,6 +7,8 @@ It's just a collection files and configurations, that i use in my projects.
 
 ## Requirements
 
+Relax.. the install process will ask you what to do before every critical installation.
+
 ### How to install from sratch
 
 ```
