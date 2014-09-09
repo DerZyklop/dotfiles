@@ -18,7 +18,5 @@ cd ~; mkdir dotfiles; cd dotfiles; curl -#L https://bitbucket.org/DerZyklop/term
 ### How to install with git
 
 ```
-git clone https://bitbucket.org/DerZyklop/terminal.pxwrk.de
-cd terminal.pxwrk.de
-. init
+git clone https://github.com/DerZyklop/dotfiles.git; cd dotfiles; . init
 ```
