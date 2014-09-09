@@ -20,7 +20,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   ln -sf $DOTFILESDIR/.aliases ~
   ln -sf $DOTFILESDIR/.functions ~
   ln -sf $DOTFILESDIR/.profile ~
-  ln -sf $DOTFILESDIR/Brewfile ~
   ln -sf $DOTFILESDIR/.gitignore ~
 fi
 
@@ -33,13 +32,13 @@ fi
 read -p "${green}Wanna install commands via brew?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  sh $DOTFILESDIR/brewinit
+  sh $DOTFILESDIR/init/initbrew.sh
 fi
 
 read -p "${green}Wanna install software via brewcask?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  sh $DOTFILESDIR/brewcaskinit
+  sh $DOTFILESDIR/init/initbrewcask.sh
 fi
 
 read -p "${red}Want to set git-user to DerZyklop?${reset} [yN] " -n 1 -r
@@ -84,5 +83,5 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 ### Fonts
-cp -r $DOTFILESDIR/submodules/fira/ttf/ /Library/Fonts/
-open $DOTFILESDIR/DerZyklop.terminal
+cp -r $DOTFILESDIR/init/submodules/fira/ttf/ /Library/Fonts/
+open $DOTFILESDIR/init/DerZyklop.terminal
