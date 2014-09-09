@@ -51,6 +51,8 @@ function p() {
       cd ~/S/$1.pxwrk.de
     elif [ -d ~/S/$1 ]; then
       cd ~/S/$1
+    elif [ -d ~/PW/Projekte/$1 ]; then
+      cd ~/PW/Projekte/$1
 
     else
       tput setaf 1
