@@ -42,6 +42,12 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   sh $DOTFILESDIR/init/initbrewcask.sh
 fi
 
+read -p "${green}Wanna install some good fonts?${reset} [yN] " -n 1 -r
+echo "\nAllright!"
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  sh $DOTFILESDIR/init/initbrewcaskfonts.sh
+fi
+
 read -p "${red}Want to set git-user to DerZyklop?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -83,6 +89,4 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   npm install -g grunt-cli
 fi
 
-### Fonts
-cp -r $DOTFILESDIR/init/submodules/fira/ttf/ /Library/Fonts/
 open $DOTFILESDIR/init/DerZyklop.terminal
