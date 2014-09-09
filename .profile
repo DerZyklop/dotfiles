@@ -26,12 +26,12 @@ function commandExists() {
   fi
 }
 
-if commandExists "brew"; then
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-      . $(brew --prefix)/etc/bash_completion
-  fi
-fi
-
+# Add tab completion for many Bash commands
+if commandExists "brew" && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+  source "$(brew --prefix)/etc/bash_completion";
+elif [ -f /etc/bash_completion ]; then
+  source /etc/bash_completion;
+fi;
 
 ### SET CONFIG ###
 
