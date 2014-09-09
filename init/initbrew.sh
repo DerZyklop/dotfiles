@@ -1,13 +1,5 @@
 #!/bin/sh
 
-function commandExists() {
-  if ! foobar_loc="$(type -p "$1")" || [ -z "$foobar_loc" ]; then
-    return 1
-  else
-    return 0
-  fi
-}
-
 if ! commandExists "brew"; then
   ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 fi
