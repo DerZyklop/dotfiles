@@ -1,44 +1,6 @@
 #!/bin/sh
 
-### Set new dotfiles
-
-SOURCE="${BASH_SOURCE[0]}"
-while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
-  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-  SOURCE="$(readlink "$SOURCE")"
-  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
-done
-DOTFILESDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-
-chsh -s $(which bash) $USER
-
-ln -sf $DOTFILESDIR/.path ~
-ln -sf $DOTFILESDIR/.bash_prompt ~
-ln -sf $DOTFILESDIR/.aliases ~
-ln -sf $DOTFILESDIR/.functions ~
-ln -sf $DOTFILESDIR/.profile ~
-ln -sf $DOTFILESDIR/Brewfile ~
-ln -sf $DOTFILESDIR/.gitignore ~
-
-
-### Show hidden files in finder
-
-defaults write com.apple.finder AppleShowAllFiles TRUE
-
-### Update brew
-
-function commandExists() {
-  if ! foobar_loc="$(type -p "$1")" || [ -z "$foobar_loc" ]; then
-    return 1
-  else
-    return 0
-  fi
-}
-
-if ! commandExists "brew"; then
-  ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-fi
-
+sh $DOTFILESDIR/cuteinit
 sh $DOTFILESDIR/brewinit
 
 
@@ -52,20 +14,6 @@ if [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; then
   done
 fi
 
-print_success "XCode Command Line Tools"
-printf "\n"
-
-#chsh -s $(which zsh) $USER
-
-
-#### Setup git-stuff
-
-git config --global color.ui true
-git config --global user.name "Nils Neumann"
-git config --global user.email mail@der-zyklop.de
-git config --global format.pretty oneline
-git config --global push.default simple
-git config --global core.excludesfile ~/.gitignore
 
 # For more usefull git-stuff see <http://git-scm.com/book/en/Customizing-Git-Git-Configuration>
 
@@ -77,7 +25,3 @@ sudo gem install compass --version 0.12.4
 
 brew install node
 npm install -g grunt-cli
-
-### Fonts
-cp -r $DOTFILESDIR/submodules/fira/ttf/ /Library/Fonts/
-open $DOTFILESDIR/DerZyklop.terminal
