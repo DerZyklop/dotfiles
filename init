@@ -12,7 +12,7 @@ DOTFILESDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 echo "${green}Want to install the new dotfiles?"
 echo "${red}Attention: This will overwrite your current dotfiles!"
-read -p "${green}Should i?${reset} " -n 1 -r
+read -p "${green}Should i?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   ln -sf $DOTFILESDIR/.path ~
@@ -24,25 +24,25 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   ln -sf $DOTFILESDIR/.gitignore ~
 fi
 
-read -p "${green}Want to have bash as your default shell?${reset} " -n 1 -r
+read -p "${green}Want to have bash as your default shell?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   chsh -s $(which bash) $USER
 fi
 
-read -p "${green}Wanna install commands via brew?${reset} " -n 1 -r
+read -p "${green}Wanna install commands via brew?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   sh $DOTFILESDIR/brewinit
 fi
 
-read -p "${green}Wanna install software via brewcask?${reset} " -n 1 -r
+read -p "${green}Wanna install software via brewcask?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   sh $DOTFILESDIR/brewcaskinit
 fi
 
-read -p "${red}Want to set git-user to DerZyklop?${reset} " -n 1 -r
+read -p "${red}Want to set git-user to DerZyklop?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   git config --global user.name "DerZyklop"
@@ -59,7 +59,7 @@ if [ -f ~/.gitignore ]; then
 fi
 # For more usefull git-stuff see <http://git-scm.com/book/en/Customizing-Git-Git-Configuration>
 
-read -p "${green}Wanna install XCode Command Line Tools?${reset} " -n 1 -r
+read -p "${green}Wanna install XCode Command Line Tools?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   # XCode Command Line Tools
@@ -77,7 +77,7 @@ fi
 
 ### Grunt
 
-read -p "${green}Wanna install grunt-cli?${reset} " -n 1 -r
+read -p "${green}Wanna install grunt-cli?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   npm install -g grunt-cli
