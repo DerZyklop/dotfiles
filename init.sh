@@ -21,6 +21,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   ln -sf $DOTFILESDIR/.functions ~
   ln -sf $DOTFILESDIR/.profile ~
   ln -sf $DOTFILESDIR/.gitignore ~
+  ln -sf $DOTFILESDIR/.exports ~
 fi
 
 read -p "${green}Want to have bash as your default shell?${reset} [yN] " -n 1 -r
