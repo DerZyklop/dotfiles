@@ -23,19 +23,25 @@ fi
 read -p "${green}Wanna install commands via brew?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  sh $DOTFILESDIR/init/initbrew.sh
+  source $DOTFILESDIR/init/initbrew.sh
 fi
 
 read -p "${green}Wanna install software via brewcask?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  sh $DOTFILESDIR/init/initbrewcask.sh
+  source $DOTFILESDIR/init/initbrewcask.sh
 fi
 
 read -p "${green}Wanna install some good fonts?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  sh $DOTFILESDIR/init/initbrewcaskfonts.sh
+  source $DOTFILESDIR/init/initbrewcaskfonts.sh
+fi
+
+read -p "${green}Wanna install some node globals?${reset} [yN] " -n 1 -r
+echo "\nAllright!"
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  source $DOTFILESDIR/init/initnode.sh
 fi
 
 read -p "${red}Want to set git-user to DerZyklop?${reset} [yN] " -n 1 -r
@@ -70,13 +76,5 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 # For more usefull git-stuff see <http://git-scm.com/book/en/Customizing-Git-Git-Configuration>
-
-### Grunt
-
-read -p "${green}Wanna install grunt-cli?${reset} [yN] " -n 1 -r
-echo "\nAllright!"
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  npm install -g grunt-cli
-fi
 
 open $DOTFILESDIR/init/DerZyklop.terminal
