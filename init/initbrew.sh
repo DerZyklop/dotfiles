@@ -19,6 +19,6 @@ HOMEBREW_FORMULAE=(
 
 for i in ${!HOMEBREW_FORMULAE[*]}; do
   tmp="${HOMEBREW_FORMULAE[$i]}"
-  echo ${purple}$tmp${reset}
+  echo "installing ${purple}$tmp${reset}"
   $(brew install $tmp)
 done

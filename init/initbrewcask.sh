@@ -29,6 +29,6 @@ HOMEBREW_CASK_FORMULAE=(
 
 for i in ${!HOMEBREW_CASK_FORMULAE[*]}; do
   tmp="${HOMEBREW_CASK_FORMULAE[$i]}"
-  echo ${purple}$tmp${reset}
+  echo "installing ${purple}$tmp${reset}"
   brew cask install $tmp
 done
