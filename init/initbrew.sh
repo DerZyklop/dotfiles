@@ -14,6 +14,7 @@ HOMEBREW_FORMULAE=(
     "node"
     "vim --override-system-vi"
     "nmap"
+    "php55"
 )
 
 for i in ${!HOMEBREW_FORMULAE[*]}; do

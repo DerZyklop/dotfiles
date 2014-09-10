@@ -6,6 +6,9 @@ brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
 HOMEBREW_CASK_FORMULAE=(
+    "little-snitch"
+    "gpgtools"
+
     "sublime-text3"
     "bittorrent-sync"
     "dropbox"
@@ -17,8 +20,11 @@ HOMEBREW_CASK_FORMULAE=(
     "licecap"
     "caffeine"
     "appcleaner"
-    "vlc"
     "the-unarchiver"
+    "imageoptim"
+
+    "vlc"
+    "spotify"
 )
 
 for i in ${!HOMEBREW_CASK_FORMULAE[*]}; do

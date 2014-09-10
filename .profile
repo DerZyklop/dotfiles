@@ -2,7 +2,6 @@
 # * ~/.extra can be used for other settings you don’t want to commit.
 for file in ~/.{exports,path,bash_prompt,aliases,functions,extra,bashrc}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
-  echo "$file"
 done;
 unset file;
 
