@@ -1,14 +1,5 @@
 #! /usr/bin/env node
 
-try {
-  var filename = process.cwd()+'/package.json'
-} catch (err) {
-  console.error("--------------------------------------");
-  console.error("---- Do you have a package.json?  ----");
-  console.error("--------------------------------------");
-}
-
-
 function addBugsUrl() {
   console.error("--------------------------------------");
   console.error("Couldn‘t find the bugs url for "+pkg.name);
@@ -27,8 +18,16 @@ function openBugsUrlInBrowser() {
   require('child_process').spawn('open', [pkg.bugs.url])
 }
 
+try {
+  var filename = process.cwd()+'/package.json'
+  var pkg = JSON.parse(JSON.stringify(require(filename)));
+} catch (err) {
+  console.error("--------------------------------------");
+  console.error("---- Do you have a package.json?  ----");
+  console.error("--------------------------------------");
+  process.exit(1);
+}
 
-var pkg = JSON.parse(JSON.stringify(require(filename)));
 if ( pkg.bugs && pkg.bugs.url ) {
   openBugsUrlInBrowser();
 } else {
