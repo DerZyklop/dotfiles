@@ -48,18 +48,27 @@ function p() {
     echo "Minimum one param!"
     tput sgr0
   else
-    if [ -d ~/Cloud/server/pxwrk.de/$1.pxwrk.de ]; then
-      cd ~/Cloud/server/pxwrk.de/$1.pxwrk.de
-    elif [ -d ~/Cloud/server/github-derzyklop/$1 ]; then
-      cd ~/Cloud/server/github-derzyklop/$1
-    elif [ -d ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1 ]; then
-      cd ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1
+    if [ -d ~/Documents/workspace/PlaceWorkers/$1 ]; then
+      echo "${red}Located in a old project-dirctory! Move it!${reset}"
+      cd ~/Documents/workspace/PlaceWorkers/$1
     elif [ -d ~/Cloud/server/$1 ]; then
+      echo "${red}Located in a old project-dirctory! Move it!${reset}"
       cd ~/Cloud/server/$1
-    elif [ -d ~/S/$1.pxwrk.de ]; then
-      cd ~/S/$1.pxwrk.de
+    elif [ -d ~/Cloud/server/github-derzyklop/$1 ]; then
+      echo "${red}Located in a old project-dirctory! Move it!${reset}"
+      cd ~/Cloud/server/github-derzyklop/$1
+    elif [ -d ~/Cloud/server/pxwrk.de/$1.pxwrk.de ]; then
+      echo "${red}Located in a old project-dirctory! Move it!${reset}"
+      cd ~/Cloud/server/pxwrk.de/$1.pxwrk.de
+    elif [ -d ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1 ]; then
+      echo "${red}Located in a old project-dirctory! Move it!${reset}"
+      cd ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1
     elif [ -d ~/S/$1 ]; then
       cd ~/S/$1
+    elif [ -d ~/S/$1.pxwrk.de ]; then
+      cd ~/S/$1.pxwrk.de
+    elif [ -d ~/PW/$1 ]; then
+      cd ~/PW/$1
     elif [ -d ~/PW/Projekte/$1 ]; then
       cd ~/PW/Projekte/$1
 
