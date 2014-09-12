@@ -1,14 +1,27 @@
 #!/bin/sh
 
+function processGrunt() {
+  if [ -d node_modules ]; then
+    echo "${green}Starting grunt${reset}"
+    grunt
+  else
+    echo "${green}Node packages are missing.${reset}"
+    echo "${green}Starting npm install${reset}"
+    npm install
+    echo "${green}Starting grunt${reset}"
+    grunt
+  fi
+}
+
 # Start server (and maybe grunt)
 if [ -f boilerplate.json ]; then
-  grunt dev
+  processGrunt
 elif [ -f conf/boilerplate.json ]; then
   grunt dev
-elif [ -f gruntfile.coffee ]; then
-  grunt server
 elif [ -f conf/gruntfile.coffee ]; then
   grunt server
+elif [ -f gruntfile.coffee ]; then
+  processGrunt
 elif [ -f pw_runserver.sh ]; then
   sh pw_runserver.sh
 elif [ -f runserver.sh ]; then
