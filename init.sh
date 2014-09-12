@@ -2,7 +2,7 @@
 
 ### Set new dotfiles
 
-for file in ~/.{path,exports,bash_prompt,aliases,functions,extra,bashrc}; do
+for file in ~/.{exports,path,completions,bash_prompt,aliases,functions,extra,bashrc}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 
@@ -55,7 +55,6 @@ fi
 git config --global color.ui true
 git config --global format.pretty oneline
 git config --global push.default simple
-# ...and now load .bashrc if it exists
 if [ -f ~/.gitignore ]; then
    git config --global core.excludesfile ~/.gitignore
 fi

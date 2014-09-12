@@ -1,6 +1,7 @@
 #!/bin/sh
 
 ln -sf $DOTFILESDIR/.path ~
+ln -sf $DOTFILESDIR/.completions ~
 ln -sf $DOTFILESDIR/.bash_prompt ~
 ln -sf $DOTFILESDIR/.aliases ~
 ln -sf $DOTFILESDIR/.functions ~
