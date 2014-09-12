@@ -48,6 +48,22 @@ function p() {
     echo "Minimum one param!"
     tput sgr0
   else
+
+    # found_it=false
+    # for i in ${PROJECTDIRS[*]}; do
+    #   if [ -d $i$1 ]; then
+    #     cd $i$1
+    #     found_it=true
+    #   fi
+    # done;
+    # if [[ "$found_it" = false ]]; then
+    #   tput setaf 1
+    #   echo "-------------------------"
+    #   echo "Error: Project not found!"
+    #   echo "-------------------------"
+    #   tput sgr0
+    # fi
+
     if [ -d ~/Documents/workspace/PlaceWorkers/$1 ]; then
       echo "${red}Located in an old project-dirctory! Move it!${reset}"
       cd ~/Documents/workspace/PlaceWorkers/$1
@@ -79,5 +95,6 @@ function p() {
       echo "-------------------------"
       tput sgr0
     fi
+
   fi
 }
