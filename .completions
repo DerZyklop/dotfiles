@@ -1,0 +1,8 @@
+for i in ${PROJECTDIRS[*]}
+do
+  if [[ -d $i ]]; then
+    PROJECTS+="$(ls $i | tr "\n" " ")"
+  fi
+done
+
+complete -W "$PROJECTS" p
