@@ -49,6 +49,7 @@ function p() {
     tput sgr0
   else
 
+    # TODO: Implement this when projects are moved
     # found_it=false
     # for i in ${PROJECTDIRS[*]}; do
     #   if [ -d $i$1 ]; then
