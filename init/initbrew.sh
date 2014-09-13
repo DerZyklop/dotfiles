@@ -15,6 +15,7 @@ HOMEBREW_FORMULAE=(
     "vim --override-system-vi"
     "nmap"
     "php55"
+    "todo-txt"
 )
 
 for i in ${!HOMEBREW_FORMULAE[*]}; do

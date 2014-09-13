@@ -26,6 +26,10 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   source $DOTFILESDIR/init/initbrew.sh
 fi
 
+mkdir ~/todo
+cp /usr/local/Cellar/todo-txt/2.10/todo.cfg $HOME/todo
+
+
 read -p "${green}Wanna install software via brewcask?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then

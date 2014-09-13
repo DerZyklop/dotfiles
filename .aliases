@@ -37,6 +37,8 @@ alias "gc"="git commit -m "
 alias "gl"="git log --oneline"
 alias "gsu"="git submodule update --init --recursive"
 alias "gtodo"="git grep -El '# TODO|// TODO' | xargs -n1 git blame | grep $(git config user.name) | grep TODO"
+alias "t"="todo.sh -d ~/todo/todo.cfg"
+alias "todo"="t ls"
 
 
 # ifconfig greps

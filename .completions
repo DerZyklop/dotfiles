@@ -6,3 +6,5 @@ do
 done
 
 complete -W "$PROJECTS" p
+
+complete -F _todo t
