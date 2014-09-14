@@ -16,6 +16,7 @@ HOMEBREW_FORMULAE=(
     "nmap"
     "php55"
     "todo-txt"
+    "wget"
 )
 
 for i in ${!HOMEBREW_FORMULAE[*]}; do
