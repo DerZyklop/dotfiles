@@ -12,11 +12,17 @@ The install process will ask you what to do before every critical installation.
 ### How to install from sratch
 
 ```
-cd ~; mkdir dotfiles; cd dotfiles; curl -#L https://bitbucket.org/DerZyklop/terminal.pxwrk.de/get/master.zip | tar -xzv --strip-components 1; sh init;
+cd ~; mkdir .dotfiles; cd .dotfiles; curl -#L https://github.com/DerZyklop/dotfiles.git | tar -xzv --strip-components 1; sh init.sh;
 ```
 
 ### How to install with git
 
 ```
-git clone https://github.com/DerZyklop/dotfiles.git; cd dotfiles; . init
+git clone https://github.com/DerZyklop/dotfiles.git .dotfiles; cd .dotfiles; . init.sh
+```
+
+### How to deinit
+
+```
+sh deinit.sh
 ```
