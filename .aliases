@@ -3,7 +3,7 @@ alias zuber="ssh zyklop@der-zyklop.de"
 alias puber="ssh pxwrk@pxwrk.de"
 alias buber="ssh betti@unisono-giessen.de"
 alias skuber="ssh skmobil@sk-mobil.com"
-alias synology="ssh root@192.168.188.23"
+alias synology="ssh admin@192.168.188.23"
 
 # ls mit versteckten dateien und slashes an ordnern
 alias ls="ls -pa1"
