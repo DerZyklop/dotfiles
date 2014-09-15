@@ -36,6 +36,9 @@ alias "g"="git"
 alias "t"="todo.sh -d ~/todo/todo.cfg"
 alias "todo"="t ls"
 
+# Colored up cat!
+# You must install Pygments first - "sudo easy_install Pygments"
+alias cat='pygmentize -O style=monokai -f console256 -g'
 
 # ifconfig greps
 alias ip4="ifconfig |grep 'inet '"
