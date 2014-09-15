@@ -32,7 +32,7 @@
   a = add -A
 
   # Commit changes with message
-  c = git commit -m
+  c = commit -m
 
   # View abbreviated SHA, description, and history graph of the latest 20 commits
   l = log --pretty=oneline --graph --abbrev-commit -n 20
