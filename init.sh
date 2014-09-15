@@ -48,13 +48,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   source $DOTFILESDIR/init/initnode.sh
 fi
 
-read -p "${red}Want to set git-user to DerZyklop?${reset} [yN] " -n 1 -r
-echo "\nAllright!"
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  git config --global user.name "DerZyklop"
-  git config --global user.email mail@der-zyklop.de
-fi
-
 #### Setup git-stuff
 git config --global color.ui true
 git config --global format.pretty oneline
