@@ -57,6 +57,11 @@ HOMEBREW_CASK_FORMULAE=(
     "truecrypt"
 )
 
+echo "${purple}Don't forget to run the installers!${reset}"
+echo "${purple}get more info by `brew cask info little-snitch`${reset}"
+echo "${purple}get more info by `brew cask info default-folder-x`${reset}"
+
+
 for i in ${!HOMEBREW_CASK_FORMULAE[*]}; do
   tmp="${HOMEBREW_CASK_FORMULAE[$i]}"
   echo "installing ${purple}$tmp${reset}"
