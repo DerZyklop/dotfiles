@@ -1,8 +1,5 @@
 [color]
   ui = true
-[user]
-  name = DerZyklop
-  email = mail@der-zyklop.de
 [format]
   pretty = oneline
 [push]
@@ -17,6 +14,7 @@
 
   # Show the diff between the latest commit and the current state
   d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+  dc = diff --cached
 
   # `git di $number` shows the diff between the state `$number` revisions ago and the current state
   di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
