@@ -6,25 +6,53 @@ brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
 HOMEBREW_CASK_FORMULAE=(
+    # Essentials
     "little-snitch"
-    "gpgtools"
+    # TODO: add 1password to brew cask (https://d13itkw33a7sus.cloudfront.net/dist/1P/mac4/1Password-4.4.1.zip)
 
+    # Developement
     "sublime-text3"
     "bittorrent-sync"
     "dropbox"
 
+    # Browsers
     "google-chrome"
     "opera"
     "firefox"
 
+    # Work-Related
+    "minco"
+    "dash"
+    "sketch"
+
+    # Communication
+    "telegram"
+    # TODO: add tweetdeck to brew cask
+
+    # Little Helper
     "licecap"
     "caffeine"
     "appcleaner"
     "the-unarchiver"
     "imageoptim"
+    "image-tool"
+    "cinch"
+    "cloud"
+    "daisydisk"
+    "isolator"
+    "sizeup"
+    # add clear to brew cask
+    # add clippings to brew cask
 
+    # Media
     "vlc"
     "spotify"
+    "instacast"
+
+    # Fuck you too, NSA!
+    "gpgtools"
+    "torbrowser"
+    "truecrypt"
 )
 
 for i in ${!HOMEBREW_CASK_FORMULAE[*]}; do
