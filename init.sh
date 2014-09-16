@@ -77,7 +77,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   $(cd ~/Downloads/;wget https://d13itkw33a7sus.cloudfront.net/dist/1P/mac4/1Password-4.4.1.zip;unzip 1Password-4.4.1.zip -d /Applications;rm ~/Downloads/1Password-4.4.1.zip;read -p "${purple}Set up 1Password, and then press [Enter] key to contunue...${reset}")
 fi
 
-open $DOTFILESDIR/init/DerZyklop.terminal
+read -p "${green}Install DerZyklop’s theme?${reset} [yN] " -n 1 -r
+echo "\nAllright!"
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  open $DOTFILESDIR/init/DerZyklop.terminal
+fi
 
 echo "${purple}Your todos now:${reset}"
 echo "${purple}-${reset} Set up Bittorrent Sync \`o ~/Applications/BitTorrent\ Sync.app\`"
