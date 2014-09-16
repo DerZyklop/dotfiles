@@ -33,6 +33,8 @@ HOMEBREW_CASK_FORMULAE=(
     "licecap"
     "caffeine"
     "appcleaner"
+    "hazel"
+    "default-folder-x"
     "the-unarchiver"
     "imageoptim"
     "image-tool"
