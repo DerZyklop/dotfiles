@@ -1,3 +1,6 @@
+# Start a server with current dir as root
+alias server="php -S localhost:1337"
+
 ## ssh
 alias zuber="ssh zyklop@der-zyklop.de"
 alias puber="ssh pxwrk@pxwrk.de"
