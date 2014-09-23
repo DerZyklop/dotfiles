@@ -65,12 +65,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   source $DOTFILESDIR/init/initnode.sh
 fi
 
-#### Setup git-stuff
-if [ -f ~/.gitignore ]; then
-   git config --global core.excludesfile ~/.gitignore
-fi
-# For more usefull git-stuff see <http://git-scm.com/book/en/Customizing-Git-Git-Configuration>
-
 read -p "${green}Should i install 1Password?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
