@@ -19,6 +19,7 @@ HOMEBREW_CASK_FORMULAE=(
     "google-chrome"
     "opera"
     "firefox"
+    "chromium"
 
     # Work-Related
     "minco"
