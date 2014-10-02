@@ -33,7 +33,8 @@
   c = commit -m
 
   # View abbreviated SHA, description, and history graph of the latest 20 commits
-  l = log --pretty=oneline --graph --abbrev-commit -n 20
+  l = log --pretty=format:"%C(Yellow)%h%C(reset)|%C(cyan)%ad%C(reset)|%C(bold)%C(green)%an:%C(reset)%s%C(reset)" --date=short --graph
+  # TODO: need to figure out a way to use spaces in the pretty-format
 
   # Show verbose output about tags, branches or remotes
   branches = branch -a
@@ -51,5 +52,3 @@
 
   # Get lines with 'TODO' in comitted files.
   todo = !"git grep -El '# TODO|// TODO' | xargs -n1 git blame | grep $(git config user.name) | grep TODO"
-
-# For more usefull git-stuff see <http://git-scm.com/book/en/Customizing-Git-Git-Configuration>
