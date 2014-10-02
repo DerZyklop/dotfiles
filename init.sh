@@ -65,6 +65,12 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   source $DOTFILESDIR/init/initnode.sh
 fi
 
+read -p "${green}Wanna install sass?${reset} [yN] " -n 1 -r
+echo "\nAllright!"
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  sudo gem install sass
+fi
+
 read -p "${green}Should i install 1Password?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
