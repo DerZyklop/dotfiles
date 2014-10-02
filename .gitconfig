@@ -51,4 +51,4 @@
   contributors = shortlog --summary --numbered
 
   # Get lines with 'TODO' in comitted files.
-  todo = !"git grep -El '# TODO|// TODO' | xargs -n1 git blame | grep $(git config user.name) | grep TODO"
+  todo = "grep -E '# TODO|// TODO'"
