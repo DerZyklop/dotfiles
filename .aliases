@@ -82,3 +82,6 @@ npm install DerZyklop/boilerplate.pxwrk.de;
 sh node_modules/boilerplate.pxwrk.de/init;
 npm install;
 grunt;'
+
+# I really need to google that path too often :P
+alias minecraftscreenshot="o ~/Library/Application\ Support/minecraft/screenshots/"
