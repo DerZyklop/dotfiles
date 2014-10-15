@@ -1,0 +1,4 @@
+#! /usr/bin/env node
+
+var spawn = require('child_process').spawn
+spawn('open', ['http://localhost:1337/']);
