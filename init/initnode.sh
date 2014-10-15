@@ -10,6 +10,7 @@ HOMEBREW_FORMULAE=(
     "grunt"
     "grunt-cli"
     "prompt"
+    "jshint"
 )
 
 for i in ${!HOMEBREW_FORMULAE[*]}; do
