@@ -1,0 +1,60 @@
+#!/bin/sh
+
+function getGrunt() {
+  if [[ -f "gruntfile.coffee" ]]; then
+    echo 'Eh.. there already is a grundfile.coffee!?'
+  elif [[ -f "grundfile.js" ]]; then
+    echo 'Eh.. there already is a grundfile.js!?'
+  else
+    if [[ -f "package.json" ]]; then
+      npm init
+    fi
+    npm install DerZyklop/boilerplate.pxwrk.de
+    sh node_modules/boilerplate.pxwrk.de/init
+    npm install
+    start
+  fi
+}
+
+function usage() {
+  echo ""
+  echo "  Usage: $(basename $0 .sh) [options]"
+  echo ""
+  echo "  Options:"
+  echo ""
+  echo "    -h, --help          output usage information"
+  echo "    -k, --kirby         Get a plain kirby v2"
+  echo "    -g, --grunt         Get my grunt environment"
+  echo "    -t, --tests         Get my testing tools (casperjs)"
+  echo "    -a, --all           Get all tools for my most common environment"
+}
+
+while getopts ':thkga' OPTION ; do
+ case $OPTION in
+ t) echo "-t function not ready yet" >&2
+ ;;
+ h) usage $EXIT_SUCCESS
+ ;;
+ k) echo "-k function not ready yet" >&2
+ ;;
+ g) getGrunt >&2
+ ;;
+ a) echo "-a function not ready yet" >&2
+ ;;
+ \?) echo "Unbekannte Option \"-$OPTARG\"." >&2
+ usage $EXIT_ERROR
+ ;;
+ :) echo "Option \"-$OPTARG\" benötigt ein Argument." >&2
+ usage $EXIT_ERROR
+ ;;
+ *) echo "Ups... something went wrong..."
+>&2
+ usage $EXIT_BUG
+ ;;
+ esac
+done
+
+if (( $# < 1 )) ; then
+ echo "$(basename $0 .sh) braucht mindestens ein Argument." >&2
+ usage $EXIT_ERROR
+fi
