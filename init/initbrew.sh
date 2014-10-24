@@ -17,6 +17,7 @@ HOMEBREW_FORMULAE=(
     "php55"
     "todo-txt"
     "wget"
+    "blink1"
 )
 
 for i in ${!HOMEBREW_FORMULAE[*]}; do
