@@ -9,17 +9,23 @@ It's just a collection files and configurations, that i use.
 
 The install process will ask you what to do before every critical installation.
 
-### How to install from sratch
+### How to install
+
+#### From sratch
 
 ```
 cd ~; mkdir .dotfiles; cd .dotfiles; curl -#L https://github.com/DerZyklop/dotfiles.git | tar -xzv --strip-components 1; sh init.sh;
 ```
 
-### How to install with git
+#### With git
 
 ```
 git clone https://github.com/DerZyklop/dotfiles.git .dotfiles; cd .dotfiles; . init.sh
 ```
+
+### Theme
+
+You will now find a new theme in your Terminal settings. If you want it, you should click the default button.
 
 ### How to deinit
 
