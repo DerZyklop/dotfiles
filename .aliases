@@ -35,6 +35,10 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && kil
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
+# Hide/show all desktop icons (useful when presenting)
+alias showfinderpath="defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES && killall Finder"
+alias hidefinderpath="defaults write com.apple.finder _FXShowPosixPathInTitle -bool NO && killall Finder"
+
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 
