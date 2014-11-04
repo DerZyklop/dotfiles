@@ -28,16 +28,24 @@ alias access="sudo chown -R $USER "
 alias processes="lsof -i TCP"
 
 # Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+alias showdotfiles="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hidedotfiles="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
-# Hide/show all desktop icons (useful when presenting)
+# Hide/show the full path in the Finder window.
 alias showfinderpath="defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES && killall Finder"
 alias hidefinderpath="defaults write com.apple.finder _FXShowPosixPathInTitle -bool NO && killall Finder"
+
+# A guest can’t open Finder and is limited to the Apps in the dock
+alias startguestmode="defaults write com.apple.finder InterfaceLevel simple && killall Finder"
+alias stopguestmode="defaults write com.apple.finder InterfaceLevel standard && killall Finder"
+
+# Enable ⌘+q for Finder
+alias enablefinderquit="defaults write com.apple.finder QuitMenuItem 1 && killall Finder"
+alias disablefinderquit="defaults write com.apple.finder QuitMenuItem 0 && killall Finder"
 
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
