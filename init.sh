@@ -83,6 +83,14 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   open $DOTFILESDIR/init/DerZyklop.terminal
 fi
 
+read -p "${green}Wanna customize the Finder?${reset} [yN] " -n 1 -r
+echo "\nAllright!"
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  showdotfiles
+  showfinderpath
+  enablefinderquit
+fi
+
 echo "${purple}Your todos now:${reset}"
 echo "${purple}-${reset} Set up Bittorrent Sync \`o ~/Applications/BitTorrent\ Sync.app\`"
 echo "${purple}-${reset} run \`brew cask info little-snitch\`"
