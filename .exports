@@ -68,7 +68,7 @@ export PROJECTDIRS=(
   ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1
   ~/S/$1
   ~/S/$1.pxwrk.de
-  ~/PW/$1
+  ~/PW/app/$1
   ~/PW/Projekte/$1
   ~/Dropbox/placeworkers_dokumente/Nils_Neumann/$1
 )
