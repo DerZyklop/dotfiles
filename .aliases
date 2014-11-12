@@ -80,6 +80,9 @@ alias h="history"
 # Open current folder
 alias o="open ."
 
+# Open unsecure Chromium
+alias chromium_unsecure="open -a /Applications/Chromium.app --args --disable-web-security"
+
 # Faster npm for Europeans
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
 
