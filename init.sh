@@ -34,7 +34,13 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   fi
 fi
 
-read -p "${green}Wanna install commands via brew?${reset} [yN] " -n 1 -r
+read -p "${green}Wanna setup git user?${reset} [yN] " -n 1 -r
+echo "\nAllright!"
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  source $DOTFILESDIR/init/initgit.sh
+fi
+
+read -p "${green}Wanna install commands via homebrew?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   source $DOTFILESDIR/init/initbrew.sh
@@ -43,8 +49,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo easy_install Pygments
 fi
 
-mkdir ~/todo
-cp /usr/local/Cellar/todo-txt/2.10/todo.cfg $HOME/todo
+# mkdir ~/todo
+# cp /usr/local/Cellar/todo-txt/2.10/todo.cfg $HOME/todo
 
 
 read -p "${green}Wanna install software via brewcask?${reset} [yN] " -n 1 -r
