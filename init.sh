@@ -34,12 +34,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   fi
 fi
 
-read -p "${green}Wanna setup git user?${reset} [yN] " -n 1 -r
-echo "\nAllright!"
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  source $DOTFILESDIR/init/initgit.sh
-fi
-
 read -p "${green}Wanna install commands via homebrew?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -69,6 +63,12 @@ read -p "${green}Wanna install some node globals?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   source $DOTFILESDIR/init/initnode.sh
+fi
+
+read -p "${green}Wanna setup user config (for git & npm)?${reset} [yN] " -n 1 -r
+echo "\nAllright!"
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  source $DOTFILESDIR/init/initglobals.sh
 fi
 
 read -p "${green}Wanna install sass?${reset} [yN] " -n 1 -r
