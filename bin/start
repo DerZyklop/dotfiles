@@ -31,7 +31,14 @@ elif [ -f runserver.sh ]; then
 else
   tput setaf 1
   echo "--------------------------------------"
-  echo "Error: Is this a Project with Grunt???"
+  echo "       Error: Can't find Grunt.       "
+  echo "      I will start localhost by:      "
+  echo "        php -S localhost:1337         "
   echo "--------------------------------------"
   tput sgr0
+  if [ -d 'www' ]; then
+    php -S localhost:1337 -t ./www
+  else
+    php -S localhost:1337
+  fi
 fi
