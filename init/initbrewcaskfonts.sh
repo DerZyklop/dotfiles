@@ -12,6 +12,7 @@ HOMEBREW_CASK_FORMULAE=(
     "font-merriweather"
     "font-source-code-pro"
     "font-fira-sans"
+    "font-league-gothic"
 )
 
 for i in ${!HOMEBREW_CASK_FORMULAE[*]}; do
