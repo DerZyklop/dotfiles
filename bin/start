@@ -36,7 +36,12 @@ else
   echo "        php -S localhost:1337         "
   echo "--------------------------------------"
   tput sgr0
-  if [ -d 'www' ]; then
+  open http://localhost:1337
+  if [ -d 'WWW/src' ]; then
+    php -S localhost:1337 -t ./WWW/src
+  elif [ -d 'WWW' ]; then
+    php -S localhost:1337 -t ./WWW
+  elif [ -d 'www' ]; then
     php -S localhost:1337 -t ./www
   else
     php -S localhost:1337
