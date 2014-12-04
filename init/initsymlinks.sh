@@ -8,5 +8,6 @@ ln -sf $DOTFILESDIR/.functions $HOME
 ln -sf $DOTFILESDIR/.profile $HOME
 ln -sf $DOTFILESDIR/.gitignore $HOME
 ln -sf $DOTFILESDIR/.exports $HOME
+ln -sf $DOTFILESDIR/.jshintrc $HOME
 
 ln -sf $DOTFILESDIR/.gitconfig $HOME
