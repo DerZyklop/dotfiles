@@ -20,6 +20,9 @@ elif [ -f conf/boilerplate.json ]; then
   grunt dev
 elif [ -f conf/gruntfile.coffee ]; then
   grunt server
+elif [ -f WWW/gruntfile.coffee ]; then
+  cd WWW
+  processGrunt
 elif [ -f gruntfile.coffee ]; then
   processGrunt
 elif [ -h gruntfile.coffee ]; then
@@ -37,9 +40,7 @@ else
   echo "--------------------------------------"
   tput sgr0
   open http://localhost:1337
-  if [ -d 'WWW/src' ]; then
-    php -S localhost:1337 -t ./WWW/src
-  elif [ -d 'WWW' ]; then
+  if [ -d 'WWW' ]; then
     php -S localhost:1337 -t ./WWW
   elif [ -d 'www' ]; then
     php -S localhost:1337 -t ./www
