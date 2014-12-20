@@ -15,6 +15,10 @@ HOMEBREW_CASK_FORMULAE=(
     "font-league-gothic"
     "font-bitter"
     "font-vollkorn"
+    "font-alegreya"
+    "font-alegreya-sc"
+    "font-alegreya-sans"
+    "font-alegreya-sans-sc"
 )
 
 for i in ${!HOMEBREW_CASK_FORMULAE[*]}; do
