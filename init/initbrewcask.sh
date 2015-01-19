@@ -25,6 +25,7 @@ HOMEBREW_CASK_FORMULAE=(
     "minco"
     "dash"
     "sketch"
+    "transmit"
 
     # Communication
     "telegram"
