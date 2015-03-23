@@ -4,8 +4,6 @@
 # General UI/UX                                                               #
 ###############################################################################
 
-echo 'Setting up OSX‘s UI/UX settings'
-
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 

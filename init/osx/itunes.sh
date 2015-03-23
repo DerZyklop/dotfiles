@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# iCal                                                                        #
+# iTunes                                                                      #
 ###############################################################################
 
-# Enable the debug menu in iCal (pre-10.8)
-#defaults write com.apple.iCal IncludeDebugMenu -bool true
+defaults write com.apple.iTunes invertStoreLinks -bool YES

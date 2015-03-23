@@ -4,8 +4,6 @@
 # SSD-specific tweaks                                                         #
 ###############################################################################
 
-echo 'Setting up SSD-specific tweaks'
-
 # Disable local Time Machine snapshots
 sudo tmutil disablelocal
 

@@ -4,8 +4,6 @@
 # Transmission                                                                #
 ###############################################################################
 
-echo 'Setting up Transmission'
-
 # ## General
 
 # # Automatically size window to fit all transfers

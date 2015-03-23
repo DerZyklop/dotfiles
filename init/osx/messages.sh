@@ -4,8 +4,6 @@
 # Messages                                                                    #
 ###############################################################################
 
-echo 'Setting up Messages'
-
 # Disable automatic emoji substitution (i.e. use plain text smileys)
 #defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
 

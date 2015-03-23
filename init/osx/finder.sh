@@ -4,8 +4,6 @@
 # Finder                                                                      #
 ###############################################################################
 
-echo 'Setting up Finder'
-
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
 

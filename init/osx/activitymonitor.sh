@@ -4,8 +4,6 @@
 # Activity Monitor                                                            #
 ###############################################################################
 
-echo 'Setting up ActivityMonitor'
-
 # Show the main window when launching Activity Monitor
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
 

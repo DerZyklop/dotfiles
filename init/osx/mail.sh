@@ -4,8 +4,6 @@
 # Mail                                                                        #
 ###############################################################################
 
-echo 'Setting up Mail'
-
 # Disable send and reply animations in Mail.app
 #defaults write com.apple.mail DisableReplyAnimations -bool true
 #defaults write com.apple.mail DisableSendAnimations -bool true

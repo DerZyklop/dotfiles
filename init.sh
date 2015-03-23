@@ -1,18 +1,31 @@
 #!/bin/sh
 
-### Set new dotfiles
 
-for file in ~/.{exports,path,completions,bash_prompt,aliases,functions,extra,bashrc}; do
+
+echo "${red}"
+echo "###############################################"
+echo "#        DO NOT RUN THIS SCRIPT BLINDLY       #"
+echo "#         YOU'LL PROBABLY REGRET IT...        #"
+echo "#                                             #"
+echo "#              READ IT THOROUGHLY             #"
+echo "#         AND EDIT TO SUIT YOUR NEEDS         #"
+echo "###############################################"
+echo "${reset}"
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+
+### Read the new dotfiles once
+
+for file in $DOTFILESDIR/.{exports,path,completions,bash_prompt,aliases,functions,extra,bashrc}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 
-echo "${green}Want to install the new dotfiles?"
-echo "${red}Attention: This will overwrite your current dotfiles!"
-read -p "${green}Should i?${reset} [yN] " -n 1 -r
-echo "\nAllright!"
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  sh $DOTFILESDIR/init/initsymlinks.sh
-fi
+
 
 read -p "${green}Want to have bash as your default shell?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
@@ -34,42 +47,19 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   fi
 fi
 
-read -p "${green}Wanna install commands via homebrew?${reset} [yN] " -n 1 -r
-echo "\nAllright!"
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  source $DOTFILESDIR/init/brew.sh
-  # If you're wondering, easy_install is a Python module used for managing Python packages
-  # Pygments is needed for beatiful colored `cat`
-  sudo easy_install Pygments
-fi
+### Initialize new computer
 
-# mkdir ~/todo
-# cp /usr/local/Cellar/todo-txt/2.10/todo.cfg $HOME/todo
+for f in ./init/*; do
+  echo "${green}Want to set preferences for $(basename $f .sh)?"
+  read -p "Should i? [yN] ${reset}" -n 1 -r
+  echo "\nAllright!"
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    sh $f
+  fi
+done
 
 
-read -p "${green}Wanna install software via brewcask?${reset} [yN] " -n 1 -r
-echo "\nAllright!"
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  source $DOTFILESDIR/init/brewcask.sh
-fi
 
-read -p "${green}Wanna install some good fonts?${reset} [yN] " -n 1 -r
-echo "\nAllright!"
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  source $DOTFILESDIR/init/brewcaskfonts.sh
-fi
-
-read -p "${green}Wanna install some node globals?${reset} [yN] " -n 1 -r
-echo "\nAllright!"
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  source $DOTFILESDIR/init/initnode.sh
-fi
-
-read -p "${green}Wanna setup user config (for git & npm)?${reset} [yN] " -n 1 -r
-echo "\nAllright!"
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  source $DOTFILESDIR/init/initglobals.sh
-fi
 
 read -p "${green}Wanna install sass?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
@@ -89,13 +79,14 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   open $DOTFILESDIR/init/DerZyklop.terminal
 fi
 
-read -p "${green}Wanna customize the Finder?${reset} [yN] " -n 1 -r
-echo "\nAllright!"
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  showdotfiles
-  showfinderpath
-  enablefinderquit
-fi
+# TODO: Neccessary?
+# read -p "${green}Wanna customize the Finder?${reset} [yN] " -n 1 -r
+# echo "\nAllright!"
+# if [[ $REPLY =~ ^[Yy]$ ]]; then
+#   showdotfiles
+#   showfinderpath
+#   enablefinderquit
+# fi
 
 echo "${purple}Your todos now:${reset}"
 echo "${purple}-${reset} Set up Bittorrent Sync \`o ~/Applications/BitTorrent\ Sync.app\`"

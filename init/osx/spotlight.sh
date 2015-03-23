@@ -1,13 +1,13 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 ###############################################################################
 # Spotlight                                                                   #
 ###############################################################################
 
-echo 'Setting up Spotlight'
+# Show/Hide Spotlight tray-icon (and subsequent helper)
+#sudo chmod 755 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
 
-# Hide Spotlight tray-icon (and subsequent helper)
-#sudo chmod 777 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
 # Disable Spotlight indexing for any volume that gets mounted and has not yet
 # been indexed before.
 # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
