@@ -24,7 +24,7 @@ defaults write com.apple.systemuiserver menuExtras -array \
   "/System/Library/CoreServices/Menu Extras/Clock.menu"
 
 # Set highlight color
-defaults write NSGlobalDomain AppleHighlightColor -string "0.82 0.84 0.85"
+defaults write NSGlobalDomain AppleHighlightColor -string "0.72 0.78 0.89"
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true

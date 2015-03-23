@@ -7,6 +7,19 @@
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
+
+
+
+
+# TODO: Install theme here
+#defaults write com.apple.Terminal "Default Window Settings" -string "DerZyklop"
+#defaults write com.apple.Terminal "Startup Window Settings" -string "DerZyklop"
+
+
+
+
+
+
 # Use a modified version of the Solarized Dark theme by default in Terminal.app
 # osascript <<EOD
 
