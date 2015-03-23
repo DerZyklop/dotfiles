@@ -4,7 +4,9 @@ if ! commandExists "brew"; then
   ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 fi
 
+# Make sure we’re using the latest Homebrew.
 brew update
+# Upgrade any already-installed formulae.
 brew upgrade
 brew cleanup
 
@@ -14,7 +16,6 @@ HOMEBREW_FORMULAE=(
     "node"
     "vim --override-system-vi"
     "nmap"
-    "php55"
     "todo-txt"
     "wget"
     "blink1"
