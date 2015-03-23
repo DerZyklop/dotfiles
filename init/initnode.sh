@@ -11,6 +11,7 @@ HOMEBREW_FORMULAE=(
     "grunt-cli"
     "prompt"
     "jshint"
+    "cool-ascii-faces"
 )
 
 for i in ${!HOMEBREW_FORMULAE[*]}; do
