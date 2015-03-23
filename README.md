@@ -13,15 +13,17 @@ The install process will ask you what to do before every critical installation.
 
 #### From sratch
 
-```
-cd ~; mkdir .dotfiles; cd .dotfiles; curl -#L https://github.com/DerZyklop/dotfiles.git | tar -xzv --strip-components 1; sh init.sh;
-```
+    cd ~; mkdir .dotfiles; cd .dotfiles; curl -#L https://github.com/DerZyklop/dotfiles.git | tar -xzv --strip-components 1; sh init.sh;
 
 #### With git
 
-```
-git clone https://github.com/DerZyklop/dotfiles.git .dotfiles; cd .dotfiles; . init.sh
-```
+    git clone https://github.com/DerZyklop/dotfiles.git .dotfiles; cd .dotfiles; . init.sh
+
+### Sensible OS X defaults
+
+When setting up a new Mac, you may want to set some sensible OS X defaults:
+
+    ./.osx
 
 ### Theme
 
