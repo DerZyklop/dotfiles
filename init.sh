@@ -37,7 +37,7 @@ fi
 read -p "${green}Wanna install commands via homebrew?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  source $DOTFILESDIR/init/initbrew.sh
+  source $DOTFILESDIR/init/brew.sh
   # If you're wondering, easy_install is a Python module used for managing Python packages
   # Pygments is needed for beatiful colored `cat`
   sudo easy_install Pygments
@@ -50,13 +50,13 @@ fi
 read -p "${green}Wanna install software via brewcask?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  source $DOTFILESDIR/init/initbrewcask.sh
+  source $DOTFILESDIR/init/brewcask.sh
 fi
 
 read -p "${green}Wanna install some good fonts?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  source $DOTFILESDIR/init/initbrewcaskfonts.sh
+  source $DOTFILESDIR/init/brewcaskfonts.sh
 fi
 
 read -p "${green}Wanna install some node globals?${reset} [yN] " -n 1 -r
