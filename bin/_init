@@ -1,0 +1,58 @@
+#!/usr/bin/env node
+
+var program = require('commander'),
+  exec = require('child_process').exec,
+  child;
+
+var c = require('colors/safe');
+
+var sys = require('sys')
+var exec = require('child_process').exec;
+function puts(error, stdout, stderr) { sys.puts(stdout) }
+
+var execShCommand = function(command) {
+  console.log(c.green(command));
+  exec(command, puts);
+}
+
+
+program
+  .version('0.0.1')
+  .option('-k, --kirby', 'Get a plain kirby v2')
+  .option('-g, --grunt', 'Get my grunt environment')
+  .option('-t, --tests [type]', 'Get my testing tools [casperjs]')
+  .option('-a, --all', 'Get all tools for my most common environment')
+  .parse(process.argv);
+
+
+var getKirby = function() {
+  execShCommand('ls -la');
+}
+
+var getGrunt = function() {
+  execShCommand('npm init')
+  execShCommand('npm install DerZyklop/boilerplate.pxwrk.de')
+  execShCommand('sh node_modules/boilerplate.pxwrk.de/init')
+  execShCommand('npm install')
+  execShCommand('grunt')
+}
+
+var getTests = function() {
+  execShCommand('ls -la');
+}
+
+if (
+    program.kirby ||
+    program.grunt ||
+    program.tests
+  ) {
+    console.log('Gonna initialize all that stuff:');
+    if (program.kirby) console.log('  - kirby');
+    if (program.grunt) console.log('  - grunt');
+    if (program.tests) console.log('  - %s tests', program.tests);
+    if (program.kirby) getKirby();
+    if (program.grunt) getGrunt();
+    if (program.tests) getTests();
+} else {
+  program.help();
+}

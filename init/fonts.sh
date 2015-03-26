@@ -4,7 +4,7 @@
 
 brew tap caskroom/fonts
 
-HOMEBREW_CASK_FORMULAE=(
+fonts=(
     "font-alegreya"
     "font-alegreya-sc"
     "font-alegreya-sans"
@@ -22,8 +22,5 @@ HOMEBREW_CASK_FORMULAE=(
     "font-vollkorn"
 )
 
-for i in ${!HOMEBREW_CASK_FORMULAE[*]}; do
-  tmp="${HOMEBREW_CASK_FORMULAE[$i]}"
-  echo "installing ${purple}$tmp${reset}"
-  brew cask install $tmp
-done
+echo "installing ${purple}fonts${reset}"
+brew cask install ${fonts[@]}

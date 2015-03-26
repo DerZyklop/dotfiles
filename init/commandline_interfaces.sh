@@ -16,14 +16,14 @@ brew upgrade
 brew cleanup
 
 HOMEBREW_FORMULAE=(
-    "bash-completion"
-    "git"
-    "node"
-    "vim --override-system-vi"
-    "nmap"
-    "todo-txt"
-    "wget"
-    "blink1"
+  "bash-completion"
+  "git"
+  "node"
+  "vim --override-system-vi"
+  "nmap"
+  "todo-txt"
+  "wget"
+  "blink1"
 )
 
 for i in ${!HOMEBREW_FORMULAE[*]}; do

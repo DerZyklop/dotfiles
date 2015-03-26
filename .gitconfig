@@ -52,3 +52,6 @@
 
   # Get lines with 'TODO' in comitted files.
   todo = "grep -E '# TODO|// TODO'"
+[user]
+	name = DerZyklop
+	email = mail@der-zyklop.de

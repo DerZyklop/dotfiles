@@ -5,7 +5,7 @@
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
-HOMEBREW_CASK_FORMULAE=(
+software=(
     # Essentials
     "little-snitch"
     # TODO: add 1password to brew cask (https://d13itkw33a7sus.cloudfront.net/dist/1P/mac4/1Password-4.4.1.zip)
@@ -59,8 +59,5 @@ HOMEBREW_CASK_FORMULAE=(
     "truecrypt"
 )
 
-for i in ${!HOMEBREW_CASK_FORMULAE[*]}; do
-  tmp="${HOMEBREW_CASK_FORMULAE[$i]}"
-  echo "installing ${purple}$tmp${reset}"
-  brew cask install $tmp
-done
+echo "installing ${purple}software${reset}"
+brew cask install ${software[@]}

@@ -6,16 +6,13 @@ fi
 
 npm update -g npm
 
-HOMEBREW_FORMULAE=(
-    "grunt"
-    "grunt-cli"
-    "prompt"
-    "jshint"
-    "cool-ascii-faces"
+node_packages=(
+  grunt
+  grunt-cli
+  prompt
+  jshint
+  cool-ascii-faces
 )
 
-for i in ${!HOMEBREW_FORMULAE[*]}; do
-  tmp="${HOMEBREW_FORMULAE[$i]}"
-  echo "installing ${purple}$tmp${reset}"
-  npm install -g $tmp
-done
+echo "installing ${purple}node_packages${reset}"
+npm install -g ${node_packages[@]}
