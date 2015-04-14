@@ -27,6 +27,10 @@ elif [ -f gruntfile.coffee ]; then
   processGrunt
 elif [ -h gruntfile.coffee ]; then
   processGrunt
+elif [ -f gruntfile.js ]; then
+  processGrunt
+elif [ -h gruntfile.js ]; then
+  processGrunt
 elif [ -f pw_runserver.sh ]; then
   sh pw_runserver.sh
 elif [ -f runserver.sh ]; then
