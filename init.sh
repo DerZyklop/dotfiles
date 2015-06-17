@@ -71,7 +71,11 @@ fi
 read -p "${green}Should i install 1Password?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  $(cd ~/Downloads/;wget https://d13itkw33a7sus.cloudfront.net/dist/1P/mac4/1Password-4.4.1.zip;unzip 1Password-4.4.1.zip -d /Applications;rm ~/Downloads/1Password-4.4.1.zip;read -p "${purple}Set up 1Password, and then press [Enter] key to contunue...${reset}")
+  $(cd ~/Downloads/;wget https://d13itkw33a7sus.cloudfront.net/dist/1P/mac4/1Password-5.1.zip;unzip 1Password-5.1.zip -d /Applications;rm ~/Downloads/1Password-5.1.zip;
+  open /Applications/1Password\ 5.app
+  echo "${green}Connect 1Password to your master-file.${reset}"
+  read -p "Press [ENTER] to continue..."
+
 fi
 
 read -p "${green}Install DerZyklop’s theme?${reset} [yN] " -n 1 -r
@@ -90,8 +94,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   ssh-keygen
   echo 'IdentityFile ~/.ssh/github' > ~/.ssh/config
   pbcopy < ~/.ssh/github.pub
-  echo "Public key is in clipboard. Paste it here:"
-  echo "https://github.com/settings/ssh"
+  echo "${green}Public key is in clipboard. Paste it here:"
+  echo "${blue}https://github.com/settings/ssh${reset}"
+  read -p "Press [ENTER] to continue..."
 fi
 
 
