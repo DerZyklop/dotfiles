@@ -13,7 +13,6 @@ software=(
     # Developement
     "sublime-text3"
     "bittorrent-sync"
-    "dropbox"
 
     # Browsers
     "google-chrome"
@@ -61,3 +60,8 @@ software=(
 
 echo "installing ${purple}software${reset}"
 brew cask install --appdir=/Applications ${software[@]}
+
+brew cask install --appdir=/Applications dropbox
+echo "${green}Log in to Dropbox.app"
+open /Applications/Dropbox.app
+read -p "Press [ENTER] to continue..."
