@@ -21,6 +21,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ### Read the new dotfiles once
 
+source ./.exports
 for file in $DOTFILESDIR/.{exports,path,completions,bash_prompt,aliases,functions,extra,bashrc}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
