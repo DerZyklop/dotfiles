@@ -50,7 +50,7 @@ fi
 
 ### Initialize new computer
 
-for f in ./init/*; do
+for f in ./init/*.sh; do
   echo "${green}Want to set preferences for $(basename $f .sh)?"
   read -p "Should i? [yN] ${reset}" -n 1 -r
   echo "\nAllright!"
@@ -79,6 +79,21 @@ echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   open $DOTFILESDIR/init/terminaltheme/DerZyklop.terminal
 fi
+
+
+
+read -p "${green}Install SSH key for github (and others)?${reset} [yN] " -n 1 -r
+echo "\nAllright!"
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  mkdir ~/.ssh
+  cd ~/.ssh
+  ssh-keygen
+  echo 'IdentityFile ~/.ssh/github' > ~/.ssh/config
+  pbcopy < ~/.ssh/github.pub
+  echo "Public key is in clipboard. Paste it here:"
+  echo "https://github.com/settings/ssh"
+fi
+
 
 # TODO: Neccessary?
 # read -p "${green}Wanna customize the Finder?${reset} [yN] " -n 1 -r
