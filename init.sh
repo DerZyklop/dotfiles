@@ -76,7 +76,7 @@ fi
 read -p "${green}Install DerZyklop’s theme?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  open $DOTFILESDIR/init/DerZyklop.terminal
+  open $DOTFILESDIR/init/terminaltheme/DerZyklop.terminal
 fi
 
 # TODO: Neccessary?
