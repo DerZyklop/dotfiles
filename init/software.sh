@@ -60,4 +60,4 @@ software=(
 )
 
 echo "installing ${purple}software${reset}"
-brew cask install ${software[@]}
+brew cask install --appdir=/Applications ${software[@]}
