@@ -14,10 +14,10 @@ function gp() {
     echo "Maximum one param!"
     tput sgr0
   elif [ $# -lt 1 ]; then
-    git push
+    git push --tags
   else
     git commit -m $1
-    git push
+    git push --tags
   fi
 }
 
