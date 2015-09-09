@@ -73,5 +73,5 @@ nils | ΠίΙϛ
 Nils | ΠίΙϛ
 peace | ✌
 tableflip | (╯°□°)╯︵ ┻━┻
-shithappens | ¯\\_(ツ)_/¯
+shithappens | ¯\\\_(ツ)\_/¯
 unendlich | ∞
