@@ -53,13 +53,14 @@ Replace | With
 ^tm | ™
 +1 | 👍
 +1 | 👍
+^cmd | ⌘
+^shift | ⇧
+^tab | ⇥
 ^alt | ⌥
-^apple | 
 ^apple | 
 ^arrow | ➡
 btc | ฿
 check | ✓
-cmd | ⌘
 copyright | ©
 DerZyklop | δεrζγκlσρ
 DERZYKLOP | DΞRZYKLΘP
@@ -71,7 +72,6 @@ coffee | ☕️
 nils | ΠίΙϛ
 Nils | ΠίΙϛ
 peace | ✌
-^shift | ⇧
-^tab | ⇥
 tableflip | (╯°□°)╯︵ ┻━┻
+shithappens | ¯\_(ツ)_/¯
 unendlich | ∞
