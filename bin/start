@@ -40,15 +40,15 @@ else
   echo "--------------------------------------"
   echo "       Error: Can't find Grunt.       "
   echo "      I will start localhost by:      "
-  echo "        php -S localhost:1337         "
+  echo "        php -S 127.0.0.1:1337         "
   echo "--------------------------------------"
   tput sgr0
-  open http://localhost:1337
+  open http://127.0.0.1:1337
   if [ -d 'WWW' ]; then
-    php -S localhost:1337 -t ./WWW
+    php -S 127.0.0.1:1337 -t ./WWW
   elif [ -d 'www' ]; then
-    php -S localhost:1337 -t ./www
+    php -S 127.0.0.1:1337 -t ./www
   else
-    php -S localhost:1337
+    php -S 127.0.0.1:1337
   fi
 fi
