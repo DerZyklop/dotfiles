@@ -14,7 +14,9 @@ function processGrunt() {
 }
 
 # Start server (and maybe grunt)
-if [ -f boilerplate.json ]; then
+if [ -f package.json ]; then
+  npm start
+elif [ -f boilerplate.json ]; then
   processGrunt
 elif [ -f conf/boilerplate.json ]; then
   grunt dev
