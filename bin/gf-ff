@@ -1,0 +1,33 @@
+#!/bin/sh
+
+if [[ $# -lt 2 ]]; then
+  echo "––––––––––––––––"
+  echo "USAGE: gf-ff [feature] [msg]"
+  echo "––––––––––––––––"
+else
+  DEVELOPE_BRANCH=$(git config gitflow.branch.develop)
+  FEATURE_BRANCH=$(git config gitflow.prefix.feature)$1
+  git checkout $FEATURE_BRANCH
+  git pull
+  git push
+  git checkout $DEVELOPE_BRANCH
+  git merge $FEATURE_BRANCH
+  if [ $? -eq 0 ]; then
+    git tag -a $FEATURE_BRANCH -m "$2"
+    git branch -d $FEATURE_BRANCH
+    git push
+    echo "---"
+    echo "👍"
+    echo "---"
+  else
+    echo "---"
+    echo "ACHTUNG"
+    echo "Es gab merge konflikte. Bitte besitige diese und committe ohne commit message. Also einfach per 'git commit' statt 'git commit -m \"...\"'"
+    echo "BEACHTE"
+    echo "Bis jetzt wurde nichts getaggt. Wenn du mit der Konflikt-beseitigung durch bist, führe gf-ff noch einmal durch."
+    echo "---"
+  fi
+
+  # sicherheitshalber noch nicht
+  # git push origin --delete $FEATURE_BRANCH
+fi
