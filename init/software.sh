@@ -3,7 +3,7 @@
 # info: http://caskroom.io/
 
 ## If brew gives a 'permission denied':
-## chown :admin /Library/Caches/Homebrew/Formula/
+## chown $(whoami):admin /Library/Caches/Homebrew/Formula/
 
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
