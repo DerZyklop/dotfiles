@@ -16,16 +16,16 @@ else
     git tag -a $FEATURE_BRANCH -m "$2"
     git branch -d $FEATURE_BRANCH
     git push
-    echo "---"
+    echo "––––––––––––––––"
     echo "👍"
-    echo "---"
+    echo "––––––––––––––––"
   else
-    echo "---"
+    echo "––––––––––––––––"
     echo "ACHTUNG"
     echo "Es gab merge konflikte. Bitte besitige diese und committe ohne commit message. Also einfach per 'git commit' statt 'git commit -m \"...\"'"
     echo "BEACHTE"
     echo "Bis jetzt wurde nichts getaggt. Wenn du mit der Konflikt-beseitigung durch bist, führe gf-ff noch einmal durch."
-    echo "---"
+    echo "––––––––––––––––"
   fi
 
   # sicherheitshalber noch nicht
