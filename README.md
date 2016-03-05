@@ -40,3 +40,38 @@ sh deinit.sh
 ## Add custom commands and settings
 
 If `~/.extra` exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork to add commands you don’t want to commit to a public repository.
+
+## Text Shortcuts
+
+I havent found a way to automatically set up my system text replacements yet. Till i found one, i will maintain this list: 
+
+Replace | With
+--- | ---
+:) | ツ
+!? | ⁉️
+?! | ⁉️
+^tm | ™
++1 | 👍
++1 | 👍
+^cmd | ⌘
+^shift | ⇧
+^tab | ⇥
+^alt | ⌥
+^apple | 
+^arrow | ➡
+btc | ฿
+check | ✓
+copyright | ©
+DerZyklop | δεrζγκlσρ
+DERZYKLOP | DΞRZYKLΘP
+fleuron | ☙
+hamburger | ☰
+kaffee | ☕️
+coffee | ☕️
+^love | ❤
+nils | ΠίΙϛ
+Nils | ΠίΙϛ
+peace | ✌
+tableflip | (╯°□°)╯︵ ┻━┻
+shithappens | ```¯\_(ツ)_/¯```
+unendlich | ∞

@@ -7,13 +7,28 @@
 [core]
   excludesfile = ~/.gitignore
 
+# Good explanation of git's fast forwarding: http://ariya.ofilabs.com/2013/09/fast-forward-git-merge.html
+[advice]
+  pushNonFastForward = false
+  # Deaktiviere die “how to stage/unstage/add” Tips durch git status:
+  statusHints = false
+
+# Erlaube git diffdie Erkennung einfacher Umbenennungen und Kopien:
+[diff]
+  renames = copies
+
+# Setzte no fast-forward als Standardeinstellung
+[branch "master"]
+  mergeoptions = "--no-ff"
+
+
 [alias]
 
   # View the current working tree status using the short format
   s = status -s
 
   # Show the diff between the latest commit and the current state
-  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+  d = diff
   dc = diff --cached
 
   # `git di $number` shows the diff between the state `$number` revisions ago and the current state
@@ -55,6 +70,6 @@
 
   # Get lines with 'TODO' in comitted files.
   todo = "grep -E '# TODO|// TODO'"
-[user]
-	name = DerZyklop
-	email = mail@der-zyklop.de
+
+[credential]
+  helper = osxkeychain

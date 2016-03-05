@@ -12,7 +12,7 @@ if [ $# -lt 2 ]; then
   echo "- hoodie"
   echo "––––––––––––––––"
 else
-  cd ~/Cloud/server/pxwrk.de
+  cd ~/S/
   if [ "$2" == 'kirby' ]; then
     git clone --recursiv git@github.com:DerZyklop/boilerplate.pxwrk.de.git ./$1.pxwrk.de/submodules/boilerplate
     cd $1.pxwrk.de/
@@ -49,6 +49,6 @@ else
   fi
   label 2 .
   npm install
-  gi
+  git init
   subl .
 fi

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for f in ./osx/*; do
+for f in ./init/osx/*; do
   echo "${green}Want to set preferences for $(basename $f .sh)?"
   read -p "Should i? [yN] ${reset}" -n 1 -r
   echo "\nAllright!"

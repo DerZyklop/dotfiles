@@ -24,6 +24,7 @@ HOMEBREW_FORMULAE=(
   "todo-txt"
   "wget"
   "blink1"
+  "homebrew/php/wp-cli"
 )
 
 for i in ${!HOMEBREW_FORMULAE[*]}; do

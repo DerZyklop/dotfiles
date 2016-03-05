@@ -13,10 +13,10 @@ userlicensedefault="MIT"
 
 GIT_AUTHOR_NAME=$npmusernamedefault
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
-git config --global user.name "$GIT_AUTHOR_NAME"
+sudo git config --global user.name "$GIT_AUTHOR_NAME"
 GIT_AUTHOR_EMAIL=$npmuseremaildefault
 GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
-git config --global user.email "$GIT_AUTHOR_EMAIL"
+sudo git config --global user.email "$GIT_AUTHOR_EMAIL"
 
 read -p "npm name ($npmusernamedefault): " npmusername
 read -p "npm email ($npmuseremaildefault): " npmuseremail
@@ -27,3 +27,4 @@ npm config set init.author.name "${npmusername:-$npmusernamedefault}"
 npm config set init.author.email "${npmuseremail:-$npmuseremaildefault}"
 npm config set init.author.url "${userurl:-$urldefault}"
 npm config set init.license "${userlicense:-$userlicensedefault}"
+

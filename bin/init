@@ -16,6 +16,17 @@ function getGrunt() {
   fi
 }
 
+function getKirby() {
+  if [[ -d "kirby" ]]; then
+    echo 'Eh.. there already is a kirby folder!?'
+  # elif [[ -d "panel" ]]; then
+  #   echo 'Eh.. there already is a kirby folder!?'
+  else
+    rm -rf .DS_Store
+    git clone https://github.com/getkirby/starterkit.git ./ --recursive
+  fi
+}
+
 function usage() {
   echo ""
   echo "  Usage: $(basename $0 .sh) [options]"
@@ -35,7 +46,7 @@ while getopts ':thkga' OPTION ; do
  ;;
  h) usage $EXIT_SUCCESS
  ;;
- k) echo "-k function not ready yet" >&2
+ k) getKirby >&2
  ;;
  g) getGrunt >&2
  ;;
