@@ -14,10 +14,17 @@ function gp() {
     echo "Maximum one param!"
     tput sgr0
   elif [ $# -lt 1 ]; then
+    echo "Push new commits"
     git push
+    echo "Push all tags"
+    git push --tags
   else
+    echo "Commit"
     git commit -m $1
+    echo "Push new commits to remote"
     git push
+    echo "Push all tags to remote"
+    git push --tags
   fi
 }
 
@@ -54,6 +61,12 @@ function p() {
     for i in ${PROJECTDIRS[*]}; do
       if [ -d $i$1 ]; then
         cd $i$1
+        found_it=true
+      fi
+      if [ -f $i$1 ]; then
+        unzip -q $i$1 -d $i
+        cd $i${1%.*}
+        rm -f $i$1
         found_it=true
       fi
     done;
