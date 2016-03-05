@@ -9,7 +9,6 @@ if [ $# -lt 2 ]; then
   echo "- html"
   echo "- kirby"
   echo "- wordpress"
-  echo "- hoodie"
   echo "––––––––––––––––"
 else
   cd ~/S/
@@ -35,17 +34,11 @@ else
     rm wordpress-2.6.1.tar.gz
     mv wordpress/ $1.pxwrk.de/
     cd $1.pxwrk.de/
-  elif [ "$2" == 'hoodie' ]; then
-    hoodie new $1.pxwrk.de
-    cd $1.pxwrk.de/
-    git clone --recursiv git@github.com:DerZyklop/boilerplate.pxwrk.de.git ./temp_www/
-    mv temp_www/ www/
-    cd www/
-    rm -r assets/sass/sass-boilerplate/demo
-    rm -r assets/sass/sass-boilerplate/Gruntfile.coffee
-    rm -r assets/sass/sass-boilerplate/package.json
-    rm -r assets/sass/sass-boilerplate/README.markdown
-    hoodie start
+  elif [ "$2" == 'html' ]; then
+    mkdir $1
+    cd $1/
+    touch README.md
+    npm init
   fi
   label 2 .
   npm install
