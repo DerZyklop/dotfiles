@@ -1,41 +1,46 @@
 #!/bin/sh
 
-function processGrunt() {
-  if [ -d node_modules ]; then
-    echo "${green}Starting grunt${reset}"
-    grunt
-  else
-    echo "${green}Node packages are missing.${reset}"
-    echo "${green}Starting npm install${reset}"
-    npm install
-    echo "${green}Starting grunt${reset}"
-    grunt
-  fi
-}
-
 # Start server (and maybe grunt)
 if [ -f package.json ]; then
   npm start
 elif [ -f boilerplate.json ]; then
-  processGrunt
+  echo "Improve your project. Write a npm start command."
+  npm install
+  grunt
 elif [ -f conf/boilerplate.json ]; then
+  echo "Improve your project. Write a npm start command."
+  npm install
   grunt dev
 elif [ -f conf/gruntfile.coffee ]; then
+  echo "Improve your project. Write a npm start command."
+  npm install
   grunt server
 elif [ -f WWW/gruntfile.coffee ]; then
+  echo "Improve your project. Write a npm start command."
   cd WWW
-  processGrunt
+  npm install
+  grunt
 elif [ -f gruntfile.coffee ]; then
-  processGrunt
+  echo "Improve your project. Write a npm start command."
+  npm install
+  grunt
 elif [ -h gruntfile.coffee ]; then
-  processGrunt
+  echo "Improve your project. Write a npm start command."
+  npm install
+  grunt
 elif [ -f gruntfile.js ]; then
-  processGrunt
+  echo "Improve your project. Write a npm start command."
+  npm install
+  grunt
 elif [ -h gruntfile.js ]; then
-  processGrunt
+  echo "Improve your project. Write a npm start command."
+  npm install
+  grunt
 elif [ -f pw_runserver.sh ]; then
+  echo "Improve your project. Write a npm start command."
   sh pw_runserver.sh
 elif [ -f runserver.sh ]; then
+  echo "Improve your project. Write a npm start command."
   sh runserver.sh
 else
   tput setaf 1
