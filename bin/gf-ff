@@ -1,8 +1,9 @@
 #!/bin/sh
 
-if [[ $# -lt 2 ]]; then
+echo "gf-ff $1"
+if [[ $# -lt 1 ]]; then
   echo "––––––––––––––––"
-  echo "USAGE: gf-ff [feature] [msg]"
+  echo "USAGE: gf-ff [feature]"
   echo "––––––––––––––––"
 else
   DEVELOPE_BRANCH=$(git config gitflow.branch.develop)
@@ -13,21 +14,26 @@ else
   git checkout $DEVELOPE_BRANCH
   git merge $FEATURE_BRANCH
   if [ $? -eq 0 ]; then
-    git tag -a $FEATURE_BRANCH -m "$2"
+    git tag $FEATURE_BRANCH
     git branch -d $FEATURE_BRANCH
     git push
-    echo "––––––––––––––––"
+    echo "––––––––––––––––––––––––––––––––"
     echo "👍"
-    echo "––––––––––––––––"
+    echo "––––––––––––––––––––––––––––––––"
   else
-    echo "––––––––––––––––"
-    echo "ACHTUNG"
-    echo "Es gab merge konflikte. Bitte besitige diese und committe ohne commit message. Also einfach per 'git commit' statt 'git commit -m \"...\"'"
-    echo "BEACHTE"
-    echo "Bis jetzt wurde nichts getaggt. Wenn du mit der Konflikt-beseitigung durch bist, führe gf-ff noch einmal durch."
-    echo "––––––––––––––––"
+    echo "––––––––––––––––––––––––––––––––"
+    echo "❗ ACHTUNG ❗ ACHTUNG ❗ ACHTUNG ❗"
+    echo "Es gab Konflikte beim mergen. Was nun zu tun ist:"
+    echo "1: Konflikte beseitigen"
+    echo "2: Konfliktfreie Dateien adden per:"
+    echo "  git add ."
+    echo "3: Merge-Commit machen (ohne eigene message!) per:"
+    echo "  git commit"
+    echo "4: Git-Flow-Command noch ein mal ausführen:"
+    echo "  gf-ff $1"
+    echo "––––––––––––––––––––––––––––––––"
   fi
 
-  # sicherheitshalber noch nicht
-  # git push origin --delete $FEATURE_BRANCH
+  # Dangerous
+  git push origin --delete $FEATURE_BRANCH
 fi
