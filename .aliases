@@ -7,6 +7,7 @@ alias puber="ssh pxwrk@pxwrk.de"
 alias buber="ssh betti@unisono-giessen.de"
 alias skuber="ssh skmobil@sk-mobil.com"
 alias synology="ssh admin@192.168.188.20"
+alias sourceTree="open -a SourceTree ./"
 
 # Some git commands can't be short enaugh!!
 alias gs="g s"
