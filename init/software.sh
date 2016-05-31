@@ -16,6 +16,7 @@ software=(
     # Developement
     "sublime-text3"
     "bittorrent-sync"
+    "sourcetree"
 
     # Browsers
     "google-chrome"
