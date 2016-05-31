@@ -17,7 +17,7 @@ The install process will ask you what to do before every critical installation.
 
 #### With git
 
-    git clone https://github.com/DerZyklop/dotfiles.git .dotfiles; cd .dotfiles; . init.sh
+    git clone https://github.com/DerZyklop/dotfiles.git ~/.dotfiles; cd ~/.dotfiles; . init.sh
 
 ### Sensible OS X defaults
 
