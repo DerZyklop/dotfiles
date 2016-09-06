@@ -1,7 +1,9 @@
 #!/bin/sh
 
 # Start server (and maybe grunt)
-if [ -f package.json ]; then
+if [ -f *.sln ]; then
+  open *.sln
+elif [ -f package.json ]; then
   npm start
 elif [ -f boilerplate.json ]; then
   echo "Improve your project. Write a npm start command."
