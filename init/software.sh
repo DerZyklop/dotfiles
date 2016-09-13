@@ -48,6 +48,7 @@ software=(
     "daisydisk"
     "isolator"
     "sizeup"
+    "synology-assistant"
     # add clear to brew cask
     # add clippings to brew cask
 
