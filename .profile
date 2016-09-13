@@ -11,6 +11,7 @@ unset file;
 
 # Add tab completion for many Bash commands
 if commandExists "brew" && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+  brew update;
   source "$(brew --prefix)/etc/bash_completion";
 elif [ -f /etc/bash_completion ]; then
   source /etc/bash_completion;
