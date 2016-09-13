@@ -73,3 +73,6 @@
 
 [credential]
   helper = osxkeychain
+[user]
+	name = DerZyklop
+	email = mail@der-zyklop.de

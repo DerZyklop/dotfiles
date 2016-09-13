@@ -15,6 +15,7 @@ fonts=(
     "font-droid-sans"
     "font-droid-serif"
     "font-fira-sans"
+    "font-fira-mono"
     "font-league-gothic"
     "font-merriweather"
     "font-source-code-pro"

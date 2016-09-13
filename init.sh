@@ -74,7 +74,7 @@ fi
 read -p "${green}Should i install 1Password?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  $(cd ~/Downloads/;wget https://d13itkw33a7sus.cloudfront.net/dist/1P/mac4/1Password-5.1.zip;unzip 1Password-5.1.zip -d /Applications;rm ~/Downloads/1Password-5.1.zip;
+  $(cd ~/Downloads/;wget https://d13itkw33a7sus.cloudfront.net/dist/1P/mac4/1Password-5.1.zip;unzip 1Password-5.1.zip -d /Applications;rm ~/Downloads/1Password-5.1.zip);
   open /Applications/1Password\ 5.app
   echo "${green}Connect 1Password to your master-file.${reset}"
   read -p "Press [ENTER] to continue..."

@@ -84,9 +84,9 @@ fi;
 PS1="\[\033]0;\w\007\]";
 #PS1+="\[${bold}\]\n"; # newline
 PS1+="\n"; # newline
-PS1+="\[${userStyle}\]\u"; # username
-PS1+="\[$(tput setaf 236)\] @ ";
-PS1+="\[${hostStyle}\]\h"; # host
+PS1+="\[${userStyle}\]\u${reset}"; # username
+PS1+="\[$(tput setaf 236)\] @ ${reset}";
+PS1+="\[${hostStyle}\]\h${reset}"; # host
 
 if ifconfig | grep -q tun0; then
   PS1+="\[${green}\] OpenVPN ✓${reset}"; # host

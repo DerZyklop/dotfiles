@@ -16,6 +16,7 @@ software=(
     # Developement
     "sublime-text3"
     "bittorrent-sync"
+    "sourcetree"
 
     # Browsers
     "google-chrome"
@@ -47,6 +48,7 @@ software=(
     "daisydisk"
     "isolator"
     "sizeup"
+    "synology-assistant"
     # add clear to brew cask
     # add clippings to brew cask
 

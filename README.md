@@ -13,11 +13,11 @@ The install process will ask you what to do before every critical installation.
 
 #### From sratch
 
-    cd ~; mkdir .dotfiles; cd .dotfiles; curl -#L https://github.com/DerZyklop/dotfiles.git | tar -xzv --strip-components 1; sh init.sh;
+    cd ~; mkdir .dotfiles; cd .dotfiles; curl -#L https://github.com/DerZyklop/dotfiles/archive/master.zip | tar -xzv --strip-components 1; sh init.sh;
 
 #### With git
 
-    git clone https://github.com/DerZyklop/dotfiles.git .dotfiles; cd .dotfiles; . init.sh
+    git clone https://github.com/DerZyklop/dotfiles.git ~/.dotfiles; cd ~/.dotfiles; . init.sh
 
 ### Sensible OS X defaults
 
