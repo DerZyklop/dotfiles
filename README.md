@@ -50,28 +50,48 @@ Replace | With
 :) | ツ
 !? | ⁉️
 ?! | ⁉️
-^tm | ™
 +1 | 👍
-+1 | 👍
-^cmd | ⌘
-^shift | ⇧
-^tab | ⇥
-^alt | ⌥
-^apple | 
-^arrow | ➡
+altt | ⌥
+applee | 
+arrowl | ◀
+arrowr | ▶
+arroww | ➡
 btc | ฿
-check | ✓
+cakee | 🍰
+carr | 🚙
+checkk | ✓
+cheerss | 🍻
+cmdd | ⌘
 copyright | ©
-DerZyklop | δεrζγκlσρ
-DERZYKLOP | DΞRZYKLΘP
-fleuron | ☙
+DerZyklopp | DΞRZYKLΘP
+DerZykloppp | δεrζγκlσρ
+dott | ·
+faustt | 👊
+fistt | 👊
+fleuronn | ☙
 hamburger | ☰
+gradd | °
+hahaa | 😂
+hamburgerr | ☰
 kaffee | ☕️
 coffee | ☕️
-^love | ❤
-nils | ΠίΙϛ
-Nils | ΠίΙϛ
-peace | ✌
-tableflip | (╯°□°)╯︵ ┻━┻
+lennyface | ( ͡° ͜ʖ ͡°)
+Lorem | Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+lovee | ❤️
+loveee | 💚
+musicc | 🎶
+Nilss | ΠίΙϛ
+peacee | ✌
+planee | ✈︎
+riott | 📣👬👫👬👫👬👫✊
+shiftt | ⇧
 shithappens | ```¯\_(ツ)_/¯```
-unendlich | ∞
+sunn | ☀️
+tabb | ⇥
+tableflip | (╯°□°)╯︵ ┻━┻
+tmm | ™
+Touche | Touché
+unendlichh | ∞
+vlg | Viele liebe Grüße!
+xmarkk | ✗
+xmarkkk | ✘
