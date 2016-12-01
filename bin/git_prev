@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "git checkout HEAD~"
+git checkout HEAD~

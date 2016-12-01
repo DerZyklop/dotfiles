@@ -6,43 +6,7 @@ function commandExists() {
   fi
 }
 
-
-function gp() {
-  if [ $# -gt 1 ]; then
-    echo "USAGE: gp [commit-msg]"
-    tput setaf 1
-    echo "Maximum one param!"
-    tput sgr0
-  elif [ $# -lt 1 ]; then
-    echo "Push new commits"
-    git push
-    echo "Push all tags"
-    git push --tags
-  else
-    echo "Commit"
-    git commit -m $1
-    echo "Push new commits to remote"
-    git push
-    echo "Push all tags to remote"
-    git push --tags
-  fi
-}
-
-function gi() {
-  git init
-  touch README.md
-  touch .gitignore
-  echo -e ".gitignore\n.DS_Store"> .gitignore
-}
-
-# color diffs for SVN
-function svndiff () {
-  svn diff ${1+"$@"} | colordiff
-}
-
-
 ### NAVIGATION ###
-
 function p() {
   if [ $# -gt 1 ]; then
     echo "USAGE: p projectname"
@@ -55,8 +19,6 @@ function p() {
     echo "Minimum one param!"
     tput sgr0
   else
-
-    # TODO: Implement this when projects are moved
     found_it=false
     for i in ${PROJECTDIRS[*]}; do
       if [ -d $i$1 ]; then
@@ -77,6 +39,5 @@ function p() {
       echo "-------------------------"
       tput sgr0
     fi
-
   fi
 }

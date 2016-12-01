@@ -1,0 +1,20 @@
+#!/bin/sh
+echo "foofooofooo"
+if [ $# -gt 1 ]; then
+  echo "USAGE: gp [commit-msg]"
+  tput setaf 1
+  echo "Maximum one param!"
+  tput sgr0
+elif [ $# -lt 1 ]; then
+  echo "Push new commits"
+  git push
+  echo "Push all tags"
+  git push --tags
+else
+  echo "commit -m $1"
+  git commit -m $1
+  echo "git push"
+  git push
+  echo "git push --tags"
+  git push --tags
+fi

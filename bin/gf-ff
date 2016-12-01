@@ -7,7 +7,20 @@ if [[ $# -lt 1 ]]; then
   echo "––––––––––––––––"
 else
   DEVELOPE_BRANCH=$(git config gitflow.branch.develop)
+  if [[ -z $DEVELOPE_BRANCH ]]; then
+    echo "❗ Please set up your git-flow dev branch first. ❗"
+    echo "Commands e.g.:"
+    echo 'git config gitflow.branch.develop "dev"'
+    set -e;
+  fi
   FEATURE_BRANCH=$(git config gitflow.prefix.feature)$1
+  if [[ -z $FEATURE_BRANCH ]]; then
+    echo "❗ Please set up your git-flow feature branch prefix first. ❗"
+    echo "Commands e.g.:"
+    echo 'git config gitflow.prefix.feature "feature/"'
+    set -e;
+  fi
+  echo $FEATURE_BRANCH $FEATURE_BRANCH
   git checkout $FEATURE_BRANCH
   git pull
   git push
