@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# colorful diffs for SVN
+echo 'svn diff ${1+"$@"} | colordiff';
+svn diff ${1+"$@"} | colordiff
