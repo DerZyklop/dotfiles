@@ -21,7 +21,6 @@ HOMEBREW_FORMULAE=(
   "node"
   "vim --override-system-vi"
   "nmap"
-  "todo-txt"
   "wget"
   "blink1"
   "homebrew/php/wp-cli"
