@@ -1,19 +1,13 @@
 # Start a server with current dir as root
 alias server="php -S localhost:1337"
 
-## ssh
-alias zuber="ssh zyklop@der-zyklop.de"
-alias puber="ssh pxwrk@pxwrk.de"
-alias buber="ssh betti@unisono-giessen.de"
-alias skuber="ssh skmobil@sk-mobil.com"
-alias synology="ssh admin@192.168.188.20"
-alias sourceTree="open -a SourceTree ./"
-
 # Some git commands can't be short enaugh!!
+alias g="git"
 alias gs="g s"
 alias gd="g d"
 alias ga="g a"
 alias gc="g c"
+alias gp='git push'
 
 # ls mit versteckten dateien und slashes an ordnern
 alias ls="ls -pa1"
@@ -51,9 +45,6 @@ alias disablefinderquit="defaults write com.apple.finder QuitMenuItem 0 && killa
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 
-# Some often-used git stuff
-alias "g"="git"
-
 # Todo commands
 alias "t"="todo.sh -d ~/todo/todo.cfg"
 alias "todo"="t ls"
@@ -81,7 +72,9 @@ alias h="history"
 # Open current folder
 alias o="open ."
 
-# Open unsecure Chromium
+# Apps
+alias sourceTree="open -a SourceTree ./"
+alias st="open -a SourceTree ./"
 alias chromium_unsecure="open -a /Applications/Chromium.app --args --disable-web-security"
 
 # Faster npm for Europeans
