@@ -56,6 +56,7 @@ software=(
     "sizeup"
     "synology-assistant"
     "moneymoney"
+    "transmission"
     # add clear to brew cask
     # add clippings to brew cask
 
