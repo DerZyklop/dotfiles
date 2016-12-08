@@ -1,6 +1,6 @@
 #!/bin/sh
 
-
+echo "⬇${purple} ./init/init.sh${reset}"
 
 echo "${red}"
 echo "###############################################"
@@ -13,20 +13,28 @@ echo "###############################################"
 echo "${reset}"
 
 # Ask for the administrator password upfront
+echo "·${purple} sudo -v${reset}"
 sudo -v
 
+echo "·${purple} sudo chown -R $USER /usr/local${reset}"
 sudo chown -R $USER /usr/local
+echo "·${purple} sudo chown -R $USER /Library/Caches/Homebrew/${reset}"
 sudo chown -R $USER /Library/Caches/Homebrew/
 
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+echo "·${purple} while true; do sudo -n true; sleep 60; kill -0 \"$$\" || exit; done 2>/dev/null &${reset}"
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 
 ### Read the new dotfiles once
 
+echo "·${purple} source ./.exports${reset}"
 source ./.exports
 for file in $DOTFILESDIR/.{exports,path,completions,bash_prompt,aliases,functions,extra,bashrc}; do
-  [ -r "$file" ] && [ -f "$file" ] && source "$file";
+  if [ -r "$file" ] && [ -f "$file" ]; then
+    echo "·${purple} source \"$file\"${reset}"
+    source "$file";
+  fi
 done;
 
 
@@ -34,6 +42,7 @@ done;
 read -p "${green}Want to have bash as your default shell?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
+  echo "·${purple} chsh -s $(which bash) $USER${reset}"
   chsh -s $(which bash) $USER
 fi
 
@@ -42,11 +51,13 @@ echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   # XCode Command Line Tools
   if [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; then
+    echo "·${purple} xcode-select --install &> /dev/null${reset}"
     xcode-select --install &> /dev/null
 
     # Wait until the XCode Command Line Tools are installed
     while [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; do
-        sleep 5
+      echo "·${purple} sleep 5${reset}"
+      sleep 5
     done
   fi
 fi
@@ -58,6 +69,7 @@ for f in ./init/*.sh; do
   read -p "Should i? [yN] ${reset}" -n 1 -r
   echo "\nAllright!"
   if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "·${purple} sh $f${reset}"
     sh $f
   fi
 done
@@ -68,22 +80,21 @@ done
 read -p "${green}Wanna install sass?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
+  echo "·${purple} sudo gem install sass${reset}"
   sudo gem install sass
 fi
 
 read -p "${green}Should i install 1Password?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  $(cd ~/Downloads/;wget https://d13itkw33a7sus.cloudfront.net/dist/1P/mac4/1Password-5.1.zip;unzip 1Password-5.1.zip -d /Applications;rm ~/Downloads/1Password-5.1.zip);
-  open /Applications/1Password\ 5.app
-  echo "${green}Connect 1Password to your master-file.${reset}"
-  read -p "Press [ENTER] to continue..."
-
+  echo "·${purple} brew cask install 1password${reset}"
+  brew cask install 1password
 fi
 
 read -p "${green}Install DerZyklop’s theme?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
+  echo "·${purple} open $DOTFILESDIR/init/terminaltheme/DerZyklop.terminal${reset}"
   open $DOTFILESDIR/init/terminaltheme/DerZyklop.terminal
 fi
 
@@ -92,10 +103,15 @@ fi
 read -p "${green}Install SSH key for github (and others)?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
+  echo "·${purple} mkdir ~/.ssh${reset}"
   mkdir ~/.ssh
+  echo "·${purple} cd ~/.ssh${reset}"
   cd ~/.ssh
+  echo "·${purple} ssh-keygen${reset}"
   ssh-keygen
+  echo "·${purple} echo 'IdentityFile ~/.ssh/github' > ~/.ssh/config${reset}"
   echo 'IdentityFile ~/.ssh/github' > ~/.ssh/config
+  echo "·${purple} pbcopy < ~/.ssh/github.pub${reset}"
   pbcopy < ~/.ssh/github.pub
   echo "${green}Public key is in clipboard. Paste it here:"
   echo "${blue}https://github.com/settings/ssh${reset}"
@@ -116,3 +132,4 @@ echo "${purple}Your todos now:${reset}"
 echo "${purple}-${reset} Set up Bittorrent Sync \`o ~/Applications/BitTorrent\ Sync.app\`"
 echo "${purple}-${reset} run \`brew cask info little-snitch\`"
 echo "${purple}-${reset} run \`brew cask info default-folder-x\`"
+echo "${purple}-${reset} Connect 1Password to your master-file.${reset}"

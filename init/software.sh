@@ -5,13 +5,16 @@
 ## If brew gives a 'permission denied':
 ## chown $(whoami):admin /Library/Caches/Homebrew/Formula/
 
+echo "⬇${purple} ./init/software.sh${reset}"
+
+echo "·${purple} brew install caskroom/cask/brew-cask${reset}"
 brew install caskroom/cask/brew-cask
+echo "·${purple} brew tap caskroom/versions${reset}"
 brew tap caskroom/versions
 
 software=(
     # Essentials
     "little-snitch"
-    # TODO: add 1password to brew cask (https://d13itkw33a7sus.cloudfront.net/dist/1P/mac4/1Password-4.4.1.zip)
 
     # Developement
     "sublime-text3"
@@ -63,9 +66,10 @@ software=(
     "truecrypt"
 )
 
-echo "installing ${purple}software${reset}"
+echo "·${purple} brew cask install --appdir=/Applications ${software[@]}${reset}"
 brew cask install --appdir=/Applications ${software[@]}
 
+echo "·${purple} brew cask install --appdir=/Applications dropbox${reset}"
 brew cask install --appdir=/Applications dropbox
 echo "${green}Log in to Dropbox.app"
 open /Applications/Dropbox.app
