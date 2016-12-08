@@ -40,7 +40,7 @@ software=(
     "telegram"
     # TODO: add tweetdeck to brew cask
 
-    # Little Helper
+    # Other
     "licecap"
     "caffeine"
     "appcleaner"
@@ -55,6 +55,7 @@ software=(
     "isolator"
     "sizeup"
     "synology-assistant"
+    "moneymoney"
     # add clear to brew cask
     # add clippings to brew cask
 
