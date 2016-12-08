@@ -126,3 +126,4 @@ echo "${purple}-${reset} Set up Bittorrent Sync \`o ~/Applications/BitTorrent\ S
 echo "${purple}-${reset} run \`brew cask info little-snitch\`"
 echo "${purple}-${reset} run \`brew cask info default-folder-x\`"
 echo "${purple}-${reset} Connect 1Password to your master-file.${reset}"
+echo "${purple}-${reset} Set up Dropbox with \`open -a Dropbox\`${reset}"

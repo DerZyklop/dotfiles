@@ -15,6 +15,7 @@ brew tap caskroom/versions
 software=(
     # Essentials
     "little-snitch"
+    "dropbox"
     "1password"
 
     # Developement
@@ -33,6 +34,7 @@ software=(
     "dash"
     "sketch"
     "transmit"
+    # "colorsnapper" // baught in AppStore
 
     # Communication
     "telegram"
@@ -61,7 +63,7 @@ software=(
     "spotify"
     "instacast"
 
-    # Fuck you too, NSA!
+    # Fuck you too, NSA 😎!
     "gpgtools"
     "torbrowser"
     "truecrypt"
@@ -69,9 +71,3 @@ software=(
 
 echo "·${purple} brew cask install --appdir=/Applications ${software[@]}${reset}"
 brew cask install --appdir=/Applications ${software[@]}
-
-echo "·${purple} brew cask install --appdir=/Applications dropbox${reset}"
-brew cask install --appdir=/Applications dropbox
-echo "${green}Log in to Dropbox.app"
-open /Applications/Dropbox.app
-read -p "Press [ENTER] to continue..."
