@@ -15,6 +15,7 @@ brew tap caskroom/versions
 software=(
     # Essentials
     "little-snitch"
+    "1password"
 
     # Developement
     "sublime-text3"

@@ -84,13 +84,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo gem install sass
 fi
 
-read -p "${green}Should i install 1Password?${reset} [yN] " -n 1 -r
-echo "\nAllright!"
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  echo "·${purple} brew cask install 1password${reset}"
-  brew cask install 1password
-fi
-
 read -p "${green}Install DerZyklop’s theme?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
