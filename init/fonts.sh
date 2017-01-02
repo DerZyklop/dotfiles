@@ -34,7 +34,7 @@ FONTS=(
 
 for i in ${!FONTS[*]}; do
   item="${FONTS[$i]}"
-  echo "·${purple} brew install $item${reset}"
-  $(brew install $item)
+  echo "·${purple} brew cask install $item${reset}"
+  $(brew cask install $item)
 done
 
