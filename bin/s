@@ -1,16 +1,22 @@
 #!/bin/sh
 
-if [ $# -lt 1 ]; then
-  if [ -f ${PWD##*/}_env.sublime-project ]; then
-    subl $(find . -depth 1 -type f -name "${PWD##*/}_env.sublime-project")
-  elif [ -f ${PWD##*/}.sublime-project ]; then
-    subl $(find . -depth 1 -type f -name "${PWD##*/}.sublime-project")
-  elif [ -f *.sublime-project ]; then
-    subl $(find . -depth 1 -type f -name "*.sublime-project")
-  else
-    subl .
-  fi
-else
-  subl $1
-fi
+# if [ $# -lt 1 ]; then
+#   if [ -f ${PWD##*/}_env.sublime-project ]; then
+#     subl $(find . -depth 1 -type f -name "${PWD##*/}_env.sublime-project")
+#   elif [ -f ${PWD##*/}.sublime-project ]; then
+#     subl $(find . -depth 1 -type f -name "${PWD##*/}.sublime-project")
+#   elif [ -f *.sublime-project ]; then
+#     subl $(find . -depth 1 -type f -name "*.sublime-project")
+#   else
+#     subl .
+#   fi
+# else
+#   subl $1
+# fi
 
+
+if [ $# -lt 1 ]; then
+  atom .
+else
+  atom $1
+fi

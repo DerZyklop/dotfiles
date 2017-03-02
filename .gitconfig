@@ -5,7 +5,7 @@
 [push]
   default = simple
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/plano/.gitignore
 
 # Good explanation of git's fast forwarding: http://ariya.ofilabs.com/2013/09/fast-forward-git-merge.html
 [advice]
@@ -74,5 +74,11 @@
 [credential]
   helper = osxkeychain
 [user]
-	name = DerZyklop
-	email = mail@der-zyklop.de
+	name = Nils Neumann
+	email = nils@dr-plano.de
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

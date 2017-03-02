@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd ~/S/plano/projects/build/local
+sh generate_api.sh
