@@ -59,9 +59,6 @@ fi;
 #export PATH="/usr/local/share/npm/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-# Specify your brew cask defaults in this environment variable
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
 export PROJECTDIRS=(
   ~/Documents/workspace/PlaceWorkers/$1
   ~/Cloud/server/$1

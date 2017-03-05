@@ -1,10 +1,12 @@
 #!/bin/sh
 
+echo "⬇${purple} ./init/software_preferences.sh${reset}"
+
 for f in ./init/osx/*; do
-  echo "${green}Want to set preferences for $(basename $f .sh)?"
-  read -p "Should i? [yN] ${reset}" -n 1 -r
+  read -p "${green}Should i set preferences for $(basename $f .sh)? [yN] ${reset}" -n 1 -r
   echo "\nAllright!"
   if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "·${purple} sh $f${reset}"
     sh $f
   fi
 done

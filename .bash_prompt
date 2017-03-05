@@ -88,11 +88,12 @@ PS1+="\[${userStyle}\]\u${reset}"; # username
 PS1+="\[$(tput setaf 236)\] @ ${reset}";
 PS1+="\[${hostStyle}\]\h${reset}"; # host
 
-if ifconfig | grep -q tun0; then
-  PS1+="\[${green}\] OpenVPN ✓${reset}"; # host
-elif ifconfig | grep -q ppp0; then
-  PS1+="\[${green}\] PPTP ✓${reset}"; # host
-fi
+# This is broken since Sierra
+# if ifconfig | grep -q utun1; then
+#   PS1+="\[${white}\] 🔒 ${reset}"; # OpenVPN connected
+# elif ifconfig | grep -q ppp0; then
+#   PS1+="\[${green}\] 🏢 ${reset}"; # PPPoE connected
+# fi
 
 PS1+="\[$(tput setaf 236)\] in ";
 PS1+="\[${cyan}\]\w"; # working directory

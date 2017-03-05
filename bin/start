@@ -3,6 +3,16 @@
 # Start server (and maybe grunt)
 if [ -f *.sln ]; then
   open *.sln
+elif [ -f runserver.sh ]; then
+  echo "Improve your project. Write a npm start command."
+
+  read -p "${green}Want to generate_plano_api?${reset} [yN] " -n 1 -r
+  echo "\nAllright!"
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    generate_plano_api
+  fi
+
+  sh runserver.sh
 elif [ -f package.json ]; then
   npm start
 elif [ -f boilerplate.json ]; then
@@ -41,9 +51,6 @@ elif [ -h gruntfile.js ]; then
 elif [ -f pw_runserver.sh ]; then
   echo "Improve your project. Write a npm start command."
   sh pw_runserver.sh
-elif [ -f runserver.sh ]; then
-  echo "Improve your project. Write a npm start command."
-  sh runserver.sh
 else
   tput setaf 1
   echo "--------------------------------------"

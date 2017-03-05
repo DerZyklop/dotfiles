@@ -5,13 +5,18 @@
 ## If brew gives a 'permission denied':
 ## chown $(whoami):admin /Library/Caches/Homebrew/Formula/
 
+echo "⬇${purple} ./init/software.sh${reset}"
+
+echo "·${purple} brew install caskroom/cask/brew-cask${reset}"
 brew install caskroom/cask/brew-cask
+echo "·${purple} brew tap caskroom/versions${reset}"
 brew tap caskroom/versions
 
 software=(
     # Essentials
     "little-snitch"
-    # TODO: add 1password to brew cask (https://d13itkw33a7sus.cloudfront.net/dist/1P/mac4/1Password-4.4.1.zip)
+    "dropbox"
+    "1password"
 
     # Developement
     "sublime-text3"
@@ -29,12 +34,13 @@ software=(
     "dash"
     "sketch"
     "transmit"
+    # "colorsnapper" // baught in AppStore
 
     # Communication
     "telegram"
     # TODO: add tweetdeck to brew cask
 
-    # Little Helper
+    # Other
     "licecap"
     "caffeine"
     "appcleaner"
@@ -49,6 +55,8 @@ software=(
     "isolator"
     "sizeup"
     "synology-assistant"
+    "moneymoney"
+    "transmission"
     # add clear to brew cask
     # add clippings to brew cask
 
@@ -57,16 +65,11 @@ software=(
     "spotify"
     "instacast"
 
-    # Fuck you too, NSA!
+    # Fuck you too, NSA 😎!
     "gpgtools"
     "torbrowser"
     "truecrypt"
 )
 
-echo "installing ${purple}software${reset}"
+echo "·${purple} brew cask install --appdir=/Applications ${software[@]}${reset}"
 brew cask install --appdir=/Applications ${software[@]}
-
-brew cask install --appdir=/Applications dropbox
-echo "${green}Log in to Dropbox.app"
-open /Applications/Dropbox.app
-read -p "Press [ENTER] to continue..."

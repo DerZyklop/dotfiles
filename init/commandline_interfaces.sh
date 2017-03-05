@@ -1,18 +1,27 @@
 #!/bin/sh
 
+echo "⬇${purple} ./init/commandline_interfaces.sh${reset}"
+
 ### Read the new dotfiles once
 for file in $DOTFILESDIR/.{exports,path,completions,bash_prompt,aliases,functions,extra,bashrc}; do
-  [ -r "$file" ] && [ -f "$file" ] && source "$file";
+  if [ -r "$file" ] && [ -f "$file" ]; then
+    echo "·${purple} source \"$file\"${reset}"
+    source "$file";
+  fi
 done;
 
 if ! commandExists "brew"; then
+  echo "·${purple} ruby -e \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"${reset}"
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # Make sure we’re using the latest Homebrew.
+echo "·${purple} brew update${reset}"
 brew update
 # Upgrade any already-installed formulae.
+echo "·${purple} brew upgrade${reset}"
 brew upgrade
+echo "·${purple} brew cleanup${reset}"
 brew cleanup
 
 HOMEBREW_FORMULAE=(
@@ -28,7 +37,7 @@ HOMEBREW_FORMULAE=(
 
 for i in ${!HOMEBREW_FORMULAE[*]}; do
   tmp="${HOMEBREW_FORMULAE[$i]}"
-  echo "installing ${purple}$tmp${reset}"
+  echo "·${purple} brew install $tmp${reset}"
   $(brew install $tmp)
 done
 
