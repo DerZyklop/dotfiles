@@ -53,7 +53,7 @@ prompt_git() {
     # Get the short symbolic ref.
     # If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
     # Otherwise, just give up.
-    branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+    branchName=" $(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
       git rev-parse --short HEAD 2> /dev/null || \
       echo '(unknown)')";
 
@@ -90,7 +90,7 @@ PS1+="\[${hostStyle}\]\h${reset}"; # host
 
 # This is broken since Sierra
 # if ifconfig | grep -q utun1; then
-#   PS1+="\[${white}\] 🔒 ${reset}"; # OpenVPN connected
+#   PS1+="\[${white}\]  ${reset}"; # OpenVPN connected
 # elif ifconfig | grep -q ppp0; then
 #   PS1+="\[${green}\] 🏢 ${reset}"; # PPPoE connected
 # fi
