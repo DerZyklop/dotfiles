@@ -1,4 +1,0 @@
-#!/bin/sh
-
-echo "${green}npm run test:headless${reset}"
-npm run test:headless
