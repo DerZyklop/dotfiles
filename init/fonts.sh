@@ -30,6 +30,7 @@ FONTS=(
     "font-source-code-pro"
     "font-titillium-web"
     "font-vollkorn"
+    "font-fira-code"
 )
 
 for i in ${!FONTS[*]}; do
@@ -37,4 +38,3 @@ for i in ${!FONTS[*]}; do
   echo "·${purple} brew cask install $item${reset}"
   $(brew cask install $item)
 done
-

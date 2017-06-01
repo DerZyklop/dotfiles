@@ -19,6 +19,7 @@ software=(
     "1password"
 
     # Developement
+    "atom"
     "sublime-text3"
     "bittorrent-sync"
     "sourcetree"
