@@ -31,6 +31,7 @@ FONTS=(
     "font-titillium-web"
     "font-vollkorn"
     "font-fira-code"
+    "font-fantasque-sans-mono"
 )
 
 for i in ${!FONTS[*]}; do
