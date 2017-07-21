@@ -54,7 +54,7 @@ else
   export yellow="\e[1;33m";
 fi;
 
-# Theese are needet to install node from brew according to this: http://madebyhoundstooth.com/blog/install-node-with-homebrew-on-os-x/
+# Theese are needed to install node from brew according to this: http://madebyhoundstooth.com/blog/install-node-with-homebrew-on-os-x/
 #export NODE_PATH="/usr/local/lib/node"
 # Local node path if exists
 export PATH=~/.npm-global/bin:$PATH
