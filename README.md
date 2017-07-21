@@ -43,44 +43,55 @@ If `~/.extra` exists, it will be sourced along with the other files. You can use
 
 ## Text Shortcuts
 
-I havent found a way to automatically set up my system text replacements yet. Till i found one, i will maintain this list: 
+I havent found a way to automatically set up my system text replacements yet. Till i found one, i will maintain this list:
 
 Replace | With
 --- | ---
 :) | ツ
 !? | ⁉️
 ?! | ⁉️
+** | ×
 +1 | 👍
 altt | ⌥
 applee | 
+apfell | 
+arrow | ➡
 arrowl | ◀
 arrowr | ▶
-arroww | ➡
+arrowdown | ⬇
+arrowup | ⬆
 btc | ฿
 cakee | 🍰
+coffeee | ☕️
 carr | 🚙
 checkk | ✓
+checkkk | ☑️
 cheerss | 🍻
 cmdd | ⌘
-copyright | ©
+copyrightt | ©
 DerZyklopp | DΞRZYKLΘP
 DerZykloppp | δεrζγκlσρ
 dott | ·
+Ett | Ettingshausen
 faustt | 👊
 fistt | 👊
 fleuronn | ☙
+Gie | Gießen
 hamburger | ☰
 gradd | °
 hahaa | 😂
+idk | ```¯\_(ツ)_/¯```
+jqueryy | var jq = document.createElement('script');jq.src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js";document.getElementsByTagName('head')[0].appendChild(jq);jQuery.noConflict();
 hamburgerr | ☰
-kaffee | ☕️
-coffee | ☕️
-lennyface | ( ͡° ͜ʖ ͡°)
-Lorem | Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+kaffeee | ☕️
+lennyface  | ( ͡° ͜ʖ ͡°)
+loremm | Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+Loremm | Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 lovee | ❤️
 loveee | 💚
 musicc | 🎶
 Nilss | ΠίΙϛ
+partyy | 🎉
 peacee | ✌
 planee | ✈︎
 riott | 📣👬👫👬👫👬👫✊
@@ -89,9 +100,11 @@ shithappens | ```¯\_(ツ)_/¯```
 sunn | ☀️
 tabb | ⇥
 tableflip | (╯°□°)╯︵ ┻━┻
+timess | ×
 tmm | ™
 Touche | Touché
 unendlichh | ∞
 vlg | Viele liebe Grüße!
+whatever... | ```¯\_(ツ)_/¯```
 xmarkk | ✗
 xmarkkk | ✘
