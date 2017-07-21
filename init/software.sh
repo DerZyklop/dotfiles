@@ -31,11 +31,16 @@ software=(
     "chromium"
 
     # Work-Related
-    "minco"
     "dash"
     "sketch"
     "transmit"
+    # "minco"
     # "colorsnapper" // baught in AppStore
+
+    # Plano
+    "perforce"
+    "p4v"
+    "maven"
 
     # Communication
     "telegram"
