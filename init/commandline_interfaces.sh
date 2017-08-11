@@ -33,6 +33,10 @@ HOMEBREW_FORMULAE=(
   "wget"
   "blink1"
   "homebrew/php/wp-cli"
+
+  # for Dr. Plano
+  "postgresql"
+  "maven"
 )
 
 for i in ${!HOMEBREW_FORMULAE[*]}; do

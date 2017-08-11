@@ -21,7 +21,7 @@ software=(
     # Developement
     "atom"
     "sublime-text3"
-    "bittorrent-sync"
+    #"bittorrent-sync"
     "sourcetree"
 
     # Browsers
@@ -34,6 +34,7 @@ software=(
     "dash"
     "sketch"
     "transmit"
+    "gifox"
     # "minco"
     # "colorsnapper" // baught in AppStore
 
@@ -56,7 +57,6 @@ software=(
     "imageoptim"
     "image-tool"
     "cinch"
-    "cloud"
     "daisydisk"
     "isolator"
     "sizeup"

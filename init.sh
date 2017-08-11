@@ -46,22 +46,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   chsh -s $(which bash) $USER
 fi
 
-read -p "${green}Wanna install XCode Command Line Tools?${reset} [yN] " -n 1 -r
-echo "\nAllright!"
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  # XCode Command Line Tools
-  if [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; then
-    echo "·${purple} xcode-select --install &> /dev/null${reset}"
-    xcode-select --install &> /dev/null
-
-    # Wait until the XCode Command Line Tools are installed
-    while [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; do
-      echo "·${purple} sleep 5${reset}"
-      sleep 5
-    done
-  fi
-fi
-
 ### Initialize new computer
 
 for f in ./init/*.sh; do
@@ -122,7 +106,7 @@ fi
 # fi
 
 echo "${purple}Your todos now:${reset}"
-echo "${purple}-${reset} Set up Bittorrent Sync \`o ~/Applications/BitTorrent\ Sync.app\`"
+#echo "${purple}-${reset} Set up Bittorrent Sync \`o ~/Applications/BitTorrent\ Sync.app\`"
 echo "${purple}-${reset} run \`brew cask info little-snitch\`"
 echo "${purple}-${reset} run \`brew cask info default-folder-x\`"
 echo "${purple}-${reset} Connect 1Password to your master-file.${reset}"
