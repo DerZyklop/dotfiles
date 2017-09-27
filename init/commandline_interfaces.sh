@@ -39,6 +39,8 @@ HOMEBREW_FORMULAE=(
   "maven"
 )
 
+brew cask install java
+
 for i in ${!HOMEBREW_FORMULAE[*]}; do
   tmp="${HOMEBREW_FORMULAE[$i]}"
   echo "·${purple} brew install $tmp${reset}"

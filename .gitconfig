@@ -74,8 +74,8 @@
 [credential]
   helper = osxkeychain
 [user]
-	name = Nils Neumann
-	email = nils@dr-plano.de
+	name = DerZyklop
+	email = mail@der-zyklop.de
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

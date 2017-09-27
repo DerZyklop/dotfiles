@@ -7,8 +7,8 @@
 
 echo "⬇${purple} ./init/software.sh${reset}"
 
-echo "·${purple} brew install caskroom/cask/brew-cask${reset}"
-brew install caskroom/cask/brew-cask
+echo "·${purple} brew tap caskroom/cask${reset}"
+brew tap caskroom/cask
 echo "·${purple} brew tap caskroom/versions${reset}"
 brew tap caskroom/versions
 
@@ -20,7 +20,7 @@ software=(
 
     # Developement
     "atom"
-    "sublime-text3"
+    # "sublime-text3"
     #"bittorrent-sync"
     "sourcetree"
 
@@ -41,7 +41,6 @@ software=(
     # Plano
     "perforce"
     "p4v"
-    "maven"
 
     # Communication
     "telegram"
