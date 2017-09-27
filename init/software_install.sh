@@ -9,6 +9,7 @@ echo "⬇${purple} ./init/software.sh${reset}"
 
 echo "·${purple} brew tap caskroom/cask${reset}"
 brew tap caskroom/cask
+brew update
 echo "·${purple} brew tap caskroom/versions${reset}"
 brew tap caskroom/versions
 
@@ -59,7 +60,6 @@ software=(
     "daisydisk"
     "isolator"
     "sizeup"
-    "synology-assistant"
     "moneymoney"
     "transmission"
     # add clear to brew cask
@@ -68,12 +68,14 @@ software=(
     # Media
     "vlc"
     "spotify"
-    "instacast"
+    # TODO: Cask 'instacast' is unavailable: No Cask with this name exists.
+    # "instacast"
 
     # Fuck you too, NSA 😎!
     "gpgtools"
     "torbrowser"
-    "truecrypt"
+    # TODO: Cask 'truecrypt' is unavailable: No Cask with this name exists.
+    # "truecrypt"
 )
 
 echo "·${purple} brew cask install --appdir=/Applications ${software[@]}${reset}"
