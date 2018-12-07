@@ -1,0 +1,65 @@
+#!/bin/sh
+
+if ! [ -x "$(command -v blink1-tool)" ]; then
+  echo 'blink1-tool is not installed'
+  exit
+fi;
+
+if [ "$1" == 'off' ]; then
+  echo "Turn LEDs off"
+fi;
+
+# if [ "$1" == 'previous' ]; then
+#   PRIO=$PREVIOUS_PRIO;
+#   STATE=$PREVIOUS_STATE;
+# else
+  PRIO=$1;
+  STATE=$2;
+# fi
+
+getLEDColorForState() {
+  if [ "$PRIO" = "1" ]; then
+    GREEN="#00ff00"
+  else
+    GREEN="#2f4400"
+  fi
+
+  case $STATE in
+    success) echo $GREEN;;
+    danger) echo "#ff0000";;
+    warning) echo "#7f631e";;
+    info) echo "#444444";;
+    *) echo "#000000";;
+  esac
+}
+
+# && ! [ "$1" == 'previous' ]
+if [ $# -lt 2 ]; then
+  echo "––––––––––––––––"
+  # echo "USAGE: blink1 previous"
+  # echo "or"
+  echo "USAGE: blink1 prio state"
+  echo "Sets blink1 devices to defined colors"
+  echo ""
+  echo "Possible prios:"
+  echo "1, 2 or 3"
+  echo ""
+  echo "Possible states:"
+  echo "success"
+  echo "info"
+  echo "warning"
+  echo "danger"
+  echo "––––––––––––––––"
+else
+  case $PRIO in
+		1) ID=0,1; LED=1;;
+		2) ID=0; LED=2;;
+		3) ID=1; LED=2;;
+	esac
+
+	COLOR=$(getLEDColorForState)
+	blink1-tool --quiet --id=$ID --led=$LED --rgb=$COLOR
+
+  # export PREVIOUS_PRIO="$PRIO"
+  # export PREVIOUS_STATE="$STATE"
+fi

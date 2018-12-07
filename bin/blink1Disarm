@@ -1,0 +1,5 @@
+#!/bin/sh
+
+blink1-tool --quiet id=0,1 --led=1 --servertickle=0;
+# blink1 previous;
+blink1 1 danger
