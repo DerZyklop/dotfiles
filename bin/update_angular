@@ -1,3 +1,10 @@
 #!/bin/sh
 
-npm install @angular/common@latest @angular/core@latest @angular/http@latest @angular/platform-browser@latest -s -E
+echo "npm install @angular/common@latest"
+npm install @angular/common@latest
+echo "npm install @angular/core@latest"
+npm install @angular/core@latest
+echo "npm install @angular/http@latest"
+npm install @angular/http@latest
+echo "npm install @angular/platform-browser@latest -s -E"
+npm install @angular/platform-browser@latest -s -E
