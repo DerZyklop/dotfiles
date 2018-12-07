@@ -1,0 +1,8 @@
+#!/bin/sh
+
+read -p "${orange}Mac cleanup?${reset} [${green}y${reset}/${red}N${reset}] " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  echo ""
+  echo "${green}> brew doctor${green}"
+  brew doctor
+fi
