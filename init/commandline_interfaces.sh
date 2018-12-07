@@ -39,7 +39,7 @@ HOMEBREW_FORMULAE=(
   "maven"
 )
 
-brew cask install java
+brew cask install java8
 
 for i in ${!HOMEBREW_FORMULAE[*]}; do
   tmp="${HOMEBREW_FORMULAE[$i]}"
@@ -48,3 +48,4 @@ for i in ${!HOMEBREW_FORMULAE[*]}; do
 done
 
 sudo easy_install Pygments
+echo '-' > ~/.bash_history
