@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "brew upgrade node@8"
+brew upgrade node@8
