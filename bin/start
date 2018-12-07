@@ -1,63 +1,79 @@
 #!/bin/sh
 
-# Start server (and maybe grunt)
-if [ -f *.sln ]; then
-  open *.sln
-elif [ -f runserver.sh ]; then
-  echo "Improve your project. Write a npm start command."
-  sh runserver.sh
-elif [ -f package.json ]; then
-  npm start
-elif [ -f boilerplate.json ]; then
-  echo "Improve your project. Write a npm start command."
-  npm install
-  grunt
-elif [ -f conf/boilerplate.json ]; then
-  echo "Improve your project. Write a npm start command."
-  npm install
-  grunt dev
-elif [ -f conf/gruntfile.coffee ]; then
-  echo "Improve your project. Write a npm start command."
-  npm install
-  grunt server
-elif [ -f WWW/gruntfile.coffee ]; then
-  echo "Improve your project. Write a npm start command."
-  cd WWW
-  npm install
-  grunt
-elif [ -f gruntfile.coffee ]; then
-  echo "Improve your project. Write a npm start command."
-  npm install
-  grunt
-elif [ -h gruntfile.coffee ]; then
-  echo "Improve your project. Write a npm start command."
-  npm install
-  grunt
-elif [ -f gruntfile.js ]; then
-  echo "Improve your project. Write a npm start command."
-  npm install
-  grunt
-elif [ -h gruntfile.js ]; then
-  echo "Improve your project. Write a npm start command."
-  npm install
-  grunt
-elif [ -f pw_runserver.sh ]; then
-  echo "Improve your project. Write a npm start command."
-  sh pw_runserver.sh
-else
+if [ $# -gt 1 ]; then
+  echo "USAGE:"
+  echo "start"
+  echo "OR"
+  echo "start [ticket-id]"
   tput setaf 1
-  echo "--------------------------------------"
-  echo "       Error: Can't find Grunt.       "
-  echo "      I will start localhost by:      "
-  echo "        php -S 127.0.0.1:1337         "
-  echo "--------------------------------------"
+  echo "Maximum one param!"
   tput sgr0
-  open http://127.0.0.1:1337
-  if [ -d 'WWW' ]; then
-    php -S 127.0.0.1:1337 -t ./WWW
-  elif [ -d 'www' ]; then
-    php -S 127.0.0.1:1337 -t ./www
+else
+  if [ $# == 1 ]; then
+    echo "git flow feature start $1"
+    git flow feature start $1
+    git checkout ticket/$1
   else
-    php -S 127.0.0.1:1337
+    # Start server (and maybe grunt)
+    if [ -f *.sln ]; then
+      open *.sln
+    elif [ -f runserver.sh ]; then
+      echo "Improve your project. Write a npm start command."
+      sh runserver.sh
+    elif [ -f package.json ]; then
+      npm start
+    elif [ -f boilerplate.json ]; then
+      echo "Improve your project. Write a npm start command."
+      npm install
+      grunt
+    elif [ -f conf/boilerplate.json ]; then
+      echo "Improve your project. Write a npm start command."
+      npm install
+      grunt dev
+    elif [ -f conf/gruntfile.coffee ]; then
+      echo "Improve your project. Write a npm start command."
+      npm install
+      grunt server
+    elif [ -f WWW/gruntfile.coffee ]; then
+      echo "Improve your project. Write a npm start command."
+      cd WWW
+      npm install
+      grunt
+    elif [ -f gruntfile.coffee ]; then
+      echo "Improve your project. Write a npm start command."
+      npm install
+      grunt
+    elif [ -h gruntfile.coffee ]; then
+      echo "Improve your project. Write a npm start command."
+      npm install
+      grunt
+    elif [ -f gruntfile.js ]; then
+      echo "Improve your project. Write a npm start command."
+      npm install
+      grunt
+    elif [ -h gruntfile.js ]; then
+      echo "Improve your project. Write a npm start command."
+      npm install
+      grunt
+    elif [ -f pw_runserver.sh ]; then
+      echo "Improve your project. Write a npm start command."
+      sh pw_runserver.sh
+    else
+      tput setaf 1
+      echo "--------------------------------------"
+      echo "       Error: Can't find Grunt.       "
+      echo "      I will start localhost by:      "
+      echo "        php -S 127.0.0.1:1337         "
+      echo "--------------------------------------"
+      tput sgr0
+      open http://127.0.0.1:1337
+      if [ -d 'WWW' ]; then
+        php -S 127.0.0.1:1337 -t ./WWW
+      elif [ -d 'www' ]; then
+        php -S 127.0.0.1:1337 -t ./www
+      else
+        php -S 127.0.0.1:1337
+      fi
+    fi
   fi
 fi
