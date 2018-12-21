@@ -37,7 +37,7 @@ setLEDColor() {
 	fi;
 
 	if [ "$STASH_EMPTY" -eq "0" ]; then
-		blink1 3 warning
+		blink1 3 pink
 	else
 		blink1 3 off
 	fi;
