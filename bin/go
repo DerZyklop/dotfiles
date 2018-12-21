@@ -22,12 +22,14 @@ else
     echo -e '\n☰☰☰☰☰ git commit my changes ☰☰☰☰☰☰'
     git flow feature start $1
     git flow feature checkout $1
-    ga
+    git add -A
     blink1Arm
     echo "${green}git commit -m \"$1\" -m 'Made by Nils'${reset}"
     git commit -m $1 -m 'Made by Nils'
     blink1Disarm
+    blink1Arm
     git flow feature finish $1
+    blink1Disarm
     gp
 
     get
@@ -45,8 +47,8 @@ else
     ga
     g c $1
     gp
-  fi
-fi
+  fi;
+fi;
 blink1 1 success;
 sleep 5;
-off;
+blink1 off;
