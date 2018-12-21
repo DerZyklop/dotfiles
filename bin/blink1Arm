@@ -1,5 +1,15 @@
 #!/bin/sh
 
-blink1-tool --quiet id=0,1 --led=1 -t 5000 --servertickle=1,1;
-# blink1 previous
-blink1 1 danger
+function arm() {
+  if [ $# -eq 1 ]; then
+    DURATION=$1;
+  else
+    DURATION=5000;
+  fi;
+
+  blink1-tool --quiet id=0,1 --led=1 -t $DURATION --servertickle=1,1;
+  # blink1 previous
+  blink1 1 danger
+}
+
+arm;
