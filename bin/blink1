@@ -5,19 +5,7 @@ if ! [ -x "$(command -v blink1-tool)" ]; then
   exit
 fi;
 
-if [ "$1" == 'off' ]; then
-  echo "Turn LEDs off"
-fi;
-
-# if [ "$1" == 'previous' ]; then
-#   PRIO=$PREVIOUS_PRIO;
-#   STATE=$PREVIOUS_STATE;
-# else
-  PRIO=$1;
-  STATE=$2;
-# fi
-
-getLEDColorForState() {
+getColorForState() {
   if [ "$PRIO" = "1" ]; then
     GREEN="#00ff00"
   else
@@ -29,15 +17,35 @@ getLEDColorForState() {
     danger) echo "#ff0000";;
     warning) echo "#7f631e";;
     info) echo "#444444";;
+    pink) echo "#872f55";;
     *) echo "#000000";;
   esac
 }
 
-# && ! [ "$1" == 'previous' ]
-if [ $# -lt 2 ]; then
+getSpeedForState() {
+  SLOW=1500
+  FAST=100
+
+  case $STATE in
+    success) echo $SLOW;;
+    danger) echo $FAST;;
+    warning) echo $SLOW;;
+    info) echo $SLOW;;
+    *) echo $SLOW;;
+  esac
+}
+
+if [ "$1" == 'off' ]; then
+  echo "Turn LEDs off"
+  echo "Note: This blink1 state does not get saved for the command »blink1 previous«."
+  blink1-tool -q --off --id 0,1,2,3
+elif [ "$1" == 'previous' ]; then
+  PRIO=$(store get PRIO);
+  STATE=$(store get STATE);
+elif [ $# -lt 2 ]; then
   echo "––––––––––––––––"
-  # echo "USAGE: blink1 previous"
-  # echo "or"
+  echo "USAGE: blink1 previous"
+  echo "or"
   echo "USAGE: blink1 prio state"
   echo "Sets blink1 devices to defined colors"
   echo ""
@@ -51,15 +59,27 @@ if [ $# -lt 2 ]; then
   echo "danger"
   echo "––––––––––––––––"
 else
+  PRIO=$1;
+  STATE=$2;
+
+  DEVICE_COUNTER=$(blink1-tool --list | wc -l);
+  PRIO_1_IDS=0;
+  PRIO_2_IDS=1;
+  if [ $DEVICE_COUNTER -gt 3 ]; then
+    PRIO_1_IDS=0,1;
+    PRIO_2_IDS=2,3;
+  fi
+
   case $PRIO in
-		1) ID=0,1; LED=1;;
-		2) ID=0; LED=2;;
-		3) ID=1; LED=2;;
+		1) ID=$PRIO_1_IDS,$PRIO_2_IDS; LED=1;;
+		2) ID=$PRIO_1_IDS; LED=2;;
+		3) ID=$PRIO_2_IDS; LED=2;;
 	esac
 
-	COLOR=$(getLEDColorForState)
-	blink1-tool --quiet --id=$ID --led=$LED --rgb=$COLOR
+  COLOR=$(getColorForState)
+  SPEED=$(getSpeedForState)
+	blink1-tool --quiet --millis=$SPEED --id=$ID --led=$LED --rgb=$COLOR
 
-  # export PREVIOUS_PRIO="$PRIO"
-  # export PREVIOUS_STATE="$STATE"
-fi
+  store set PRIO $PRIO
+  store set STATE $STATE
+fi;
