@@ -5,10 +5,12 @@ if [ -f ./../../p4config.txt ]; then
   echo -e '\n☰☰☰☰☰☰ get sadinams changes ☰☰☰☰☰☰☰'
   BRANCH=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
   echo "${green}current branch: $BRANCH${reset}"
-  echo "${green}p4 reconcile -m ./src/.../*${reset}"
-  p4 reconcile -m ./src/.../*
+  blink1Arm 10000
   echo "${green}p4 reconcile -m .atomignore .bootstraprc .scss-lint.yml package.json postcss.config.js README.md runserver.sh tsconfig.json tslint.json typings.json .htmllintrc${reset}"
   p4 reconcile -m .atomignore .bootstraprc .scss-lint.yml package.json postcss.config.js README.md runserver.sh tsconfig.json tslint.json typings.json .htmllintrc
+  blink1Disarm
+  echo "${green}p4 reconcile -m ./src/.../*${reset}"
+  p4 reconcile -m ./src/.../*
   echo "${green}p4 revert -a${reset}"
   p4 revert -a
   echo "${green}p4 sync${reset}"
@@ -20,7 +22,7 @@ if [ -f ./../../p4config.txt ]; then
   echo -e '\n☰☰☰☰ git commit sadinams changes ☰☰☰☰'
   echo "${green}git checkout perforce${reset}"
   git checkout perforce
-  ga
+  git add -A
   echo "${green}git commit -m \"Changes from Perforce\"${reset}"
   git commit -m 'Changes from Perforce' -m 'These changes are made by Sadinams. It includes all changes that have been submitted to perforce since Nils last "git commit".'
   blink1Arm
@@ -31,7 +33,9 @@ if [ -f ./../../p4config.txt ]; then
   blink1Arm
   git merge perforce --no-ff
   blink1Disarm
-  gp
+  BRANCH=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+  git push --set-upstream origin $BRANCH
+  git push --tags
   echo "${green}git checkout $BRANCH${reset}"
   git checkout $BRANCH
 else
