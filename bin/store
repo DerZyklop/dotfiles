@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ $# -lt 2 ]; then
+  echo "––––––––––––––––"
+  # echo "USAGE: blink1 previous"
+  # echo "or"
+  echo "USAGE: store set/get var_name [value]"
+  echo "––––––––––––––––"
+else
+  var_name=$2
+
+  if [[ "$1" == 'set' ]]; then
+    # and save it for next time
+    value=$3
+    echo "${value}" > /tmp/${var_name}.dat
+  else
+    value=`cat /tmp/${var_name}.dat`
+    echo ${value};
+  fi
+fi
