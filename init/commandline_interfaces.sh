@@ -32,13 +32,16 @@ HOMEBREW_FORMULAE=(
   "nmap"
   "wget"
   "blink1"
-  "homebrew/php/wp-cli"
+
+  # For Wordpress
+  # "homebrew/php/wp-cli"
 
   # for Dr. Plano
   "postgresql"
   "maven"
 )
 
+# for Dr. Plano
 brew cask install java8
 
 for i in ${!HOMEBREW_FORMULAE[*]}; do

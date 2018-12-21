@@ -11,11 +11,11 @@ echo "·${purple} npm update -g npm${reset}"
 npm update -g npm
 
 node_packages=(
-  grunt
-  grunt-cli
+  # grunt
+  # grunt-cli
   prompt
   jshint
-  cool-ascii-faces
+  # cool-ascii-faces
 )
 
 echo "·${purple} npm install -g ${node_packages[@]}${reset}"

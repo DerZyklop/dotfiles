@@ -23,7 +23,8 @@ software=(
     "atom"
     # "sublime-text3"
     #"bittorrent-sync"
-    "sourcetree"
+    # "sourcetree"
+    "tower"
 
     # Browsers
     "google-chrome"
