@@ -16,6 +16,9 @@ node_packages=(
   prompt
   jshint
   # cool-ascii-faces
+  npm-check-updates
+  sass-lint
+  typescript
 )
 
 echo "·${purple} npm install -g ${node_packages[@]}${reset}"
