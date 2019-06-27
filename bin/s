@@ -14,9 +14,15 @@
 #   subl $1
 # fi
 
-
-if [ $# -lt 1 ]; then
-  atom .
+TEXT="${red}✖${reset} atom";
+if [[ $1 ]]; then
+  TEXT+=" $1";
 else
-  atom $1
+  TEXT+=" .";
 fi
+echo $TEXT
+# if [ $# -lt 1 ]; then
+#   atom .
+# else
+#   atom $1
+# fi
