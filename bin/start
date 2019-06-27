@@ -10,9 +10,13 @@ if [ $# -gt 1 ]; then
   tput sgr0
 else
   if [ $# == 1 ]; then
-    echo "git flow feature start $1"
-    git flow feature start $1
-    git checkout ticket/$1
+    TEXT="${red}✖${reset} git feature";
+    if [[ $1 ]]; then
+      TEXT+=" $1";
+    else
+      TEXT+=" [ticket-id]";
+    fi
+    echo $TEXT
   else
     # Start server (and maybe grunt)
     if [ -f *.sln ]; then
