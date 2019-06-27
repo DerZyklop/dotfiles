@@ -62,3 +62,10 @@ export PS1;
 
 PS2="\[${yellow}\]→ \[${reset}\]";
 export PS2;
+
+# For managing multiple java versions on one machine. i need this for the switch from plano@1.10 to plano@1.11
+# Switch versions with
+#  jenv global 11.0
+#  java -version
+# https://stackoverflow.com/questions/26252591/mac-os-x-and-multiple-java-versions
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
