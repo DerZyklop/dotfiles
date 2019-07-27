@@ -32,6 +32,7 @@ HOMEBREW_FORMULAE=(
   "nmap"
   "wget"
   "blink1"
+  "prettyping"
 
   # For Wordpress
   # "homebrew/php/wp-cli"
