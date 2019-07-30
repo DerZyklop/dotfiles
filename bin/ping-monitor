@@ -1,0 +1,40 @@
+#!/bin/sh
+
+if [ $# -lt 1 ]; then
+  echo "USAGE:"
+  echo ""
+  echo "ping-monitor [time-interval] [ping-interval]"
+  echo ""
+  echo "[time-interval] is the time from one time output line to another"
+  echo "[ping-interval] is the time from one ping-interval to another"
+else
+  trap "echo EXIT;  exit" 0
+  trap "echo HUP;   exit" 1
+  trap "echo CTL-C; exit" 2
+  trap "echo QUIT;  exit" 3
+  trap "echo ERR;   exit" ERR
+
+  SHOW_TIME_INTERVAL_DURATION_IN_MINUTES=$1
+  PING_INTERVAL_DURATION_IN_MILLISECONDS=$2;
+
+  SHOW_TIME_INTERVAL_DURATION_IN_MMILLISECONDS=$(($SHOW_TIME_INTERVAL_DURATION_IN_MINUTES * 60 * 1000))
+
+  echo 'Will show Time every '$SHOW_TIME_INTERVAL_DURATION_IN_MINUTES' minutes'
+
+  COUNT=$(($SHOW_TIME_INTERVAL_DURATION_IN_MMILLISECONDS / $PING_INTERVAL_DURATION_IN_MILLISECONDS))
+
+  PING_INTERVAL_DURATION_IN_SECONDS=$(($PING_INTERVAL_DURATION_IN_MILLISECONDS / 1000))
+  if [[ $PING_INTERVAL_DURATION_IN_SECONDS -eq 0 ]]; then
+    PING_INTERVAL_DURATION_IN_SECONDS=0.$(($PING_INTERVAL_DURATION_IN_MILLISECONDS / 100))
+  fi
+
+  function doPrettyping() {
+    COLOR='\033[0;32m'
+    NC='\033[0m' # No Color
+    echo "\n${COLOR}$(date +"%I:%M")${NC}\n"
+    prettyping -c $COUNT 8.8.8.8 -i $PING_INTERVAL_DURATION_IN_SECONDS --nostatistics --nomulticolor --nolegend --inverted
+    doPrettyping
+  }
+
+  doPrettyping
+fi
