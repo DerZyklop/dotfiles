@@ -14,8 +14,17 @@
   statusHints = false
 
 # Erlaube git diffdie Erkennung einfacher Umbenennungen und Kopien:
+
 [diff]
   renames = copies
+  tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[merge]
+  tool = Kaleidoscope
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
 
 # Setzte no fast-forward als Standardeinstellung
 [branch "master"]
@@ -33,7 +42,8 @@
   s = !"f() { echo \"=>> git status -s ${GIT_PREFIX:-.}\"; cd ./${GIT_PREFIX:-.}; git status -s; }; f"
 
   # Show the diff between the latest commit and the current state
-  d = !"echo '=>> git diff'; git diff"
+  d = !"f() { if [ $# == 0 ]; then echo \"=>> git diff $(git rev-parse --show-toplevel)\"; git diff $(git rev-parse --show-toplevel); else echo \"=>> git diff ${GIT_PREFIX:-.}$1\"; git diff ${GIT_PREFIX:-.}$1; fi }; f"
+  # d = !"f() { if [ $# == 0 ]; then echo \"=>> git diff --all $(git rev-parse --show-toplevel)\"; git diff --all $(git rev-parse --show-toplevel); else echo \"=>> git diff ${GIT_PREFIX:-.}$1\"; git diff ${GIT_PREFIX:-.}$1; fi }; f"
   dc = diff --cached
 
   # `git di $number` shows the diff between the state `$number` revisions ago and the current state

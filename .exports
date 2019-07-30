@@ -76,3 +76,6 @@ export PROJECTDIRS=(
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications";
+
+export P4DIFF=/usr/local/bin/ksdiff
+export P4MERGE=/usr/local/bin/ksdiff
