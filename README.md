@@ -1,7 +1,7 @@
 # dotfiles
 
 These are my personal dotfiles. They are mostly inspired by [mathiasbynens's](https://github.com/mathiasbynens/dotfiles/) and [mischah's](https://github.com/mischah/dotfiles) dotfiles.
-
+ 
 I wouldn't recommend to use it as it is for your project. It's not documented.
 It's just a collection files and configurations, that i use.
 
