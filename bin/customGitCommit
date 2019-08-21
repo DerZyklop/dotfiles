@@ -1,0 +1,45 @@
+#!/bin/sh
+
+if [[ $# -lt 1 ]]; then
+	echo "${red}Please provide a commit message${reset}";
+	exit;
+fi
+
+array=(
+	"🐛 Bugfix"
+	"✨ Feature"
+	"💅 UI Beautification"
+	"📕 Story"
+	"🚑 Hotfix | Hack"
+	" - NOTHING - "
+	"🎨 Lint | Improving structure of code"
+	"📝 Docs"
+	"♻️ Refactoring"
+	"🚧 Work in progress"
+	"🔥 Removing code or files"
+	"⚡️ Performance"
+	"💬 Text changes"
+	"📦 npm dependencies"
+	"🗃 Database related stuff"
+	"🔧 Change scripts of config"
+	# NOTE: More of them here: gitmoji --list
+)
+function getEmojiByKey() {
+	if [[ $1 == '-' ]]; then
+		echo ''
+	else
+		echo $1
+	fi
+}
+echo "${orange}What kind of commit is this?${reset} `echo $'\n'`";
+PS3='Please enter your choice: '
+select opt in "${array[@]}"
+do
+	EMOJI=$(getEmojiByKey $opt)
+	echo $SELECTED_EMOJI
+	break
+done
+COMMIT_MESSAGE="$EMOJI $@"
+
+echo '=>> git commit -m "'$COMMIT_MESSAGE'"';
+git commit -m "$COMMIT_MESSAGE";
