@@ -3,6 +3,7 @@ export PATH=/usr/local/bin:$PATH
 
 # get my own commands
 export PATH=$DOTFILESDIR/bin:$PATH
+export PATH=~/S/prettyping:$PATH
 
 # needed for the kirby cli
 export PATH=~/.composer/vendor/bin:$PATH
