@@ -6,22 +6,21 @@ if [[ $# -lt 1 ]]; then
 fi
 
 array=(
-	"🐛 Bugfix"
-	"✨ Feature"
-	"💅 UI Beautification"
-	"📕 Story"
-	"🚑 Hotfix | Hack"
+	"🐛 bugfix | tests"
+	"💅 ui"
+	"✨ feature"
+	"📕 story"
 	" - NOTHING - "
-	"🎨 Lint | Improving structure of code"
-	"📝 Docs"
-	"♻️ Refactoring"
-	"🚧 Work in progress"
-	"🔥 Removing code or files"
-	"⚡️ Performance"
-	"💬 Text changes"
-	"📦 npm dependencies"
-	"🗃 Database related stuff"
-	"🔧 Change scripts of config"
+	"💬 text"
+	"📦 npm | node"
+	"🎨 lint | code-structure"
+	"📝 docs"
+	"♻️ refactoring"
+	"🚧 work in progress"
+	"🔥 removing code or files"
+	"⚡️ performance"
+	"🗃 database"
+	"🔧 scripts or config"
 	# NOTE: More of them here: gitmoji --list
 )
 function getEmojiByKey() {

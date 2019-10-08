@@ -79,3 +79,6 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications";
 
 export P4DIFF=/usr/local/bin/ksdiff
 export P4MERGE=/usr/local/bin/ksdiff
+export P4HOST=schichtplaner
+export P4CONFIG=~/p4config.txt
+p4 set P4CONFIG=~/p4config.txt
