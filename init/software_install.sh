@@ -25,6 +25,7 @@ software=(
     #"bittorrent-sync"
     # "sourcetree"
     "tower"
+    "kaleidoscope"
 
     # Browsers
     "google-chrome"

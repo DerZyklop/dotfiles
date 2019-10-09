@@ -40,6 +40,10 @@ HOMEBREW_FORMULAE=(
   # for Dr. Plano
   "postgresql"
   "maven"
+
+  # for the ksdiff-batch script
+  "pidof"
+  "procmail"
 )
 
 # for Dr. Plano
