@@ -65,6 +65,7 @@ software=(
     "moneymoney"
     "transmission"
     "bartender"
+    "fantastical"
     # add clear to brew cask
     # add clippings to brew cask
 
