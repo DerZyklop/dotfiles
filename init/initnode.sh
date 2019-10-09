@@ -19,7 +19,7 @@ node_packages=(
   npm-check-updates
   sass-lint
   typescript
-  angular-cli
+  @angular/cli
 )
 
 echo "·${purple} npm install -g ${node_packages[@]}${reset}"
