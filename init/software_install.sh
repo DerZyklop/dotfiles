@@ -64,6 +64,7 @@ software=(
     "sizeup"
     "moneymoney"
     "transmission"
+    "bartender"
     # add clear to brew cask
     # add clippings to brew cask
 
