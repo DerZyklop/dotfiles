@@ -8,7 +8,12 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # Prefer US English and use UTF-8
 #export LANG="en_US.UTF-8";
-#export LC_ALL="en_US.UTF-8";
+export LC_ALL="de_DE.UTF-8";
+export LC_NUMERIC="de_DE@currency=EUR";
+export LC_TIME="de_DE@currency=EUR";
+export LC_COLLATE="de_DE@currency=EUR";
+export LC_MONETARY="de_DE@currency=EUR";
+export LC_MESSAGES="de_DE@currency=EUR";
 
 # Always enable colored `grep` output
 export GREP_OPTIONS="--color=auto";
