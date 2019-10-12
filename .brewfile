@@ -6,6 +6,8 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 
+brew "mas"
+
 brew "bash-completion"
 brew "blink1"
 brew "cask"
