@@ -49,7 +49,7 @@ fi
 ### Initialize new computer
 
 for f in ./init/*.sh; do
-  echo "${green}Want to set preferences for $(basename $f .sh)?"
+  echo "${green}Want to set $(basename $f .sh)?"
   read -p "Should i? [yN] ${reset}" -n 1 -r
   echo "\nAllright!"
   if [[ $REPLY =~ ^[Yy]$ ]]; then

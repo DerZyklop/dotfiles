@@ -19,6 +19,7 @@
   renames = copies
   tool = Kaleidoscope
 [difftool "Kaleidoscope"]
+  # cmd = ksdiff-batch --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
   cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [merge]
   tool = Kaleidoscope
@@ -92,12 +93,6 @@
 [user]
 	name = DerZyklop
 	email = mail@der-zyklop.de
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [commit]
 	template = /Users/nils/.stCommitMsg
 [mergetool]
