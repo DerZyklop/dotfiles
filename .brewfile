@@ -34,6 +34,7 @@ cask "chromium"
 cask "cinch"
 mas "ColorSnapper2", id: 969418666
 mas "Things", id: 904280696
+mas "iA Writer", id: 775737590
 cask "daisydisk"
 cask "dash"
 # cask "default-folder-x@3"
