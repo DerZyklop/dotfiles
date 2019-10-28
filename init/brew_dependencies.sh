@@ -1,6 +1,9 @@
 #!/bin/sh
 
-echo "⬇${purple} ./init/commandline_interfaces.sh${reset}"
+## If brew gives a 'permission denied':
+## chown $(whoami):admin /Library/Caches/Homebrew/Formula/
+
+echo "⬇${purple} ./init/brew_dependencies.sh${reset}"
 
 ### Read the new dotfiles once
 for file in $DOTFILESDIR/.{exports,path,completions,bash_prompt,aliases,functions,extra,bashrc}; do
@@ -24,32 +27,11 @@ brew upgrade
 echo "·${purple} brew cleanup${reset}"
 brew cleanup
 
-HOMEBREW_FORMULAE=(
-  "bash-completion"
-  "git"
-  "node"
-  "vim --override-system-vi"
-  "nmap"
-  "wget"
-  "blink1"
-  "prettyping"
-
-  # For Wordpress
-  # "homebrew/php/wp-cli"
-
-  # for Dr. Plano
-  "postgresql"
-  "maven"
-)
-
 # for Dr. Plano
 brew cask install java8
 
-for i in ${!HOMEBREW_FORMULAE[*]}; do
-  tmp="${HOMEBREW_FORMULAE[$i]}"
-  echo "·${purple} brew install $tmp${reset}"
-  $(brew install $tmp)
-done
+echo "·${purple} brew bundle install --file=~/.dotfiles/.brewfile${reset}"
+brew bundle install --file=~/.dotfiles/.brewfile
 
 sudo easy_install Pygments
 echo '-' > ~/.bash_history

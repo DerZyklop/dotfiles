@@ -49,7 +49,7 @@ fi
 ### Initialize new computer
 
 for f in ./init/*.sh; do
-  echo "${green}Want to set preferences for $(basename $f .sh)?"
+  echo "${green}Want to set $(basename $f .sh)?"
   read -p "Should i? [yN] ${reset}" -n 1 -r
   echo "\nAllright!"
   if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -108,6 +108,7 @@ fi
 echo "${purple}Your todos now:${reset}"
 #echo "${purple}-${reset} Set up Bittorrent Sync \`o ~/Applications/BitTorrent\ Sync.app\`"
 echo "${purple}-${reset} run \`brew cask info little-snitch\`"
+echo "${purple}-${reset} In order to restore a backup, open Little Snitch Configuration and choose Rules > Restore from Backup…"
 echo "${purple}-${reset} run \`brew cask info default-folder-x\`"
 echo "${purple}-${reset} Connect 1Password to your master-file.${reset}"
 echo "${purple}-${reset} Set up Dropbox with \`open -a Dropbox\`${reset}"

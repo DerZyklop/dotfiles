@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# info: http://caskroom.io/
+# info: https://github.com/Homebrew/homebrew-cask-fonts
 
 echo "⬇${purple} ./init/fonts.sh${reset}"
-brew tap caskroom/fonts
+brew tap homebrew/cask-fonts
 echo "·${purple} brew tap caskroom/fonts${reset}"
 
 FONTS=(

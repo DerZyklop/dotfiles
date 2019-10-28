@@ -47,6 +47,13 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo ""
   echo "${green}> brew bundle cleanup --file=~/.dotfiles/.brewfile${reset}"
   brew bundle cleanup --file=~/.dotfiles/.brewfile
+
+  read -p "${orange}brew bundle cleanup --force?${reset} [${green}y${reset}/${red}N${reset}] " -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo ""
+    echo "${green}> brew bundle cleanup --force --file=~/.dotfiles/.brewfile${reset}"
+    brew bundle cleanup --force --file=~/.dotfiles/.brewfile
+  fi
 fi
 
 read -p "${orange}npm doctor?${reset} [${green}y${reset}/${red}N${reset}] " -n 1 -r

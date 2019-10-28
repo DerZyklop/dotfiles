@@ -8,12 +8,12 @@ else
   if [ $# -lt 1 ]; then
     echo "Push new commits"
   else
-    echo "commit -m $1"
+    echo "git commit -m $1"
     git commit -m $1
   fi
   BRANCH=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
   echo "git push --set-upstream origin ${green}$BRANCH${reset}"
   git push --set-upstream origin $BRANCH
-  echo "Push all tags"
+  echo "git push --tags"
   git push --tags
 fi
