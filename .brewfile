@@ -11,7 +11,6 @@ brew "mas"
 brew "bash-completion"
 brew "blink1"
 brew "cask"
-brew "git"
 
 brew "git-flow-avh"
 brew "maven"
