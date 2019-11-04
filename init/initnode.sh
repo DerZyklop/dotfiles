@@ -6,6 +6,12 @@ if ! commandExists "npm"; then
   brew install node
 fi
 
+read -p "${green}Should i install nvm? [yN] ${reset}" -n 1 -r
+echo "\nAllright!"
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  echo "·${purple} curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash $f${reset}"
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+fi
 
 echo "·${purple} npm update -g npm${reset}"
 npm update -g npm
