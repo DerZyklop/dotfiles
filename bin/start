@@ -25,6 +25,7 @@ else
       echo "Improve your project. Write a npm start command."
       sh runserver.sh
     elif [ -f package.json ]; then
+      echo "${green}npm start${reset}"
       npm start
     elif [ -f boilerplate.json ]; then
       echo "Improve your project. Write a npm start command."

@@ -37,8 +37,6 @@ for file in $DOTFILESDIR/.{exports,path,completions,bash_prompt,aliases,function
   fi
 done;
 
-
-
 read -p "${green}Want to have bash as your default shell?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then

@@ -29,6 +29,7 @@ brew cleanup
 
 # for Dr. Plano
 brew cask install java8
+brew cask install java11
 
 echo "·${purple} brew bundle install --file=~/.dotfiles/.brewfile${reset}"
 brew bundle install --file=~/.dotfiles/.brewfile
