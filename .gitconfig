@@ -91,6 +91,9 @@
   # Get lines with 'TODO' in comitted files.
   sta = "stash"
 
+  # Get lines with 'TODO' in comitted files.
+  res = "reset"
+
 [credential]
 	helper = osxkeychain
 [user]
