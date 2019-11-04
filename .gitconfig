@@ -88,6 +88,9 @@
   # Get lines with 'TODO' in comitted files.
   todo = "grep -E '# TODO|// TODO'"
 
+  # Get lines with 'TODO' in comitted files.
+  sta = "stash"
+
 [credential]
 	helper = osxkeychain
 [user]
