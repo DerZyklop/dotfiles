@@ -20,7 +20,7 @@ brew "node@8"
 brew "pidof"
 brew "postgresql", restart_service: true
 brew "procmail"
-
+brew "valentina-studio"
 
 brew "wget"
 
