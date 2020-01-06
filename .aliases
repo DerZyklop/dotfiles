@@ -88,3 +88,6 @@ alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup
 
 # Hard to remember pbcopy
 alias copy_content_of_file="pbcopy <"
+
+# My prefered way to use ntl
+alias ntl="npx ntl -A"
