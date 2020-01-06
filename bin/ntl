@@ -1,0 +1,2 @@
+echo "$(which ntl) : npx ntl -A"
+npx ntl -A
