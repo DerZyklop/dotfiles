@@ -64,7 +64,7 @@
   a = !"f() { if [ $# == 0 ]; then echo '=>> git add --all'; git add --all; else echo \"=>> git add ${GIT_PREFIX:-.}$1\"; git add ${GIT_PREFIX:-.}$1; fi }; f"
 
   # Commit changes with message
-  c = !"f() { customGitCommit $1; }; f"
+  c = !"f() { . customGitCommit $1; }; f"
 
   # View abbreviated SHA, description, and history graph of the latest 20 commits
   l = log --pretty=format:"%C(Yellow)%h%C(reset)|%C(cyan)%ad%C(reset)|%C(bold)%C(green)%an:%C(reset)%s%C(reset)" --date=short --graph

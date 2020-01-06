@@ -5,24 +5,28 @@ if [[ $# -lt 1 ]]; then
 	exit;
 fi
 
-array=(
+# If environment var GIT_ICON_ARRAY is not set
+# Get fallback
+if [ -z "$GIT_ICON_ARRAY" ];
+then GIT_ICON_ARRAY=(
 	"🐛 bugfix | tests"
 	"💅 ui"
 	"✨ feature"
 	"📕 story"
 	" - NOTHING - "
 	"💬 text"
-	"📦 npm | node"
 	"🎨 lint | code-structure"
-	"📝 docs"
+	"📝 docs | readme"
 	"♻️ refactoring"
 	"🚧 work in progress"
 	"🔥 removing code or files"
 	"⚡️ performance"
-	"🗃 database"
+	"🗃 database | api"
+	"📦 npm | node"
 	"🔧 scripts or config"
 	# NOTE: More of them here: gitmoji --list
-)
+); fi
+
 function getEmojiByKey() {
 	if [[ $1 == '-' ]]; then
 		echo ''
@@ -32,7 +36,7 @@ function getEmojiByKey() {
 }
 echo "${orange}What kind of commit is this?${reset} `echo $'\n'`";
 PS3='Please enter your choice: '
-select opt in "${array[@]}"
+select opt in "${GIT_ICON_ARRAY[@]}"
 do
 	EMOJI=$(getEmojiByKey $opt)
 	echo $SELECTED_EMOJI
