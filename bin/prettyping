@@ -1,43 +1,16 @@
 #!/usr/bin/env bash
 #
-# Written by Denilson Figueiredo de Sá <denilsonsa@gmail.com>
-# MIT license
-#
-# Requirements:
-# * bash (tested on 4.20, should work on older versions too)
-# * awk (works with GNU awk, nawk, busybox awk, mawk)
-# * ping (from iputils)
-#
-# More information:
-# http://denilsonsa.github.io/prettyping/
-# https://github.com/denilsonsa/prettyping
-# http://www.reddit.com/r/linux/comments/1op98a/prettypingsh_a_better_ui_for_watching_ping/
-# Third-party demonstration video: https://www.youtube.com/watch?v=ziEMY1BcikM
 
-# TODO: Adjust how many items in the legend are printed based on the terminal width.
-#
-# TODO: Detect the following kinds of message and avoid printing it repeatedly.
-# From 192.168.1.11: icmp_seq=4 Destination Host Unreachable
-# Request timeout for icmp_seq 378
-#
-# TODO: Handle when a single message is spread over multiple lines. Specially,
-# like in this case: https://bitbucket.org/denilsonsa/small_scripts/issue/5
-#
-# TODO: Print the destination (also) at the bottom bar. Useful after leaving
-# the script running for quite some time.
-#
-# TODO: Print the destination as escape codes to xterm title.
-#
-# TODO: Print the current time in the beginning of each line.
-#
-# TODO: Implement audible ping.
-#
-# TODO: Autodetect the width of printf numbers, so they will always line up correctly.
-#
-# TODO: Test the behavior of this script upon receiving out-of-order packets, like these:
-#   http://www.blug.linux.no/rfc1149/pinglogg.txt
-#
-# TODO? How will prettyping behave if it receives a duplicate response?
+
+
+
+
+# NOTE: THIS IS A TEMPORARY VERSION OF THE prettyping COMMAND. DONT ADD IT TO ANY prettyping REPO ON GITHUB.
+
+
+
+
+
 
 print_help() {
 	cat << EOF
@@ -83,6 +56,7 @@ parse_arguments() {
 	USE_UNICODE=1
 	USE_LEGEND=1
 	INVERTED_OUTPUT=0
+	USE_STATISTICS=1
 
 	if [ -t 1 ]; then
 		IS_TERMINAL=1
@@ -147,6 +121,9 @@ parse_arguments() {
 			-legend       | --legend       ) USE_LEGEND=1 ;;
 			-nolegend     | --nolegend     ) USE_LEGEND=0 ;;
 			-inverted     | --inverted     ) INVERTED_OUTPUT=1 ;;
+			-statistics   | --statistics   ) USE_STATISTICS=1 ;;
+			-nostatistics | --nostatistics ) USE_STATISTICS=0 ;;
+
 			-terminal     | --terminal     ) IS_TERMINAL=1 ;;
 			-noterminal   | --noterminal   ) IS_TERMINAL=0 ;;
 
@@ -500,6 +477,8 @@ function print_missing_response(rtt) {
 
 # All arguments are just local variables.
 function print_overall(percentage_lost, avg_rtt) {
+	if ( '"!${USE_STATISTICS}"') return;
+
 	# Handling division by zero.
 	# Note that mawk does not consider division by zero an error, while all
 	# other awk implementations abort in such case.
@@ -530,6 +509,8 @@ function print_overall(percentage_lost, avg_rtt) {
 
 # All arguments are just local variables.
 function print_last_n(i, percentage_lost, sum, min, avg, max, diffs) {
+	if ( '"!${USE_STATISTICS}"') return;
+
 	# Calculate and print the lost packets statistics
 	sum = 0
 	for ( i=0 ; i<lastn_lost["size"] ; i++ ) {
@@ -569,6 +550,7 @@ function print_last_n(i, percentage_lost, sum, min, avg, max, diffs) {
 }
 
 function print_statistics_bar() {
+	if ( '"!${USE_STATISTICS}"') return;
 	if ( '"${IS_TERMINAL}"' ) {
 		printf( ESC_SAVEPOS ESC_DEFAULT )
 
@@ -587,6 +569,7 @@ function print_statistics_bar() {
 }
 
 function print_statistics_bar_if_terminal() {
+	if ( '"!${USE_STATISTICS}"') return;
 	if ( '"${IS_TERMINAL}"' ) {
 		print_statistics_bar()
 	}
@@ -837,7 +820,7 @@ BEGIN {
 		# Do nothing on blank lines.
 	} else if ( $0 == "error shutting down ssl" ) {
 		# Common error message when using httping, ignore it.
-	} else if ( $0 ~ /^Request timeout for icmp_seq [0-9]+/ ) {
+	} else if ($0 ~ /^ping: sendto: No route to host/ || $0 ~ /^Request timeout for icmp_seq [0-9]+/) {
 		# Reply timeout is printed on Mac OS X.
 
 		if ( other_line_times >= 2 ) {
