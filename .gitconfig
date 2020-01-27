@@ -30,8 +30,10 @@
 # Setzte no fast-forward als Standardeinstellung
 [branch "master"]
   mergeoptions = "--no-ff"
-# [branch "dev"]
-#   mergeoptions = "--no-ff"
+[branch "perforce"]
+  mergeoptions = "--no-ff"
+[branch "dev"]
+  mergeoptions = "--ff"
 # [branch "ticket/PLANO-5510"]
 #   mergeoptions = "--no-ff"
 
