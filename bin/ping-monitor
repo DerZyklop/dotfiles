@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ $# -lt 1 ]; then
+if [[ $1 =~ ^-h|--help ]]; then
   echo "USAGE:"
   echo ""
   echo "ping-monitor [time-interval] [ping-interval] [ip]"
@@ -16,6 +16,9 @@ else
 
   SHOW_TIME_INTERVAL_DURATION_IN_MINUTES=$1
   PING_INTERVAL_DURATION_IN_MILLISECONDS=$2;
+  if [ -z ${SHOW_TIME_INTERVAL_DURATION_IN_MINUTES} ]; then SHOW_TIME_INTERVAL_DURATION_IN_MINUTES=30; fi;
+  if [ -z ${PING_INTERVAL_DURATION_IN_MILLISECONDS} ]; then PING_INTERVAL_DURATION_IN_MILLISECONDS=200; fi;
+
   IP=$3;
   if [ -z ${IP} ]; then IP='8.8.8.8'; fi;
 
