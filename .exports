@@ -106,3 +106,8 @@ export GIT_ICON_ARRAY=(
 	"🔧 scripts or config"
 	# NOTE: More of them here: gitmoji --list
 )
+
+export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/postgresql@11/lib"
+export CPPFLAGS="-I/usr/local/opt/postgresql@11/include"
+export PKG_CONFIG_PATH="/usr/local/opt/postgresql@11/lib/pkgconfig"

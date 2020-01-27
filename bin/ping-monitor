@@ -3,7 +3,7 @@
 if [ $# -lt 1 ]; then
   echo "USAGE:"
   echo ""
-  echo "ping-monitor [time-interval] [ping-interval]"
+  echo "ping-monitor [time-interval] [ping-interval] [ip]"
   echo ""
   echo "[time-interval] is the time from one time output line to another"
   echo "[ping-interval] is the time from one ping-interval to another"
@@ -16,6 +16,8 @@ else
 
   SHOW_TIME_INTERVAL_DURATION_IN_MINUTES=$1
   PING_INTERVAL_DURATION_IN_MILLISECONDS=$2;
+  IP=$3;
+  if [ -z ${IP} ]; then IP='8.8.8.8'; fi;
 
   SHOW_TIME_INTERVAL_DURATION_IN_MMILLISECONDS=$(($SHOW_TIME_INTERVAL_DURATION_IN_MINUTES * 60 * 1000))
 
@@ -32,7 +34,7 @@ else
     COLOR='\033[0;32m'
     NC='\033[0m' # No Color
     echo "\n${COLOR}$(date +"%I:%M")${NC}\n"
-    prettyping -c $COUNT 8.8.8.8 -i $PING_INTERVAL_DURATION_IN_SECONDS --nostatistics --nomulticolor --nolegend --inverted
+    prettyping -c $COUNT $IP -i $PING_INTERVAL_DURATION_IN_SECONDS --nostatistics --nomulticolor --nolegend --inverted
     doPrettyping
   }
 
