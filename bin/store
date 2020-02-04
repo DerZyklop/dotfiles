@@ -9,7 +9,7 @@ if [ $# -lt 2 ]; then
 else
   var_name=$2
 
-  if [[ "$1" == 'set' ]]; then
+  if [ "$1" = 'set' ]; then
     # and save it for next time
     value=$3
     echo "${value}" > /tmp/${var_name}.dat

@@ -35,11 +35,11 @@ getSpeedForState() {
   esac
 }
 
-if [ "$1" == 'off' ]; then
+if [ "$1" = 'off' ]; then
   echo "Turn LEDs off"
   echo "Note: This blink1 state does not get saved for the command »blink1 previous«."
   blink1-tool -q --off --id 0,1,2,3
-elif [ "$1" == 'previous' ]; then
+elif [ "$1" = 'previous' ]; then
   PRIO=$(store get PRIO);
   STATE=$(store get STATE);
 elif [ $# -lt 2 ]; then

@@ -1,16 +1,16 @@
 # sh
 
+blink1 off;
 while [ true ]
 do
   ping -c 1 8.8.8.8;
   if [ $? -eq 0 ];
   then
     echo 'ok';
-    blink1 off;
     blink1 2 success;
   else
     echo '#### not ok ####';
-    blink1 1 danger;
+    blink1 2 danger;
   fi
   sleep 5;
 done

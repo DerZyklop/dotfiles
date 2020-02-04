@@ -14,6 +14,7 @@ then GIT_ICON_ARRAY=(
 	"✨ feature"
 	"📕 story"
 	" - NOTHING - "
+	"🌐 i18n | l10n"
 	"💬 text"
 	"🎨 lint | code-structure"
 	"📝 docs | readme"
