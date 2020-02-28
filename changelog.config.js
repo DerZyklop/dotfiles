@@ -3,7 +3,8 @@ module.exports = {
   "list": [
     "fix",
     "improve",
-    "feat"
+    "feat",
+    "other",
   ],
   "maxMessageLength": 64,
   "minMessageLength": 3,
@@ -35,6 +36,11 @@ module.exports = {
       "description": "A new feature",
       "emoji": "✨",
       "value": "feat"
+    },
+    "other": {
+      "description": "Other",
+      "emoji": "…",
+      "value": "other"
     },
   }
 };
