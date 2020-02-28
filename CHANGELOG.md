@@ -1,3 +1,10 @@
+## <small>1.2.2 (2020-02-28)</small>
+
+* feat: changed changelog style ([f90825e](https://github.com/DerZyklop/dotfiles/commit/f90825e))
+* chore(changelog): changed style ([b4a0e78](https://github.com/DerZyklop/dotfiles/commit/b4a0e78))
+
+
+
 ## [1.2.1](https://github.com/DerZyklop/dotfiles/compare/v1.2.0...v1.2.1) (2020-02-28)
 
 
