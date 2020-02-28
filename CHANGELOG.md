@@ -1,3 +1,10 @@
+## 1.5.0 (2020-02-28)
+
+* feat(config): ✨ new type "other" ([a4cf840](https://github.com/DerZyklop/dotfiles/commit/a4cf840))
+* other(config): … changed changelog style again ([6040f04](https://github.com/DerZyklop/dotfiles/commit/6040f04))
+
+
+
 ## 1.4.0 (2020-02-28)
 
 * 1.4.0 ([f0305ac](https://github.com/DerZyklop/dotfiles/commit/f0305ac))
