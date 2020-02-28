@@ -1,3 +1,12 @@
+# [1.3.0](https://github.com/DerZyklop/dotfiles/compare/v1.2.5...v1.3.0) (2020-02-28)
+
+
+### Features
+
+* ✨ added git-cz with emojis ([c2ae2ec](https://github.com/DerZyklop/dotfiles/commit/c2ae2ecec07f5c649fd3c4a1f224c09ca50b13d1))
+
+
+
 ## [1.2.5](https://github.com/DerZyklop/dotfiles/compare/v1.2.4...v1.2.5) (2020-02-28)
 
 
