@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/DerZyklop/dotfiles/compare/v1.5.0...v1.6.0) (2020-02-28)
+
+
+### Features
+
+* **config:** back to cz-conventional-changelog ([2fbfbff](https://github.com/DerZyklop/dotfiles/commit/2fbfbffb53556be1199709338f1509ae8913e092))
+
+
+
 # [1.5.0](https://github.com/DerZyklop/dotfiles/compare/v1.4.0...v1.5.0) (2020-02-28)
 
 
