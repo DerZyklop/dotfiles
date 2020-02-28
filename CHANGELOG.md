@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/DerZyklop/dotfiles/compare/v1.3.0...v1.4.0) (2020-02-28)
+
+
+### Features
+
+* ✨ no default scopes ([7592dce](https://github.com/DerZyklop/dotfiles/commit/7592dce045cfacef8656472a9cd3e078be316442))
+
+
+
 # [1.3.0](https://github.com/DerZyklop/dotfiles/compare/v1.2.5...v1.3.0) (2020-02-28)
 
 
