@@ -8,6 +8,7 @@
       "version": "Set a new version number (incl. package.json & changelog.md)"
     }
   },
+
   "scripts": {
     "start": "npx ntl -A --descriptions-only",
     "test": "echo \"Error: no test specified\" && exit 1",
