@@ -1,3 +1,10 @@
+## <small>1.2.1 (2020-02-28)</small>
+
+* docs(package.json): improved description ([207d6f3](https://github.com/DerZyklop/dotfiles/commit/207d6f3))
+* docs(package.json): improvved version script ([09646ab](https://github.com/DerZyklop/dotfiles/commit/09646ab))
+
+
+
 # [1.2.0](https://github.com/DerZyklop/dotfiles/compare/v1.1.0...v1.2.0) (2020-02-28)
 
 
