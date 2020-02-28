@@ -1,3 +1,12 @@
+## [1.2.4](https://github.com/DerZyklop/dotfiles/compare/v1.2.3...v1.2.4) (2020-02-28)
+
+
+### Bug Fixes
+
+* **changelog:** ok.. finally i decided to use the angular style for changelogs ([5a7b7f9](https://github.com/DerZyklop/dotfiles/commit/5a7b7f90dec54952be3cf6eadb06be8fa8d6a18a))
+
+
+
 ## [1.2.3](https://github.com/DerZyklop/dotfiles/compare/v1.2.2...v1.2.3) (2020-02-28)
 
 
