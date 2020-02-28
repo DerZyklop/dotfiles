@@ -11,7 +11,7 @@
   "scripts": {
     "start": "npx ntl -A --descriptions-only",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "version": "conventional-changelog -i CHANGELOG.md -s && git add CHANGELOG.md"
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
@@ -26,20 +26,19 @@
   "devDependencies": {
     "commitizen": "4.0.3",
     "cz-conventional-changelog": "3.1.0",
-    "cz-conventional-changelog-emoji": "0.1.0",
-    "cz-emoji": "1.2.1",
     "git-cz": "4.3.1",
     "husky": "4.2.3",
     "ntl": "5.0.0"
   },
   "config": {
     "commitizen": {
-      "path": "git-cz"
+      "path": "cz-conventional-changelog"
     }
   },
   "husky": {
     "hooks": {
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
-  }
+  },
+  "dependencies": {}
 }
