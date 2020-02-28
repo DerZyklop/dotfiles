@@ -2,7 +2,7 @@ module.exports = {
   "disableEmoji": false,
   "list": [
     "fix",
-    "improvement",
+    "improve",
     "feat"
   ],
   "maxMessageLength": 64,
@@ -17,6 +17,7 @@ module.exports = {
     "lerna"
   ],
   "scopes": [
+    'config',
     'other',
   ],
   "types": {
@@ -25,7 +26,7 @@ module.exports = {
       "emoji": "🐛",
       "value": "fix"
     },
-    "improvement": {
+    "improve": {
       "description": "A improvement",
       "emoji": "💅",
       "value": "improve"
