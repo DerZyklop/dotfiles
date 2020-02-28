@@ -25,7 +25,6 @@ module.exports = {
     "issues",
     "lerna"
   ],
-  "scopes": [],
   "types": {
     "feat": {
       "description": "A new feature",
