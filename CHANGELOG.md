@@ -1,3 +1,12 @@
+## [1.2.5](https://github.com/DerZyklop/dotfiles/compare/v1.2.4...v1.2.5) (2020-02-28)
+
+
+### Features
+
+* **package.json:** added conventional-commit-types-emoji ([36ba58a](https://github.com/DerZyklop/dotfiles/commit/36ba58ab81a645120868fe5b3038701a328740a9))
+
+
+
 ## [1.2.4](https://github.com/DerZyklop/dotfiles/compare/v1.2.3...v1.2.4) (2020-02-28)
 
 
