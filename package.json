@@ -5,7 +5,7 @@
   "main": "index.js",
   "ntl": {
     "descriptions": {
-      "version": "Set a new version number (incl. package.json & changelog.md && git tag)"
+      "version": "Set a new version number (incl. package.json & changelog.md)"
     }
   },
   "scripts": {
