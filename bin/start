@@ -22,11 +22,11 @@ else
     if [ -f *.sln ]; then
       open *.sln
     elif [ -f runserver.sh ]; then
-      echo "Improve your project. Write a npm start command."
+      echo "${danger}Improve your project. Write a npm start command.${reset}"
       sh runserver.sh
     elif [ -f package.json ]; then
-      echo "${green}npm start${reset}"
-      npm start
+      echo "❌ npm start"
+      # npm start
     elif [ -f boilerplate.json ]; then
       echo "Improve your project. Write a npm start command."
       npm install
