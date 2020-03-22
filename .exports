@@ -59,6 +59,11 @@ else
   export yellow="\e[1;33m";
 fi;
 
+export danger="${red}";
+export warn="${yellow}";
+export info="${cyan}";
+export success="${green}";
+
 # Theese are needed to install node from brew according to this: http://madebyhoundstooth.com/blog/install-node-with-homebrew-on-os-x/
 #export NODE_PATH="/usr/local/lib/node"
 # Local node path if exists
