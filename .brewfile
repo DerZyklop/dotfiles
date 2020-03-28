@@ -25,7 +25,7 @@ brew "jenv"
 
 brew "wget"
 
-cask "1password"
+cask "1password6"
 cask "appcleaner"
 cask "atom"
 cask "bartender"
