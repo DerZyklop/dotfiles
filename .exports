@@ -91,7 +91,7 @@ export P4DIFF=/usr/local/bin/ksdiff
 export P4MERGE=/usr/local/bin/ksdiff
 export P4CONFIG=~/p4config.txt
 
-export JAVA_HOME=$(/Library/Java/JavaVirtualMachines/jdk-11.0.4.jdk/Contents/Home)
+# export JAVA_HOME=$(/Library/Java/JavaVirtualMachines/openjdk-11.0.2.jdk/Contents/Home)
 
 export GIT_ICON_ARRAY=(
 	"🐛 bugfix | tests"
