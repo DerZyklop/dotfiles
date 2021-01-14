@@ -30,7 +30,7 @@ function fork_batchmaster()
 
     function cleanup() {
       if [ ! -z "$(pidof Kaleidoscope)" ]; then
-        ksdiff --mark-changeset-as-closed "$session"
+        ksdiff-original --mark-changeset-as-closed "$session"
       fi
       exec 3>&-
       rm -f "$fifo" "$pidfile"
@@ -39,7 +39,7 @@ function fork_batchmaster()
 
     while read -r -t $TIMEOUT -u 3 line1; do
       if read -r -t $TIMEOUT -u 3 line2; then
-        ksdiff --partial-changeset --label "$LABEL" --UUID "$session" "$line1" "$line2"
+        ksdiff-original --partial-changeset --label "$LABEL" --UUID "$session" "$line1" "$line2"
       else
         break
       fi
