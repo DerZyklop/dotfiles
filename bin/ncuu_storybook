@@ -1,0 +1,31 @@
+#!/bin/sh
+
+ARRAY=(
+  "@storybook/addon-actions"
+  "@storybook/addon-knobs"
+  "@storybook/addon-links"
+  "@storybook/addon-notes"
+  "@storybook/addon-viewport"
+  "@storybook/addons"
+  "@storybook/angular"
+  "@storybook/cli"
+  "@storybook/addon-docs"
+  "@storybook/addon-info"
+)
+
+COMMIT_DESC='';
+
+for i in "${ARRAY[@]}"
+do :
+  COMMIT_DESC=$(ncu -u $i --semverLevel=minor | grep "$i" | grep -o '[0-9].*');
+  echo $i
+  echo $COMMIT_DESC
+done
+
+if [[ $COMMIT_DESC -eq '' ]]; then
+  echo "commit message broken: »$($COMMIT_DESC)«"
+  exit 1
+fi
+
+git a
+git commit -m "📦 ⬆ @storybook/*" -m "Changed Verstion number of $1: $COMMIT_DESC"
