@@ -12,6 +12,7 @@ then GIT_ICON_ARRAY=(
 	"🐛 bugfix | tests"
 	"💅 ui"
 	"✨ feature"
+	"🧹 cleanup"
 	"📕 story"
 	" - NOTHING - "
 	"🌐 i18n | l10n"
@@ -35,6 +36,18 @@ function getEmojiByKey() {
 		echo $1
 	fi
 }
+
+echo "${orange}Ticket NR? (default: NO_JIRA_ISSUE)${reset} `echo $'\n'`";
+PS3='Please enter your choice: '
+read TICKET_NR
+echo
+
+if [[ $TICKET_NR ]]; then
+  TICKET_NR="$TICKET_NR";
+else
+  TICKET_NR="NO_JIRA_ISSUE";
+fi
+
 echo "${orange}What kind of commit is this?${reset} `echo $'\n'`";
 PS3='Please enter your choice: '
 select opt in "${GIT_ICON_ARRAY[@]}"
@@ -43,7 +56,14 @@ do
 	echo $SELECTED_EMOJI
 	break
 done
-COMMIT_MESSAGE="$EMOJI $@"
+
+read -p "${orange}Skip CI?${reset} [${green}y${reset}/${red}N${reset}] " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	SKIP_CI='[skip ci]'
+	echo ''
+fi
+
+COMMIT_MESSAGE="$TICKET_NR $EMOJI $@ $SKIP_CI"
 
 echo '=>> git commit -m "'$COMMIT_MESSAGE'"';
 git commit -m "$COMMIT_MESSAGE";
