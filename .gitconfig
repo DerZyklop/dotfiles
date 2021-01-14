@@ -95,6 +95,8 @@
 
   # Get lines with 'TODO' in comitted files.
   res = "reset"
+	exec = "!exec "
+	root = rev-parse --show-toplevel
 
 [credential]
 	helper = osxkeychain
