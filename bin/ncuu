@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo 'ncu -u --semverLevel="minor" '$1' | grep "'$1'" | grep -o "[0-9].*"'
+COMMIT_DESC=$(ncu -u $1 | grep "$1" | grep -o '[0-9].*');
+if [[ $COMMIT_DESC -eq '' ]]; then
+  echo "commit message broken: »$($COMMIT_DESC)«"
+  exit 1
+fi
+git a
+git commit -m "📦 ⬆ $1" -m "Changed Verstion number of $1: $COMMIT_DESC"
