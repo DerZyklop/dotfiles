@@ -33,3 +33,29 @@ function p() {
     fi
   fi
 }
+
+update_terminal_cwd() {
+  # Identify the directory using a "file:" scheme URL,
+  # including the host name to disambiguate local vs.
+  # remote connections. Percent-escape spaces.
+  local SEARCH=' '
+  local REPLACE='%20'
+  local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
+  printf '\e]7;%s\a' "$PWD_URL"
+}
+
+shell_session_history_check () {
+  if [ ${SHELL_SESSION_DID_HISTORY_CHECK:-0} -eq 0 ]; then
+    SHELL_SESSION_DID_HISTORY_CHECK=1;
+    if shell_session_history_allowed; then
+      shell_session_history_enable;
+    fi;
+    if [ "$PROMPT_COMMAND" = "shell_session_history_check" ]; then
+      unset PROMPT_COMMAND;
+    else
+      if [[ $PROMPT_COMMAND =~ (.*)(; *shell_session_history_check *| *shell_session_history_check *; *)(.*) ]]; then
+        PROMPT_COMMAND="${BASH_REMATCH[1]}${BASH_REMATCH[3]}";
+      fi;
+    fi;
+  fi
+}
