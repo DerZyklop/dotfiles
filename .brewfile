@@ -13,13 +13,13 @@ brew "bash-completion"
 brew "blink1"
 brew "cask"
 
-brew "git-flow-avh"
-brew "maven"
+# brew "git-flow-avh"
+# brew "maven"
 # brew "nmap"
-brew "node"
-brew "node@8"
+# brew "node"
+# brew "node@8"
 brew "pidof"
-brew "postgresql", restart_service: true
+# brew "postgresql", restart_service: true
 brew "procmail"
 brew "valentina-studio"
 brew "jenv"
