@@ -10,7 +10,6 @@ ARRAY=(
   "@storybook/angular"
   "@storybook/cli"
   "@storybook/addon-docs"
-  "@storybook/addon-info"
 )
 
 COMMIT_DESC='';
@@ -24,6 +23,9 @@ done
 
 if [[ $COMMIT_DESC -eq '' ]]; then
   echo "commit message broken: »$($COMMIT_DESC)«"
+  echo "commit message would be:"
+  echo "📦 ⬆ @storybook/*"
+  echo "Changed Verstion number of $1: $COMMIT_DESC"
   exit 1
 fi
 
