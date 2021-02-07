@@ -70,7 +70,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   npm install -g npm
 fi
 
-read -p "${orange}ncu -g?${reset} [${green}y${reset}/${red}N${reset}] " -n 1 -r
+read -p "${orange}Check global installed npm packages / ncu -g?${reset} [${green}y${reset}/${red}N${reset}] " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo ""
   echo "${green}> ncu -g${reset}"
