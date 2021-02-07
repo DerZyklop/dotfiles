@@ -11,9 +11,6 @@ export PATH=~/.composer/vendor/bin:$PATH
 # needed for binaries installed via npm
 # export PATH="/usr/local/Cellar/node/8.6.0/bin:$PATH"
 
-# Dont use the above node path if nativescript with dr planos ios app is installed
-export PATH="/Users/nils/.nvm/versions/node/v10.16.0/bin:$PATH"
-
 # needed for nativescript sidekick / dr. plano
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
