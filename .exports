@@ -117,3 +117,9 @@ export PKG_CONFIG_PATH="/usr/local/opt/postgresql@12/lib/pkgconfig"
 #export NG_BUILD_PROFILING=1
 
 export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+
+# NOTE: Want a newer java version? Try something like this:
+# brew cask install adoptopenjdk/openjdk/adoptopenjdk11
+
+export PATH="/Users/$(whoami)/.jenv/shims:$PATH"
+# export JAVA_HOME=$(/Library/Java/JavaVirtualMachines/openjdk-11.0.2.jdk/Contents/Home)
