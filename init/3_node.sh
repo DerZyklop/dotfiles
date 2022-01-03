@@ -11,6 +11,10 @@ echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo "·${purple} curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash $f${reset}"
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+
+  # Load nvm to the current shell to be able to use it in following init.sh code
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 fi
 
 echo "·${purple} npm update -g npm${reset}"

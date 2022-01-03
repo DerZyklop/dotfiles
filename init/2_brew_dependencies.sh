@@ -15,7 +15,7 @@ done;
 
 if ! commandExists "brew"; then
   echo "·${purple} ruby -e \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"${reset}"
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # Make sure we’re using the latest Homebrew.
@@ -28,8 +28,9 @@ echo "·${purple} brew cleanup${reset}"
 brew cleanup
 
 # for Dr. Plano
-brew cask install java8
-brew cask install java11
+brew install --cask homebrew/cask-versions/adoptopenjdk8
+brew tap adoptopenjdk/openjdk
+brew install --cask adoptopenjdk11
 
 echo "·${purple} brew bundle install --file=~/.dotfiles/.brewfile${reset}"
 brew bundle install --file=~/.dotfiles/.brewfile

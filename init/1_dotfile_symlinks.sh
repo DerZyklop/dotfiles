@@ -26,3 +26,6 @@ echo "·${purple} ln -sf $DOTFILESDIR/.bashrc $HOME${reset}"
 ln -sf $DOTFILESDIR/.bashrc $HOME
 echo "·${purple} ln -sf $DOTFILESDIR/.zshrc $HOME${reset}"
 ln -sf $DOTFILESDIR/.zshrc $HOME
+
+echo "·${purple} chmod +x $DOTFILESDIR/bin/${reset}"
+chmod +x $DOTFILESDIR/bin/*
