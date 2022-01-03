@@ -25,6 +25,10 @@ function p() {
         found_it=true
       fi
     done;
+    if [ $1 == 'plano' ]; then
+      cd scheduler.frontend.ng2
+      found_it=true
+    fi
     if [[ "$found_it" = false ]]; then
       tput setaf 1
       echo "-------------------------"
