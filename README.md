@@ -19,6 +19,10 @@ The install process will ask you what to do before every critical installation.
 
     git clone https://github.com/DerZyklop/dotfiles.git ~/.dotfiles; cd ~/.dotfiles; . init.sh
 
+or even better with ssh
+
+    git clone git@github.com:DerZyklop/dotfiles.git ~/.dotfiles; cd ~/.dotfiles; . init.sh
+
 ### Theme
 
 You will now find a new theme in your Terminal settings. If you want it, you should click the default button.
