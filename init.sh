@@ -16,8 +16,8 @@ echo "${reset}"
 echo "·${purple} sudo -v${reset}"
 sudo -v
 
-echo "·${purple} sudo chown -R $USER /usr/local${reset}"
-sudo chown -R $USER /usr/local
+echo "·${purple} sudo chown -R root /usr/local${reset}"
+sudo chown root /usr/local
 echo "·${purple} sudo chown -R $USER /Library/Caches/Homebrew/${reset}"
 sudo chown -R $USER /Library/Caches/Homebrew/
 
@@ -86,8 +86,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   ssh-keygen
   echo "·${purple} echo 'IdentityFile ~/.ssh/github' > ~/.ssh/config${reset}"
   echo 'IdentityFile ~/.ssh/github' > ~/.ssh/config
-  echo "·${purple} pbcopy < ~/.ssh/github.pub${reset}"
-  pbcopy < ~/.ssh/github.pub
+  echo "·${purple} pbcopy < ~/.ssh/id_rsa.pub${reset}"
+  pbcopy < ~/.ssh/id_rsa.pub
   echo "${green}Public key is in clipboard. Paste it here:"
   echo "${blue}https://github.com/settings/ssh${reset}"
   read -p "Press [ENTER] to continue..."
@@ -105,9 +105,9 @@ fi
 
 echo "${purple}Your todos now:${reset}"
 #echo "${purple}-${reset} Set up Bittorrent Sync \`o ~/Applications/BitTorrent\ Sync.app\`"
-echo "${purple}-${reset} run \`brew cask info little-snitch\`"
+echo "${purple}-${reset} run \`brew info --cask little-snitch\`"
 echo "${purple}-${reset} In order to restore a backup, open Little Snitch Configuration and choose Rules > Restore from Backup…"
-echo "${purple}-${reset} run \`brew cask info default-folder-x\`"
+echo "${purple}-${reset} run \`brew info --cask default-folder-x\`"
 echo "${purple}-${reset} Connect 1Password to your master-file.${reset}"
 echo "${purple}-${reset} Set up Dropbox with \`open -a Dropbox\`${reset}"
 echo "${purple}-${reset} Install \"Synology Assistant\"${reset}"

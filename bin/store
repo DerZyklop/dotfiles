@@ -2,8 +2,6 @@
 
 if [ $# -lt 2 ]; then
   echo "––––––––––––––––"
-  # echo "USAGE: blink1 previous"
-  # echo "or"
   echo "USAGE: store set/get var_name [value]"
   echo "––––––––––––––––"
 else
