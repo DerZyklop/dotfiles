@@ -53,32 +53,32 @@ setLEDColor() {
 }
 
 getStatusBox() {
-  local FILE_STATUS='';
+	local FILE_STATUS='';
 
-  [ "$HAS_UNCOMMITTED_FILES" -eq "1" ] && FILE_STATUS+='+';
-  [ "$HAS_UNSTAGED_FILES" -eq "1" ] && FILE_STATUS+='!';
-  [ "$HAS_UNTRACKED_FILES" -eq "1" ] && FILE_STATUS+='?';
+	[ "$HAS_UNCOMMITTED_FILES" -eq "1" ] && FILE_STATUS+='+';
+	[ "$HAS_UNSTAGED_FILES" -eq "1" ] && FILE_STATUS+='!';
+	[ "$HAS_UNTRACKED_FILES" -eq "1" ] && FILE_STATUS+='?';
 
-  if [ "${#FILE_STATUS}" -gt 0 ]; then
-    FILE_STATUS=${red}$FILE_STATUS${reset};
-  fi;
+	if [ "${#FILE_STATUS}" -gt 0 ]; then
+		FILE_STATUS=${red}$FILE_STATUS${reset};
+	fi;
 
-  local STASH_STATUS='';
+	local STASH_STATUS='';
 
-  [ "$HAS_STASH" -eq "1" ] && STASH_STATUS+='$';
+	[ "$HAS_STASH" -eq "1" ] && STASH_STATUS+='$';
 
-  if [ "${#STASH_STATUS}" -gt 0 ]; then
-    STASH_STATUS=${purple}$STASH_STATUS${reset}
-  fi;
+	if [ "${#STASH_STATUS}" -gt 0 ]; then
+		STASH_STATUS=${purple}$STASH_STATUS${reset}
+	fi;
 
-  if [ "${#FILE_STATUS}" -gt 0 ] || [ "${#STASH_STATUS}" -gt 0 ]; then
+	if [ "${#FILE_STATUS}" -gt 0 ] || [ "${#STASH_STATUS}" -gt 0 ]; then
 		if [ "$1" -eq 0 ]; then
-	    echo "[$FILE_STATUS$STASH_STATUS]"
+			echo "[$FILE_STATUS$STASH_STATUS]"
 		else
-  	  echo "${reset}${white}[${reset}$FILE_STATUS$STASH_STATUS${reset}${white}]${reset}"
+			echo "${reset}${white}[${reset}$FILE_STATUS$STASH_STATUS${reset}${white}]${reset}"
 		fi
-  fi;
-  echo '';
+	fi;
+	echo '';
 
 }
 
