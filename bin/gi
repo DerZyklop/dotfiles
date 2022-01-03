@@ -1,19 +1,21 @@
 #!/bin/sh
 
-echo "git init"
-git init
-
-read -p "${green}Want a empty README.md?${reset} [yN] " -n 1 -r
+read -p "${green}Want a new git project?${reset} [yN] " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  echo "> touch README.md"
-  touch README.md
-fi
+  echo "git init"
+  git init
 
-read -p "${green}Want a .gitignore?${reset} [yN] " -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  echo "> touch .gitignore"
-  touch .gitignore
-  echo "> fill .gitignore with .gitignore and .DS_Store"
-  echo -e ".gitignore\n.DS_Store"> .gitignore
-fi
+  read -p "${green}Want a empty README.md?${reset} [yN] " -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "> touch README.md"
+    touch README.md
+  fi
 
+  read -p "${green}Want a .gitignore?${reset} [yN] " -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "> touch .gitignore"
+    touch .gitignore
+    echo "> fill .gitignore with .gitignore and .DS_Store"
+    echo -e ".gitignore\n.DS_Store"> .gitignore
+  fi
+fi
