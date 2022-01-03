@@ -1,5 +1,5 @@
 #!/bin/sh
 
-echo "⬇${purple} ./init/atom.sh${reset}"
+echo "⬇${purple} apm install sync-settings${reset}"
 
 apm install sync-settings
