@@ -5,7 +5,8 @@
 [push]
   default = simple
 [core]
-	excludesfile = /Users/nils/.gitignore_global
+  excludesfile = /Users/nils/.gitignore_global
+  pager = diff-so-fancy | less --tabs=4 -RFX
 
 # Good explanation of git's fast forwarding: http://ariya.ofilabs.com/2013/09/fast-forward-git-merge.html
 [advice]
@@ -52,12 +53,12 @@
   # `git di $number` shows the diff between the state `$number` revisions ago and the current state
   di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 
-  # Pull in remote changes for the current repository and all its submodules
-  pull = !"git pull; git submodule foreach git pull origin master"
-  # TODO: Check if 'git submodule update --init --recursive' is needed
-
   # Clone a repository including all submodules
   clone = clone --recursive
+
+  # Never use git's checkout
+  # I forgot to pull before i did `git checkout -b hotfix/x.x.x`, and then we released a hotfix based on an old code.
+  checkout = !"f() { echo '=>> Use git co'; }; f"
 
   # Push a repository including all tags
   push = !"echo '=>> git push --tags'; git push --tags"
@@ -95,19 +96,19 @@
 
   # Get lines with 'TODO' in comitted files.
   res = "reset"
-	exec = "!exec "
-	root = rev-parse --show-toplevel
+  exec = "!exec "
+  root = rev-parse --show-toplevel
 
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [user]
 	name = DerZyklop
 	email = mail@der-zyklop.de
 [commit]
-	template = /Users/nils/.stCommitMsg
+  template = /Users/nils/.stCommitMsg
 [mergetool]
-	keepBackup = false
-	prompt = false
+  keepBackup = false
+  prompt = false
 [difftool "sourcetree"]
 	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -115,4 +116,21 @@
 	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
 [difftool]
-	prompt = false
+  prompt = false
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "diff"]
+  meta = 11
+  frag = magenta bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
