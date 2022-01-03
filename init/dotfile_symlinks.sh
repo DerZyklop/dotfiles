@@ -22,3 +22,7 @@ echo "·${purple} ln -sf $DOTFILESDIR/.jshintrc $HOME${reset}"
 ln -sf $DOTFILESDIR/.jshintrc $HOME
 echo "·${purple} ln -sf $DOTFILESDIR/.gitconfig $HOME${reset}"
 ln -sf $DOTFILESDIR/.gitconfig $HOME
+echo "·${purple} ln -sf $DOTFILESDIR/.bashrc $HOME${reset}"
+ln -sf $DOTFILESDIR/.bashrc $HOME
+echo "·${purple} ln -sf $DOTFILESDIR/.zshrc $HOME${reset}"
+ln -sf $DOTFILESDIR/.zshrc $HOME
