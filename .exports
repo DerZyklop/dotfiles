@@ -2,7 +2,6 @@
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=$HISTSIZE
-shopt -s histappend                      # append to history, don't overwrite it
 # Save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
@@ -72,7 +71,6 @@ export PATH=~/.npm-global/bin:$PATH
 export PATH="/usr/local/sbin:$PATH"
 
 export PROJECTDIRS=(
-  ~/Documents/workspace/PlaceWorkers/$1
   ~/Cloud/server/$1
   ~/Cloud/server/github-derzyklop/$1
   ~/Cloud/server/pxwrk.de/$1.pxwrk.de
@@ -90,8 +88,6 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications";
 export P4DIFF=/usr/local/bin/ksdiff
 export P4MERGE=/usr/local/bin/ksdiff
 export P4CONFIG=~/p4config.txt
-
-# export JAVA_HOME=$(/Library/Java/JavaVirtualMachines/openjdk-11.0.2.jdk/Contents/Home)
 
 export GIT_ICON_ARRAY=(
 	"🐛 bugfix | tests"
@@ -112,10 +108,10 @@ export GIT_ICON_ARRAY=(
 	# NOTE: More of them here: gitmoji --list
 )
 
-export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/postgresql@11/lib"
-export CPPFLAGS="-I/usr/local/opt/postgresql@11/include"
-export PKG_CONFIG_PATH="/usr/local/opt/postgresql@11/lib/pkgconfig"
+export PATH="/usr/local/opt/postgresql@12/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/postgresql@12/lib"
+export CPPFLAGS="-I/usr/local/opt/postgresql@12/include"
+export PKG_CONFIG_PATH="/usr/local/opt/postgresql@12/lib/pkgconfig"
 
 # Angular
 #export NG_BUILD_PROFILING=1
