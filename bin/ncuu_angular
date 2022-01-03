@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# TODO: This can be improved with wildcards
+# See: https://github.com/raineorshine/npm-check-updates/releases/tag/v11.2.0
+
+ncuu_angular_cli
+ncuu_angular_core
+ncuu_angular_eslint

@@ -1,6 +1,12 @@
 #!/bin/sh
 
+# TODO: This can be improved with wildcards
+# See: https://github.com/raineorshine/npm-check-updates/releases/tag/v11.2.0
+
 ARRAY=(
+  "@storybook/builder-webpack5"
+  "@storybook/manager-webpack5"
+  "@storybook/addon-essentials"
   "@storybook/addon-actions"
   "@storybook/addon-knobs"
   "@storybook/addon-links"
