@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if [[ $# -lt 1 ]]; then
+	echo "––––––––––––––––"
+  echo "USAGE: getGitPrompt [with/without colors]"
+  echo "––––––––––––––––"
+fi
+
 BRANCH_CLEAN=1
 
 HAS_UNCOMMITTED_FILES=0
@@ -66,7 +72,11 @@ getStatusBox() {
   fi;
 
   if [ "${#FILE_STATUS}" -gt 0 ] || [ "${#STASH_STATUS}" -gt 0 ]; then
-    echo "${reset}${white}[${reset}$FILE_STATUS$STASH_STATUS${reset}${white}]${reset}";
+		if [ "$1" -eq 0 ]; then
+	    echo "[$FILE_STATUS$STASH_STATUS]"
+		else
+  	  echo "${reset}${white}[${reset}$FILE_STATUS$STASH_STATUS${reset}${white}]${reset}"
+		fi
   fi;
   echo '';
 
@@ -111,7 +121,11 @@ prompt_git() {
 
 		fi;
 
-		echo "${1} ${BRANCHNAME}${bold} $(getStatusBox)";
+		if [ "$1" -lt 1 ]; then
+			echo "${2} ${BRANCHNAME} $(getStatusBox $1)"
+		else
+			echo "${2} ${BRANCHNAME}${bold} $(getStatusBox $1)"
+		fi
 
 		setLEDColor;
 
@@ -134,9 +148,13 @@ gitInfo() {
 	fi;
 
   if [ "${#BRANCHNAME}" -gt 0 ]; then
-    echo $(tput setaf 236) 'on' $(prompt_git ${branchStyle}); # Git repository details
+		if [ "$1" -eq 0 ]; then
+	    echo ' on ' # Git repository details
+		else
+	    echo $(tput setaf 236) 'on' $(prompt_git $1 ${branchStyle}) # Git repository details
+		fi
   fi
-  echo '';
+  echo ''
 }
 
-gitInfo
+gitInfo $1
