@@ -29,10 +29,22 @@ else
 	hostStyle="$(tput setaf 244)";
 fi;
 
+PS1=''
+
+GIT_PROMPT=$(getGitPrompt 0)
+GIT_PROMPT_COLORED=$(getGitPrompt 1)
+
+# \d means date; takes 9 + 1 spaces
+# \t means time takes 8 + 1 spaces
+#PS1='\[$(echo $(tput setaf 236); printf "%*s" $(( COLUMNS-1 )) " $(echo $GIT_PROMPT_COLORED)" | sed "s/ /-/g") \r'
+
+PS1='\[$(echo $(tput setaf 236); printf "%*s" $(($(tput cols)-21)) "" | sed "s/ /-/g") \d ---- \A\r'
+#PS1='\[$(echo $(tput setaf 236); printf "%*s" $(($(tput cols)-20-${#GIT_PROMPT})) "" | sed "s/ /-/g") \d \t\r'
+
 # Set the terminal title to the current working directory.
-PS1="\[\033]0;\w\007\]";
+#PS1+="\[\033]0;\w\007\]";
 #PS1+="\[${bold}\]\n"; # newline
-PS1+="\n"; # newline
+#PS1+="\n"; # newline
 PS1+="\[${userStyle}\]\u${reset}"; # username
 PS1+="\[$(tput setaf 236)\] @ ${reset}";
 PS1+="\[${hostStyle}\]\h${reset}"; # host
@@ -48,13 +60,18 @@ PS1+="\[$(tput setaf 236)\] in ";
 # PS1+="\[${cyan}\]\W"; # working directory
 PS1+="\[${cyan}\]\W"; # working directory
 
-PS1+="\$(getGitPrompt)"; # Git repository details
+PS1+="\$(getGitPrompt 1)"; # Git repository details
 
 # Highlight the hostname when connected via SSH.
 if [[ "${SSH_TTY}" ]]; then
 	PS1+="\[$(tput setaf 236)\] through ";
 	PS1+="\[${green}\]SSH${reset}"; # host
 fi;
+PS1+=' \]'
+
+#PS1='\[$(printf "%*s" $(($(tput cols)-20)) "" | sed "s/ /-/g") \d \t\r\u @ \h : \w \]'
+
+#PS1='\[$(printf "%*s" $(($(tput cols)-20)) "" | sed "s/ /-/g") \d \t\r\u@\h:\w \]'
 
 PS1+="\n";
 PS1+="\[$(tput setaf 236)\]\$ \[${reset}\]"; # `$` (and reset color)
