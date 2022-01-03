@@ -71,15 +71,8 @@ export PATH=~/.npm-global/bin:$PATH
 export PATH="/usr/local/sbin:$PATH"
 
 export PROJECTDIRS=(
-  ~/Cloud/server/$1
-  ~/Cloud/server/github-derzyklop/$1
-  ~/Cloud/server/pxwrk.de/$1.pxwrk.de
-  ~/Cloud/server/pxwrk.de/git.pxwrk.de/$1
   ~/S/$1
-  ~/S/$1.pxwrk.de
-  ~/PW/app/$1
-  ~/PW/Projekte/$1
-  ~/Dropbox/placeworkers_dokumente/Nils_Neumann/$1
+  ~/Documents/$1
 )
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
