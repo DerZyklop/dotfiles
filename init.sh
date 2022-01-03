@@ -105,6 +105,7 @@ fi
 
 echo "${purple}Your todos now:${reset}"
 #echo "${purple}-${reset} Set up Bittorrent Sync \`o ~/Applications/BitTorrent\ Sync.app\`"
+echo "${purple}-${reset} run \`https://updates.timingapp.com/download/Timing-2020.7.dmg\` and install it"
 echo "${purple}-${reset} run \`brew info --cask little-snitch\`"
 echo "${purple}-${reset} In order to restore a backup, open Little Snitch Configuration and choose Rules > Restore from Backup…"
 echo "${purple}-${reset} run \`brew info --cask default-folder-x\`"
