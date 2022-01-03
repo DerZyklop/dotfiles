@@ -21,15 +21,16 @@ brew "cask"
 brew "pidof"
 # brew "postgresql", restart_service: true
 brew "procmail"
-brew "valentina-studio"
+cask "valentina-studio"
 brew "jenv"
-brew "slack"
+cask "slack"
 
 brew "wget"
 
 cask "1password6"
 cask "appcleaner"
 cask "atom"
+cask "visual-studio-code"
 cask "bartender"
 cask "caffeine"
 cask "chromium"
