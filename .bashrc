@@ -23,3 +23,9 @@ shell_session_history_check () {
     fi;
   fi
 }
+
+###-tns-completion-start-###
+if [ -f /Users/nils/.tnsrc ]; then 
+    source /Users/nils/.tnsrc 
+fi
+###-tns-completion-end-###
