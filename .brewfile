@@ -20,6 +20,7 @@ brew "cask"
 # brew "node@8"
 cask "network-radar"
 cask "wifi-explorer"
+cask "youtube-dl"
 brew "pidof"
 # brew "postgresql", restart_service: true
 cask "pocket-casts"
