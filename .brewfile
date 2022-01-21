@@ -18,8 +18,11 @@ brew "cask"
 # brew "nmap"
 # brew "node"
 # brew "node@8"
+cask "network-radar"
+cask "wifi-explorer"
 brew "pidof"
 # brew "postgresql", restart_service: true
+cask "pocket-casts"
 brew "procmail"
 cask "valentina-studio"
 brew "jenv"
@@ -30,17 +33,16 @@ brew "wget"
 cask "1password6"
 cask "appcleaner"
 cask "atom"
+cask "android-sdk" # For Nativescript / Dr. Plano
 cask "visual-studio-code"
 cask "bartender"
 cask "caffeine"
 cask "chromium"
 cask "cinch"
-mas "ColorSnapper2", id: 969418666
-mas "Things", id: 904280696
-mas "iA Writer", id: 775737590
 cask "daisydisk"
 cask "dash"
 # cask "default-folder-x@3"
+brew "diff-so-fancy"
 cask "dropbox"
 cask "fantastical"
 cask "firefox"
@@ -82,7 +84,7 @@ cask "licecap"
 cask "little-snitch"
 cask "moneymoney"
 cask "monitorcontrol"
-brew "messenger"
+cask "messenger"
 cask "opera"
 cask "pastebot"
 # cask "p4v"
@@ -98,3 +100,22 @@ cask "transmission"
 cask "transmit"
 cask "vlc"
 cask "electrum"
+
+mas "Things", id: 904280696
+mas "ColorSnapper2", id: 969418666
+mas "iStat Menus", id: 1319778037
+mas "GarageBand", id: 682658836
+mas "iA Writer", id: 775737590
+mas "Breaks for Eyes", id: 1439431081
+mas "Reeder", id: 880001334
+mas "iMovie", id: 408981434
+mas "Pages", id: 409201541
+mas "Keynote", id: 409183694
+mas "Spark", id: 1176895641
+mas "Numbers", id: 409203825
+mas "Time Out", id: 402592703
+mas "Tweetbot", id: 1384080005
+mas "Microsoft Outlook", id: 985367838
+mas "Cinebench", id: 1438772273
+mas "Gifski", id: 1351639930
+mas "Day One", id: 1055511498
