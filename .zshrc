@@ -111,3 +111,10 @@ source ~/.completions
 source ~/.aliases
 source ~/.functions
 source ~/.extra
+
+###-tns-completion-start-###
+if [ -f /Users/nils/.tnsrc ]; then
+    source /Users/nils/.tnsrc
+fi
+###-tns-completion-end-###
+
