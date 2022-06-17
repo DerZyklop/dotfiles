@@ -9,6 +9,7 @@ tap "homebrew/services"
 brew "mas"
 
 brew "git"
+brew "git-lfs"
 brew "bash-completion"
 brew "blink1"
 brew "cask"
