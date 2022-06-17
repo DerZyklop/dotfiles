@@ -1,8 +1,28 @@
 #!/bin/sh
 
+echo "";
+if [ -n "$(git status --porcelain)" ]; then
+  echo "${green}✓${reset} There are changes";
+	if [ -n "$(git diff --name-only --cached)" ]; then
+		echo "${green}✓${reset} And they are staged";
+	else
+		echo "${red}×${reset} But they are not staged";
+		exit 1;
+	fi
+else
+  echo "${red}×${reset} There are no changes";
+	exit 1;
+fi
+echo "";
+
 if [[ $# -lt 1 ]]; then
 	echo "${red}Please provide a commit message${reset}";
 	exit;
+fi
+
+packageJsonPath="package.json"
+if [ -d "./scheduler.frontend.ng2" ]; then
+    packageJsonPath="scheduler.frontend.ng2/package.json"
 fi
 
 # If environment var GIT_ICON_ARRAY is not set
@@ -31,15 +51,19 @@ function getEmojiByKey() {
 	fi
 }
 
-echo "${orange}Ticket NR? (default: NO_JIRA_ISSUE)${reset} `echo $'\n'`";
-PS3='Please enter your choice: '
-read TICKET_NR
-echo
+bugsUrl="$(jq -r .bugs.url "$packageJsonPath")"
+atlassianUrlFromBugsUrl=$(echo $bugsUrl | grep -o 'atlassian\.net')
+if [ -n "$atlassianUrlFromBugsUrl" ]; then
+	echo "${orange}Ticket NR? (default: NO_JIRA_ISSUE)${reset} `echo $'\n'`";
+	PS3='Please enter your choice: '
+	read TICKET_NR
+	echo
 
-if [[ $TICKET_NR ]]; then
-  TICKET_NR="$TICKET_NR";
-else
-  TICKET_NR="NO_JIRA_ISSUE";
+	if [[ $TICKET_NR ]]; then
+		TICKET_NR="$TICKET_NR";
+	else
+		TICKET_NR="NO_JIRA_ISSUE";
+	fi
 fi
 
 echo "${orange}What kind of commit is this?${reset} `echo $'\n'`";
