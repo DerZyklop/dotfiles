@@ -22,7 +22,7 @@ COMMIT_DESC='';
 
 for i in "${ARRAY[@]}"
 do :
-  COMMIT_DESC=$(ncu -u $i --semverLevel=minor | grep "$i" | grep -o '[0-9].*');
+  COMMIT_DESC=$(ncu -u $i --target=patch | grep "$i" | grep -o '[0-9].*');
   echo $i
   echo $COMMIT_DESC
 done
