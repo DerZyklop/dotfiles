@@ -5,7 +5,7 @@
 [push]
   default = simple
 [core]
-  excludesfile = /Users/nils/.gitignore_global
+	excludesfile = /Users/nils/.gitignore_global
   pager = diff-so-fancy | less --tabs=4 -RFX
 
 # Good explanation of git's fast forwarding: http://ariya.ofilabs.com/2013/09/fast-forward-git-merge.html
@@ -107,13 +107,13 @@
 [commit]
   template = /Users/nils/.stCommitMsg
 [mergetool]
-  keepBackup = false
+	keepBackup = false
   prompt = false
 [difftool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [difftool]
   prompt = false
