@@ -114,5 +114,22 @@ export PATH="/usr/local/opt/python@3.7/bin:$PATH"
 # NOTE: Want a newer java version? Try something like this:
 # brew cask install adoptopenjdk/openjdk/adoptopenjdk11
 
-export PATH="/Users/$(whoami)/.jenv/shims:$PATH"
+export PATH="/Users/$(whoami)/.jenv/bin:$PATH"
 # export JAVA_HOME=$(/Library/Java/JavaVirtualMachines/openjdk-11.0.2.jdk/Contents/Home)
+
+# export ANDROID_HOME="/opt/android-sdk"
+# export ANDROID_HOME="/opt/homebrew/Caskroom/android-sdk/4333796"
+export ANDROID_HOME="/opt/homebrew/share/android-commandlinetools"
+export ANDROID_SDK_ROOT="/opt/homebrew/share/android-commandlinetools"
+export PATH="/opt/homebrew/share/android-commandlinetools/cmdline-tools/homebrew/bin/:$PATH"
+
+export PATH="$PATH:$ANDROID_HOME/tools"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+alias emu="$ANDROID_HOME/tools/emulator" # https://stackoverflow.com/a/43809095
+
+# export PATH=$PATH:$ANDROID_HOME/platform-tools
+# export PATH=$PATH:$ANDROID_HOME/tools
+
+# export PATH=$PATH:/opt/homebrew/bin/adb
+# export PATH=$PATH:/Users/nils/Library/Android/sdk
