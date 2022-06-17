@@ -15,6 +15,12 @@ export PATH=~/.composer/vendor/bin:$PATH
 # needed for binaries installed via npm
 # export PATH="/usr/local/Cellar/node/8.6.0/bin:$PATH"
 
+# Postgres
+export PATH="/usr/lib/postgresql/9.1/bin:$PATH"
+
+# add this when postgres gives error `initdb: command not found`
+# alias sudo='sudo env PATH=$PATH'
+
 # needed for nativescript sidekick / dr. plano
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
