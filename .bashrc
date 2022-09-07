@@ -98,3 +98,7 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
