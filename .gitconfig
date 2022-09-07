@@ -20,7 +20,6 @@
   renames = copies
   tool = Kaleidoscope
 [difftool "Kaleidoscope"]
-  # cmd = ksdiff-batch --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
   cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [merge]
   tool = Kaleidoscope
