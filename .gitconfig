@@ -30,6 +30,8 @@
 # Setzte no fast-forward als Standardeinstellung
 [branch "master"]
   mergeoptions = "--no-ff"
+[branch "main"]
+  mergeoptions = "--no-ff"
 [branch "perforce"]
   mergeoptions = "--no-ff"
 [branch "dev"]
@@ -53,11 +55,7 @@
   di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 
   # Clone a repository including all submodules
-  clone = clone --recursive
-
-  # Never use git's checkout
-  # I forgot to pull before i did `git checkout -b hotfix/x.x.x`, and then we released a hotfix based on an old code.
-  checkout = !"f() { echo '=>> Use git co'; }; f"
+  cl = clone --recursive
 
   # Push a repository including all tags
   push = !"echo '=>> git push --tags'; git push --tags"
@@ -77,40 +75,50 @@
   branches = branch -a
   remotes = remote -v
 
+  # Common typo that i type git pul but meant git pull. So here is an alias to fix that:
+  pul = "!f() { echo '=>> Did you mean git pull? Executing git pull...'; git pull; }; f"
+
+  # Common typo that i type git pul but meant git pull. So here is an alias to fix that:
+  fe = "!f() { echo '=>> Did you mean git fetch? Executing git fetch...'; git fetch; }; f"
+
   # Find commits by commit message
   fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
-  # Remove branches that have already been merged with master
+  # Remove branches that have already been merged with master/main
   # a.k.a. ‘delete merged’
   dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
   # List contributors with number of commits
   contributors = shortlog --summary --numbered
 
-  # Get lines with 'TODO' in comitted files.
   todo = "grep -E '# TODO|// TODO'"
 
-  # Get lines with 'TODO' in comitted files.
-  sta = "stash"
+  sm = "!f() { echo '=>> git stash --message $1'; git stash --message $1; }; f"
 
-  # Get lines with 'TODO' in comitted files.
-  res = "reset"
+  rs = "!f() { echo '=>> git reset --soft HEAD~'; git reset --soft HEAD~; }; f"
+
   exec = "!exec "
   root = rev-parse --show-toplevel
 
 [credential]
   helper = osxkeychain
+[includeIf "gitdir:~/S/plano/"]
+  path = .gitconfig-professional
+[includeIf "gitdir:~/S/personal/"]
+  path = .gitconfig-personal
+[includeIf "gitdir:~/S/prowo/"]
+  path = .gitconfig-prowo
 [user]
-	name = DerZyklop
-	email = mail@der-zyklop.de
+	name = Nils
+	email = nils@dr-plano.com
 [commit]
-  template = /Users/nils/.stCommitMsg
+	template = /Users/nils/.gitmessage
 [mergetool]
 	keepBackup = false
   prompt = false
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
@@ -133,3 +141,7 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+[init]
+	defaultBranch = main
+[disabled]
+	clone = true

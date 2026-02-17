@@ -30,6 +30,7 @@ setLEDColor() {
 		case $BRANCHNAME in
 			perforce) blink1 1 danger;;
 			master) blink1 1 danger;;
+			main) blink1 1 danger;;
 			dev) blink1 1 info;;
 		esac
 	else
@@ -138,6 +139,8 @@ gitInfo() {
 	if [ "$BRANCHNAME" = 'dev' ]; then
 		branchStyle="${white}";
 	elif [ "$BRANCHNAME" = 'master' ]; then
+		branchStyle="${red}";
+	elif [ "$BRANCHNAME" = 'main' ]; then
 		branchStyle="${red}";
 	else
 		if [ "$BRANCH_CLEAN" -eq "1" ]; then

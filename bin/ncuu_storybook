@@ -1,21 +1,15 @@
 #!/bin/sh
 
+npx storybook upgrade
+npx storybook automigrate
+
 # TODO: This can be improved with wildcards
 # See: https://github.com/raineorshine/npm-check-updates/releases/tag/v11.2.0
 
 ARRAY=(
-  "@storybook/builder-webpack5"
-  "@storybook/manager-webpack5"
-  "@storybook/addon-essentials"
-  "@storybook/addon-actions"
   "@storybook/addon-knobs"
-  "@storybook/addon-links"
   "@storybook/addon-notes"
-  "@storybook/addon-viewport"
   "@storybook/addons"
-  "@storybook/angular"
-  "@storybook/cli"
-  "@storybook/addon-docs"
 )
 
 COMMIT_DESC='';
@@ -32,8 +26,9 @@ if [[ $COMMIT_DESC -eq '' ]]; then
   echo "commit message would be:"
   echo "📦 ⬆ @storybook/*"
   echo "Changed Verstion number of $1: $COMMIT_DESC"
-  exit 1
+  git a
+  git commit -m "📦 ⬆ @storybook/*"
+else
+  git a
+  git commit -m "📦 ⬆ @storybook/*" -m "Changed Verstion number of $1: $COMMIT_DESC"
 fi
-
-git a
-git commit -m "📦 ⬆ @storybook/*" -m "Changed Verstion number of $1: $COMMIT_DESC"

@@ -29,17 +29,16 @@ fi
 # Get fallback
 if [ -z "$GIT_ICON_ARRAY" ];
 then GIT_ICON_ARRAY=(
-	"🐛 bugfix | tests"
+	"♻️  refac.|lint|docs|no logic "
 	"💅 ui"
-	"🐣 pillefax"
+	"🥒 tests"
+	"🐛 bugfix"
 	"✨ feature"
-	"♻️ refactoring | lint"
 	"🧹 cleanup"
-	" - NOTHING - "
-	"💬 text | i18n | l10n | docs"
+	"💬 text|i18n"
 	"⚡️ performance"
-	"📦 npm | node"
-	"🔧 scripts or config"
+	"📦 npm; node"
+	"🔧 scripts|config"
 	# NOTE: More of them here: gitmoji --list
 ); fi
 
@@ -54,16 +53,10 @@ function getEmojiByKey() {
 bugsUrl="$(jq -r .bugs.url "$packageJsonPath")"
 atlassianUrlFromBugsUrl=$(echo $bugsUrl | grep -o 'atlassian\.net')
 if [ -n "$atlassianUrlFromBugsUrl" ]; then
-	echo "${orange}Ticket NR? (default: NO_JIRA_ISSUE)${reset} `echo $'\n'`";
+	echo "${orange}Ticket NR?${reset} `echo $'\n'`";
 	PS3='Please enter your choice: '
 	read TICKET_NR
 	echo
-
-	if [[ $TICKET_NR ]]; then
-		TICKET_NR="$TICKET_NR";
-	else
-		TICKET_NR="NO_JIRA_ISSUE";
-	fi
 fi
 
 echo "${orange}What kind of commit is this?${reset} `echo $'\n'`";
@@ -75,13 +68,11 @@ do
 	break
 done
 
-read -p "${orange}Skip CI?${reset} [${green}y${reset}/${red}N${reset}] " -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-	SKIP_CI='[skip ci]'
-	echo ''
+if [[ $TICKET_NR ]]; then
+	COMMIT_MESSAGE="$TICKET_NR $EMOJI $@"
+else
+	COMMIT_MESSAGE="$EMOJI $@"
 fi
-
-COMMIT_MESSAGE="$TICKET_NR $EMOJI $@ $SKIP_CI"
 
 echo '=>> git commit -m "'$COMMIT_MESSAGE'"';
 git commit -m "$COMMIT_MESSAGE";

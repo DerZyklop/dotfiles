@@ -1,7 +1,24 @@
 #!/bin/sh
 
 # Opens the related git page in browser
+
+# Get the remote origin url
 giturl=$(git config --get remote.origin.url)
+
+# As the remote origin url might be another syntax the browser needs (starting with git@...), 
+# we need to transform the string
+
+# If it starts with git@@github.com, we replace that with https://github.com/
 giturl=${giturl/git\@github\.com\:/https://github.com/}
-giturl=${giturl/git\@bitbucket\.org\:/https://bitbucket.org/}
+
+# If it starts with git@@bitbucket-private-account:, we replace that with https://bitbucket.org/
+giturl=${giturl/git\@bitbucket-private-account:/https://bitbucket.org/}
+
+# If it starts with git@@bitbucket.org:, we replace that with https://bitbucket.org/
+giturl=${giturl/git\@bitbucket.org:/https://bitbucket.org/}
+
+# Print the result.
+echo $giturl
+
+# Oben the page.
 open $giturl

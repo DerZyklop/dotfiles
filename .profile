@@ -22,4 +22,9 @@ fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+eval "$(pyenv init --path)"
+
+# sometimes these rights get lost in our Plano app.
+chmod -R +x ~/S/plano/git/hooks/
 export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+function notify() {
+  local title="$1"
+  local message="$2"
+  osascript -e "display notification \"$message\" with title \"$title\" sound name \"Glass\""
+}
+
+# Usage
+notify "Switched the branch?" "Ok. Then please start a new ticket tracking in JIRA."

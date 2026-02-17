@@ -3,12 +3,13 @@
 # TODO: This can be improved with wildcards
 # See: https://github.com/raineorshine/npm-check-updates/releases/tag/v11.2.0
 
-echo 'ncu -u --target=patch $1 | grep "$1" | grep -o "[0-9].*"'
+echo 'ncu -u --target=minor $1 | grep "$1" | grep -o "[0-9].*"'
 COMMIT_DESC=$(ncu -u $1 | grep "$1" | grep -o "[0-9].*");
 if [ "$COMMIT_DESC" = "" ]; then
   echo "commit message broken: »$($COMMIT_DESC)«"
   exit 1
 fi
+npm install
 git a
 echo ""
 echo ""

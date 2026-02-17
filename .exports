@@ -63,15 +63,20 @@ export warn="${yellow}";
 export info="${cyan}";
 export success="${green}";
 
+export PATH="$PATH:`pwd`/flutter/bin"
+
 # Theese are needed to install node from brew according to this: http://madebyhoundstooth.com/blog/install-node-with-homebrew-on-os-x/
 #export NODE_PATH="/usr/local/lib/node"
 # Local node path if exists
 export PATH=~/.npm-global/bin:$PATH
 #export PATH="/usr/local/share/npm/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin/dart-sass:$PATH"
 
 export PROJECTDIRS=(
   ~/S/$1
+  ~/S/personal/$1
+  ~/S/prowo/$1
   ~/Documents/$1
 )
 
@@ -82,6 +87,10 @@ export P4DIFF=/usr/local/bin/ksdiff
 export P4MERGE=/usr/local/bin/ksdiff
 export P4CONFIG=~/p4config.txt
 
+# Don’t prompt me to edit the commit message when i use `git commit --continue`
+export GIT_MERGE_AUTOEDIT=no
+
+# A set of icons to be used for my customGitCommit command
 export GIT_ICON_ARRAY=(
 	"🐛 bugfix | tests"
 	"💅 ui"
@@ -122,4 +131,8 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:$ANDROID_HOME/emulator"
 alias emu="$ANDROID_HOME/tools/emulator" # https://stackoverflow.com/a/43809095
 
+export PATH="$(pyenv root)/shims:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 

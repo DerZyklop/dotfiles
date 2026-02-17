@@ -3,26 +3,31 @@
 # TODO: This can be improved with wildcards
 # See: https://github.com/raineorshine/npm-check-updates/releases/tag/v11.2.0
 
-ARRAY=(
-  "@angular/cli"
-)
-
-COMMIT_DESC='';
-
-for i in "${ARRAY[@]}"
-do :
-  COMMIT_DESC=$(ncu -u $i | grep "$i" | grep -o '[0-9].*');
-  echo $i
-  echo $COMMIT_DESC
-done
-
-if [[ $COMMIT_DESC -eq '' ]]; then
-  echo "commit message broken: »$($COMMIT_DESC)«"
-  echo "commit message would be:"
-  echo "📦 ⬆ @angular/cli"
-  echo "Changed Verstion number of $1: $COMMIT_DESC"
-  exit 1
-fi
-
+echo "UPDATE @angular/cli TO HIGHEST 15"
+ng update @angular/cli@^15
 git a
-git commit -m "📦 ⬆ @angular/cli" -m "Changed Verstion number of $1: $COMMIT_DESC"
+git commit -m "📦 ⬆ @angular/cli"
+
+# ARRAY=(
+#   "@angular/cli"
+# )
+
+# COMMIT_DESC='';
+
+# for i in "${ARRAY[@]}"
+# do :
+#   COMMIT_DESC=$(ncu -u $i | grep "$i" | grep -o '[0-9].*');
+#   echo $i
+#   echo $COMMIT_DESC
+# done
+
+# if [[ $COMMIT_DESC -eq '' ]]; then
+#   echo "commit message broken: »$($COMMIT_DESC)«"
+#   echo "commit message would be:"
+#   echo "📦 ⬆ @angular/cli"
+#   echo "Changed Verstion number of $1: $COMMIT_DESC"
+#   exit 1
+# fi
+
+# git a
+# git commit -m "📦 ⬆ @angular/cli" -m "Changed Verstion number of $1: $COMMIT_DESC"

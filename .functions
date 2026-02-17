@@ -51,10 +51,25 @@ update_terminal_cwd() {
 
 
 git () {
-    local disabled=$(command git config --bool disabled.$1 2>/dev/null)
-    if ${disabled:-false} ; then
-        echo "The $1 command is intentionally disabled" >&2
-        return 1
-    fi
-    command git "$@"
+  # Check if the command is disabled.
+  # You can disable a command by running:
+  #   git config --global --bool disabled.<command> true
+  local disabled=$(command git config --bool disabled.$1 2>/dev/null)
+
+  if ${disabled:-false} ; then
+    # Draw a red cross to get the user's attention.
+    X=${red}✖${reset}
+    # Print the helpful message.
+    echo -e "$X The command '$1' is disabled. Most likely there is a related alias in ~/.dotfiles/.gitconfig." >&2
+    return 1
+  fi
+
+  # Run a command every time someone runs git checkout.
+  if [[ "$1" == "checkout" ]]; then
+    # Draw green exclamation marks to get the user's attention.
+    X=${green}!!!${reset}
+    echo "$X Switched to another branch? Start new JIRA tracking."
+  fi
+
+  command git "$@"
 }
