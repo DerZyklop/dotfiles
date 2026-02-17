@@ -1,6 +1,9 @@
 # Start a server with current dir as root
 alias server="php -S localhost:1337"
 
+# Shortcuts to open Apps
+alias t="echo 'open -a Tower';open -a Tower"
+
 # Some git commands can't be short enaugh!
 X=${red}✖${reset}
 alias g="git"
@@ -44,10 +47,6 @@ alias disablefinderquit="defaults write com.apple.finder QuitMenuItem 0 && killa
 
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-
-# Todo commands
-alias "t"="todo.sh -d ~/todo/todo.cfg"
-alias "todo"="t ls"
 
 # Colored up cat!
 # You must install Pygments first - "sudo easy_install Pygments"
