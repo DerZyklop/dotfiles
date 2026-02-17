@@ -5,6 +5,13 @@ set -e
 
 echo "⬇${purple} ./init/init.sh${reset}"
 
+export DOTFILESDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+### Read the new dotfiles once
+### This is needed for colorful output
+echo "·${purple} source $DOTFILESDIR/.exports${reset}"
+source $DOTFILESDIR/.exports
+
 echo "${red}"
 echo "###############################################"
 echo "#        DO NOT RUN THIS SCRIPT BLINDLY       #"
@@ -24,12 +31,14 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash
 # Brew is required for the following scripts
 sh ./init/2_1_brew.sh
 
-### Read the new dotfiles once
+### In order to install angular cli, you will need npm
+echo "·${purple} brew install node${reset}"
+brew install node
 
 echo "·${purple} source ./.exports${reset}"
 source ./.exports
 
-for file in $DOTFILESDIR/.{exports,path,completions,bash_prompt,aliases,functions,extra,bashrc}; do
+for file in $DOTFILESDIR/.{exports,path,completions,bash_prompt,aliases,functions,extra,bashrc,zshrc}; do
   if [ -r "$file" ] && [ -f "$file" ]; then
     echo "·${purple} source \"$file\"${reset}"
     source "$file";
@@ -45,7 +54,7 @@ fi
 
 ### Initialize new computer
 
-for f in ./init/*.sh; do
+for f in $DOTFILESDIR/init/*.sh; do
   echo "${green}Want to set $(basename $f .sh)?"
   read -p "Should i? [yN] ${reset}" -n 1 -r
   echo "\nAllright!"
@@ -104,7 +113,6 @@ fi
 
 echo "${purple}Your todos now:${reset}"
 #echo "${purple}-${reset} Set up Bittorrent Sync \`o ~/Applications/BitTorrent\ Sync.app\`"
-echo "${purple}-${reset} run \`https://updates.timingapp.com/download/Timing-2020.7.dmg\` and install it"
 echo "${purple}-${reset} run \`brew info --cask little-snitch\`"
 echo "${purple}-${reset} In order to restore a backup, open Little Snitch Configuration and choose Rules > Restore from Backup…"
 echo "${purple}-${reset} Connect 1Password to your master-file.${reset}"
