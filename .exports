@@ -101,21 +101,15 @@ export GIT_ICON_ARRAY=(
 	# NOTE: More of them here: gitmoji --list
 )
 
-export PATH="/usr/local/opt/postgresql@12/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/postgresql@12/lib"
-export CPPFLAGS="-I/usr/local/opt/postgresql@12/include"
-export PKG_CONFIG_PATH="/usr/local/opt/postgresql@12/lib/pkgconfig"
+export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/postgresql@15/lib"
+export CPPFLAGS="-I/usr/local/opt/postgresql@15/include"
+export PKG_CONFIG_PATH="/usr/local/opt/postgresql@15/lib/pkgconfig"
 
 # Angular
 #export NG_BUILD_PROFILING=1
 
 export PATH="/usr/local/opt/python@3.7/bin:$PATH"
-
-# NOTE: Want a newer java version? Try something like this:
-# brew cask install adoptopenjdk/openjdk/adoptopenjdk11
-
-export PATH="/Users/$(whoami)/.jenv/bin:$PATH"
-# export JAVA_HOME=$(/Library/Java/JavaVirtualMachines/openjdk-11.0.2.jdk/Contents/Home)
 
 # export ANDROID_HOME="/opt/android-sdk"
 # export ANDROID_HOME="/opt/homebrew/Caskroom/android-sdk/4333796"
@@ -128,8 +122,4 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:$ANDROID_HOME/emulator"
 alias emu="$ANDROID_HOME/tools/emulator" # https://stackoverflow.com/a/43809095
 
-# export PATH=$PATH:$ANDROID_HOME/platform-tools
-# export PATH=$PATH:$ANDROID_HOME/tools
 
-# export PATH=$PATH:/opt/homebrew/bin/adb
-# export PATH=$PATH:/Users/nils/Library/Android/sdk

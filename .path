@@ -4,6 +4,11 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # make sure that brew-stuff is used instead of system-stuff
 export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
 
+# More important than brew stuff is the java version that i usually install manually.
+# I install it manually to make sure i have the same java version than my colleagues.
+export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+export PATH=$JAVA_HOME/bin:$PATH
+
 # get my own commands
 export PATH=~/S/prettyping:$PATH # NOTE: This path has prio 2 after $DOTFILESDIR/bin
 export PATH=$DOTFILESDIR/bin:$PATH

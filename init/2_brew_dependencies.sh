@@ -28,9 +28,7 @@ echo "·${purple} brew cleanup${reset}"
 brew cleanup
 
 # for Dr. Plano
-brew install --cask homebrew/cask-versions/adoptopenjdk8
-brew tap adoptopenjdk/openjdk
-brew install --cask adoptopenjdk11
+brew install --cask corretto
 
 echo "·${purple} brew bundle install --file=~/.dotfiles/.brewfile${reset}"
 brew bundle install --file=~/.dotfiles/.brewfile
