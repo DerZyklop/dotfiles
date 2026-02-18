@@ -100,19 +100,8 @@ fi
 ###-end-npm-completion-###
 
 
-# Load Angular CLI autocompletion.
-# Capture the generated script and only eval it when `ng` produced valid
-# output. A broken/missing `ng` can no longer throw a "syntax error near
-# unexpected token" that would interrupt shell startup.
-# Skips a shell that is not interactive, e.g. the init scripts. They run in `sh`, and the
-# generated script has a syntax error in `sh`. The `bash -n` test uses `bash`, so it cannot find this error.
-if [[ $- == *i* ]]; then
-  _ngcomp="$(ng completion script 2>/dev/null)"
-  if [ -n "$_ngcomp" ] && bash -n <<<"$_ngcomp" 2>/dev/null; then
-    eval "$_ngcomp"
-  fi
+# Load Angular CLI autocompletion (only for bash; avoids sh syntax errors).
+if [ -n "$BASH_VERSION" ]; then
+  # use process substitution supported by bash
+  source <(ng completion script)
 fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
