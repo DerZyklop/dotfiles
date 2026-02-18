@@ -2,17 +2,33 @@
 
 if [ $# -lt 2 ]; then
   echo "––––––––––––––––"
+  echo "A simple key-value store for bash scripts"
   echo "USAGE: store set/get var_name [value]"
   echo "––––––––––––––––"
 else
   var_name=$2
 
+  file="/tmp/${var_name}.dat"
+
   if [ "$1" = 'set' ]; then
     # and save it for next time
     value=$3
-    echo "${value}" > /tmp/${var_name}.dat
+    if ! echo "${value}" > "$file" 2>/dev/null; then
+      echo "Error: Permission denied writing to $file" >&2
+      echo "Fix it by running: sudo chown \$(whoami) $file" >&2
+      echo " " >&2
+      exit 1
+    fi
   else
-    value=`cat /tmp/${var_name}.dat`
+    if [ ! -r "$file" ]; then
+      echo "Error: Cannot read $file (file missing or permission denied)" >&2
+      if [ -e "$file" ]; then
+        echo "Fix it by running: sudo chown $(whoami) $file" >&2
+      fi
+      echo " " >&2
+      exit 1
+    fi
+    value=`cat "$file"`
     echo ${value};
   fi
 fi
