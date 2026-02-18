@@ -13,4 +13,7 @@ export PATH=~/.composer/vendor/bin:$PATH
 # Postgres
 export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 
-export PATH=$(pyenv root)/shims:$PATH
+# add this when postgres gives error `initdb: command not found`
+# alias sudo='sudo env PATH=$PATH'
+
+PATH=$(pyenv root)/shims:$PATH
