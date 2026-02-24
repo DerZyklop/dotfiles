@@ -8,7 +8,15 @@ if [ $# -lt 2 ]; then
 else
   var_name=$2
 
-  file="/tmp/${var_name}.dat"
+  dir="$HOME/tmp"
+  file="$dir/${var_name}.dat"
+
+  if ! mkdir -p "$dir" 2>/dev/null; then
+    echo "Error: Cannot create $dir (permission denied)" >&2
+    echo "Fix it by running: sudo chown $(whoami) $dir" >&2
+    echo " " >&2
+    exit 1
+  fi
 
   if [ "$1" = 'set' ]; then
     # and save it for next time
@@ -20,11 +28,17 @@ else
       exit 1
     fi
   else
-    if [ ! -r "$file" ]; then
-      echo "Error: Cannot read $file (file missing or permission denied)" >&2
-      if [ -e "$file" ]; then
+    if [ ! -e "$file" ]; then
+      if ! : > "$file" 2>/dev/null; then
+        echo "Error: Cannot create $file (permission denied)" >&2
         echo "Fix it by running: sudo chown $(whoami) $file" >&2
+        echo " " >&2
+        exit 1
       fi
+    fi
+    if [ ! -r "$file" ]; then
+      echo "Error: Cannot read $file (permission denied)" >&2
+      echo "Fix it by running: sudo chown $(whoami) $file" >&2
       echo " " >&2
       exit 1
     fi
