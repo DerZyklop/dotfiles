@@ -5,8 +5,8 @@ if [[ $1 =~ ^-h|--help ]]; then
   echo ""
   echo "ping-monitor [time-interval] [ping-interval] [ip]"
   echo ""
-  echo "[time-interval] is the time from one time output line to another"
-  echo "[ping-interval] is the time from one ping-interval to another"
+  echo "[time-interval] is the time from one time output line to another. Defaults to 30 minutes"
+  echo "[ping-interval] is the time from one ping-interval to another. Defaults to 200ms"
 else
   trap "echo EXIT;  exit" 0
   trap "echo HUP;   exit" 1
@@ -14,13 +14,33 @@ else
   trap "echo QUIT;  exit" 3
   trap "echo ERR;   exit" ERR
 
-  SHOW_TIME_INTERVAL_DURATION_IN_MINUTES=$1
-  PING_INTERVAL_DURATION_IN_MILLISECONDS=$2;
+  # Arguments may be given in any order: a plain number is treated positionally
+  # (first number = time-interval in minutes, second = ping-interval in ms),
+  # while anything non-numeric (an IPv4 address or hostname) is taken as the IP.
+  # This lets `ping-monitor 192.168.1.46` do what you'd expect.
+  for arg in "$@"; do
+    if [[ $arg =~ ^[0-9]+$ ]]; then
+      if [ -z "${SHOW_TIME_INTERVAL_DURATION_IN_MINUTES}" ]; then
+        SHOW_TIME_INTERVAL_DURATION_IN_MINUTES=$arg
+      else
+        PING_INTERVAL_DURATION_IN_MILLISECONDS=$arg
+      fi
+    else
+      IP=$arg
+    fi
+  done
+
   if [ -z ${SHOW_TIME_INTERVAL_DURATION_IN_MINUTES} ]; then SHOW_TIME_INTERVAL_DURATION_IN_MINUTES=30; fi;
   if [ -z ${PING_INTERVAL_DURATION_IN_MILLISECONDS} ]; then PING_INTERVAL_DURATION_IN_MILLISECONDS=200; fi;
 
-  IP=$3;
-  if [ -z ${IP} ]; then IP='8.8.8.8'; fi;
+  # When the user passes an explicit IP we ping *only* that IP (they want to test
+  # that exact host). Without one we want to know whether we have internet at all,
+  # so we default to 8.8.8.8 but fall back to another stable public IP if it's
+  # unreachable (e.g. rate-limited).
+  if [ -z ${IP} ]; then
+    IP='8.8.8.8'
+    FALLBACK_IP='1.1.1.1'
+  fi;
 
   SHOW_TIME_INTERVAL_DURATION_IN_MMILLISECONDS=$(($SHOW_TIME_INTERVAL_DURATION_IN_MINUTES * 60 * 1000))
 
@@ -33,10 +53,26 @@ else
     PING_INTERVAL_DURATION_IN_SECONDS=0.$(($PING_INTERVAL_DURATION_IN_MILLISECONDS / 100))
   fi
 
+  function pickIp() {
+    # Only relevant when no explicit IP was given: prefer 8.8.8.8, but switch to
+    # the fallback when 8.8.8.8 doesn't answer a quick single ping.
+    if [ -n "${FALLBACK_IP}" ]; then
+      if ! ping -c 1 -W 1000 8.8.8.8 >/dev/null 2>&1; then
+        IP=$FALLBACK_IP
+      else
+        IP='8.8.8.8'
+      fi
+    fi
+  }
+
   function doPrettyping() {
-    COLOR='\033[0;32m'
+    GREEN='\033[0;32m'
+    YELLOW='\033[0;33m'
     NC='\033[0m' # No Color
-    echo "\n${COLOR}$(date +"%I:%M")${NC}\n"
+    pickIp
+    # Use a different color when we've fallen back to the secondary IP.
+    if [ -n "${FALLBACK_IP}" ] && [ "$IP" = "$FALLBACK_IP" ]; then COLOR=$YELLOW; else COLOR=$GREEN; fi
+    echo "\n${COLOR}$(date +"%I:%M") ($IP)${NC}\n"
     prettyping -c $COUNT $IP -i $PING_INTERVAL_DURATION_IN_SECONDS --nostatistics --nomulticolor --nolegend --inverted
     doPrettyping
   }
