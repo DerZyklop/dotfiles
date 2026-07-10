@@ -1,0 +1,7 @@
+# !/bin/bash
+
+git pull;
+git checkout dev;
+git pull;
+git checkout -;
+git merge dev;
