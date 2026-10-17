@@ -1,4 +1,3 @@
 #!/bin/sh
 
-echo "⬇${purple} NOT IMPLEMENTED YET${reset}"
-
+code --install-extension continue.continue
