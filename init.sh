@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# The script should fail the first time something fails
+set -e
+
 echo "⬇${purple} ./init/init.sh${reset}"
 
 echo "${red}"
@@ -13,23 +16,27 @@ echo "###############################################"
 echo "${reset}"
 
 # Ask for the administrator password upfront
-echo "·${purple} sudo -v${reset}"
-sudo -v
+# echo "·${purple} sudo -v${reset}"
 
-echo "·${purple} sudo chown -R root /usr/local${reset}"
-sudo chown root /usr/local
-echo "·${purple} sudo chown -R $USER /Library/Caches/Homebrew/${reset}"
-sudo chown -R $USER /Library/Caches/Homebrew/
+# echo "·${purple} Install NVM${reset}"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash
 
-# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
-echo "·${purple} while true; do sudo -n true; sleep 60; kill -0 \"$$\" || exit; done 2>/dev/null &${reset}"
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+# Brew is required for the following scripts
+if command -v brew >/dev/null 2>&1; then
+    echo "Homebrew is already installed. Skipping installation."
+else
+    echo "Homebrew not found. Installing..."
 
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    echo "Homebrew installation completed."
+fi
 
 ### Read the new dotfiles once
 
 echo "·${purple} source ./.exports${reset}"
 source ./.exports
+
 for file in $DOTFILESDIR/.{exports,path,completions,bash_prompt,aliases,functions,extra,bashrc}; do
   if [ -r "$file" ] && [ -f "$file" ]; then
     echo "·${purple} source \"$file\"${reset}"
@@ -62,8 +69,8 @@ done
 read -p "${green}Wanna install sass?${reset} [yN] " -n 1 -r
 echo "\nAllright!"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  echo "·${purple} sudo gem install sass${reset}"
-  sudo gem install sass
+  echo "·${purple} npm install -g sass${reset}"
+  npm install -g sass
 fi
 
 read -p "${green}Install DerZyklop’s theme?${reset} [yN] " -n 1 -r
