@@ -1,10 +1,5 @@
 cask_args appdir: "/Applications"
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
-tap "homebrew/core"
-tap "homebrew/services"
 
 brew "mas"
 
@@ -29,7 +24,6 @@ brew "wget"
 
 cask "1password6"
 cask "appcleaner"
-cask "atom"
 cask "android-sdk" # For Nativescript / Dr. Plano
 cask "visual-studio-code"
 cask "bartender"
@@ -99,6 +93,8 @@ cask "transmission"
 cask "transmit"
 cask "vlc"
 cask "electrum"
+cask "steam"
+cask "sizeup"
 
 mas "Things", id: 904280696
 mas "ColorSnapper2", id: 969418666
@@ -113,8 +109,5 @@ mas "Keynote", id: 409183694
 mas "Spark", id: 1176895641
 mas "Numbers", id: 409203825
 mas "Time Out", id: 402592703
-mas "Tweetbot", id: 1384080005
-mas "Microsoft Outlook", id: 985367838
 mas "Cinebench", id: 1438772273
-mas "Gifski", id: 1351639930
 mas "Day One", id: 1055511498
