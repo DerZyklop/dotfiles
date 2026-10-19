@@ -17,11 +17,11 @@ The install process will ask you what to do before every critical installation.
 
 #### With git
 
-    git clone https://github.com/DerZyklop/dotfiles.git ~/.dotfiles; cd ~/.dotfiles; . init.sh
+    git clone https://github.com/DerZyklop/dotfiles.git ~/.dotfiles; cd ~/.dotfiles; sh init.sh
 
 or even better with ssh
 
-    git clone git@github.com:DerZyklop/dotfiles.git ~/.dotfiles; cd ~/.dotfiles; . init.sh
+    git clone git@github.com:DerZyklop/dotfiles.git ~/.dotfiles; cd ~/.dotfiles; sh init.sh
 
 ### Theme
 
