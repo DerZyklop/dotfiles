@@ -1,5 +1,36 @@
 #!/bin/sh
 
+# Internal ping backend, used via prettyping's --pingbin (see doPrettyping).
+# For each sequential packet we first try the primary IP; only if that gets no
+# reply do we retry the *same* slot against the fallback IP. If neither answers
+# we emit a timeout line, which prettyping renders as a lost packet ('!'). Every
+# packet starts over at the primary, so recovery on 8.8.8.8 is picked up on the
+# very next ping instead of being stuck on the fallback. All parameters arrive
+# via PB_* env vars; the ping args prettyping appends to us are ignored.
+if [ -n "$PINGBIN_MODE" ]; then
+  # `-t 1` caps each probe at ~1s total, the floor macOS ping needs to conclude
+  # "no reply". Without it a firewall-dropped primary stalls ~2s per packet.
+  # When the host is up the reply returns in a few ms, so this only bites while
+  # the primary is actually down (the unavoidable cost of detecting that).
+  seq=0
+  while [ "$seq" -lt "$PB_COUNT" ]; do
+    reply=$(ping -c 1 -t 1 "$PB_PRIMARY" 2>/dev/null | grep -m 1 'icmp_seq=')
+    if [ -z "$reply" ] && [ -n "$PB_FALLBACK" ]; then
+      reply=$(ping -c 1 -t 1 "$PB_FALLBACK" 2>/dev/null | grep -m 1 'icmp_seq=')
+    fi
+    if [ -n "$reply" ]; then
+      # A single `ping -c 1` always reports icmp_seq=0; rewrite it to our running
+      # counter so prettyping tracks packet order and loss correctly.
+      echo "$reply" | sed -E "s/icmp_seq=[0-9]+/icmp_seq=$seq/"
+    else
+      echo "Request timeout for icmp_seq $seq"
+    fi
+    seq=$((seq + 1))
+    sleep "$PB_INTERVAL"
+  done
+  exit 0
+fi
+
 if [[ $1 =~ ^-h|--help ]]; then
   echo "USAGE:"
   echo ""
@@ -35,8 +66,7 @@ else
 
   # When the user passes an explicit IP we ping *only* that IP (they want to test
   # that exact host). Without one we want to know whether we have internet at all,
-  # so we default to 8.8.8.8 but fall back to another stable public IP if it's
-  # unreachable (e.g. rate-limited).
+  # so we ping 8.8.8.8 and, per packet, fall back to 1.1.1.1 if it doesn't answer.
   if [ -z ${IP} ]; then
     IP='8.8.8.8'
     FALLBACK_IP='1.1.1.1'
@@ -53,27 +83,34 @@ else
     PING_INTERVAL_DURATION_IN_SECONDS=0.$(($PING_INTERVAL_DURATION_IN_MILLISECONDS / 100))
   fi
 
-  function pickIp() {
-    # Only relevant when no explicit IP was given: prefer 8.8.8.8, but switch to
-    # the fallback when 8.8.8.8 doesn't answer a quick single ping.
-    if [ -n "${FALLBACK_IP}" ]; then
-      if ! ping -c 1 -W 1000 8.8.8.8 >/dev/null 2>&1; then
-        IP=$FALLBACK_IP
-      else
-        IP='8.8.8.8'
-      fi
-    fi
-  }
+  GREEN='\033[0;32m'
+  NC='\033[0m' # No Color
+
+  # Absolute (or PATH-resolvable) path to this script, so prettyping can call us
+  # back as its --pingbin backend.
+  SELF=$0
+  case "$SELF" in
+    */*) : ;;
+    *) SELF=$(command -v "$SELF" 2>/dev/null || echo "$SELF") ;;
+  esac
 
   function doPrettyping() {
-    GREEN='\033[0;32m'
-    YELLOW='\033[0;33m'
-    NC='\033[0m' # No Color
-    pickIp
-    # Use a different color when we've fallen back to the secondary IP.
-    if [ -n "${FALLBACK_IP}" ] && [ "$IP" = "$FALLBACK_IP" ]; then COLOR=$YELLOW; else COLOR=$GREEN; fi
-    echo "\n${COLOR}$(date +"%I:%M") ($IP)${NC}\n"
-    prettyping -c $COUNT $IP -i $PING_INTERVAL_DURATION_IN_SECONDS --nostatistics --nomulticolor --nolegend --inverted
+    START=$(date +%s)
+    if [ -n "${FALLBACK_IP}" ]; then
+      # No explicit IP: drive prettyping with our own backend so each packet
+      # tries the primary first and only falls back per-packet.
+      echo "\n${GREEN}$(date +"%I:%M") (${IP} \xe2\x87\xa2 ${FALLBACK_IP})${NC}\n"
+      PINGBIN_MODE=1 PB_PRIMARY="$IP" PB_FALLBACK="$FALLBACK_IP" \
+        PB_COUNT="$COUNT" PB_INTERVAL="$PING_INTERVAL_DURATION_IN_SECONDS" \
+        prettyping -c $COUNT --pingbin "$SELF" -i $PING_INTERVAL_DURATION_IN_SECONDS "$IP" \
+          --nostatistics --nomulticolor --nolegend --inverted
+    else
+      echo "\n${GREEN}$(date +"%I:%M") (${IP})${NC}\n"
+      prettyping -c $COUNT "$IP" -i $PING_INTERVAL_DURATION_IN_SECONDS --nostatistics --nomulticolor --nolegend --inverted
+    fi
+    # If prettyping bails out almost immediately (e.g. a bad explicit IP), don't
+    # busy-loop — pause before restarting.
+    if [ $(($(date +%s) - START)) -lt 3 ]; then sleep 2; fi
     doPrettyping
   }
 
