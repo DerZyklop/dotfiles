@@ -117,6 +117,16 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:$ANDROID_HOME/emulator"
 alias emu="$ANDROID_HOME/tools/emulator" # https://stackoverflow.com/a/43809095
 
+# Homebrew for this user. Each user of this machine owns a different Homebrew folder.
+# The pyenv lines below and .path need this.
+for _brew_prefix in /opt/homebrew /opt/brew; do
+  if [ -O "$_brew_prefix/bin/brew" ]; then
+    eval "$("$_brew_prefix/bin/brew" shellenv bash)"
+    break
+  fi
+done
+unset _brew_prefix
+
 # next content makes pyenv required to be installed
 if ! command -v pyenv >/dev/null 2>&1; then
   brew install pyenv

@@ -104,9 +104,13 @@ fi
 # Capture the generated script and only eval it when `ng` produced valid
 # output. A broken/missing `ng` can no longer throw a "syntax error near
 # unexpected token" that would interrupt shell startup.
-_ngcomp="$(ng completion script 2>/dev/null)"
-if [ -n "$_ngcomp" ] && bash -n <<<"$_ngcomp" 2>/dev/null; then
-  eval "$_ngcomp"
+# Skips a shell that is not interactive, e.g. the init scripts. They run in `sh`, and the
+# generated script has a syntax error in `sh`. The `bash -n` test uses `bash`, so it cannot find this error.
+if [[ $- == *i* ]]; then
+  _ngcomp="$(ng completion script 2>/dev/null)"
+  if [ -n "$_ngcomp" ] && bash -n <<<"$_ngcomp" 2>/dev/null; then
+    eval "$_ngcomp"
+  fi
 fi
 
 export NVM_DIR="$HOME/.nvm"

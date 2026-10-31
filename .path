@@ -14,6 +14,3 @@ export PATH=~/.composer/vendor/bin:$PATH
 export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 
 export PATH=$(pyenv root)/shims:$PATH
-
-# Homebrew for this user
-eval "$(/opt/brew/bin/brew shellenv bash)"
