@@ -132,7 +132,7 @@ export PATH="$PATH:$ANDROID_HOME/emulator"
 alias emu="$ANDROID_HOME/tools/emulator" # https://stackoverflow.com/a/43809095
 
 # next content makes pyenv required to be installed
-if command -v pyenv >/dev/null 2>&1; then
+if ! command -v pyenv >/dev/null 2>&1; then
   brew install pyenv
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/shims:$PATH"
