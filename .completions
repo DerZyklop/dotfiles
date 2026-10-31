@@ -1,3 +1,8 @@
+# Stops here in a shell that is not interactive. `$-` holds the flags of the shell, and `i` means interactive.
+# Tab completion only helps when you type. Apps also start login shells, e.g. Claude Code Pulse with `bash -lc`.
+# The `ls` below lists ~/Documents, so macOS asks such an app for access to the Documents folder.
+[[ $- == *i* ]] || return
+
 for i in ${PROJECTDIRS[*]}
 do
   if [[ -d $i ]]; then
