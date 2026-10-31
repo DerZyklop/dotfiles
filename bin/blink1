@@ -1,5 +1,30 @@
 #!/bin/sh
 
+# Turns the blink1 usage of the dotfiles on or off. Other programs can still use the device.
+if [ "$1" = 'dotfiles' ]; then
+  case $2 in
+    off)
+      store set DOTFILES_BLINK1_OFF 1
+      echo "The dotfiles scripts no longer change the blink1. Other programs can still use it.";;
+    on)
+      store set DOTFILES_BLINK1_OFF ''
+      echo "The dotfiles scripts change the blink1 again.";;
+    status)
+      if [ "$(store get DOTFILES_BLINK1_OFF)" = "1" ]; then
+        echo "dotfiles usage: off"
+      else
+        echo "dotfiles usage: on"
+      fi;;
+    *)
+      echo "USAGE: blink1 dotfiles off|on|status";;
+  esac
+  exit
+fi;
+
+if [ "$(store get DOTFILES_BLINK1_OFF)" = "1" ]; then
+  exit 0
+fi;
+
 if ! [ -x "$(command -v blink1-tool)" ]; then
   echo 'blink1-tool is not installed'
   exit
@@ -48,6 +73,9 @@ elif [ $# -lt 2 ]; then
   echo "or"
   echo "USAGE: blink1 prio state"
   echo "Sets blink1 devices to defined colors"
+  echo "or"
+  echo "USAGE: blink1 dotfiles off|on|status"
+  echo "Turns the blink1 usage of the dotfiles off or on"
   echo ""
   echo "Possible prios:"
   echo "1, 2 or 3"
