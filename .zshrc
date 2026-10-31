@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/nils/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -107,7 +107,6 @@ source ~/.path
 source ~/.completions
 source ~/.aliases
 source ~/.functions
-source ~/.extra
 
 ###-tns-completion-start-###
 if [ -f /Users/nils/.tnsrc ]; then
