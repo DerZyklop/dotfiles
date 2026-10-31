@@ -3,7 +3,7 @@
 ## If brew gives a 'permission denied':
 ## chown $(whoami):admin /Library/Caches/Homebrew/Formula/
 
-echo "⬇${purple} ./init/brew_dependencies.sh${reset}"
+echo "⬇${purple} ./init/2_2_brew_dependencies.sh${reset}"
 
 ### Read the new dotfiles once
 for file in $DOTFILESDIR/.{exports,path,completions,bash_prompt,aliases,functions,extra,bashrc}; do
@@ -12,11 +12,6 @@ for file in $DOTFILESDIR/.{exports,path,completions,bash_prompt,aliases,function
     source "$file";
   fi
 done;
-
-if ! commandExists "brew"; then
-  echo "·${purple} ruby -e \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"${reset}"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
 
 # Make sure we’re using the latest Homebrew.
 echo "·${purple} brew update${reset}"

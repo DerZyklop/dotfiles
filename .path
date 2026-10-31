@@ -1,9 +1,3 @@
-# add brew to path
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# make sure that brew-stuff is used instead of system-stuff
-export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
-
 # More important than brew stuff is the java version that i usually install manually.
 # I install it manually to make sure i have the same java version than my colleagues.
 export JAVA_HOME=$(/usr/libexec/java_home -v 21)
@@ -16,18 +10,10 @@ export PATH=$DOTFILESDIR/bin:$PATH
 # needed for the kirby cli
 export PATH=~/.composer/vendor/bin:$PATH
 
-# needed for binaries installed via npm
-# export PATH="/usr/local/Cellar/node/8.6.0/bin:$PATH"
-
 # Postgres
-export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 
-# add this when postgres gives error `initdb: command not found`
-# alias sudo='sudo env PATH=$PATH'
+export PATH=$(pyenv root)/shims:$PATH
 
-# needed for nativescript sidekick / dr. plano
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-
-PATH=$(pyenv root)/shims:$PATH
+# Homebrew for this user
+eval "$(/opt/brew/bin/brew shellenv bash)"

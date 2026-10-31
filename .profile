@@ -27,4 +27,3 @@ eval "$(pyenv init --path)"
 
 # sometimes these rights get lost in our Plano app.
 chmod -R +x ~/S/plano/git/hooks/
-export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"

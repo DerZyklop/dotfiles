@@ -22,15 +22,7 @@ echo "${reset}"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash
 
 # Brew is required for the following scripts
-if command -v brew >/dev/null 2>&1; then
-    echo "Homebrew is already installed. Skipping installation."
-else
-    echo "Homebrew not found. Installing..."
-
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-    echo "Homebrew installation completed."
-fi
+sh ./init/2_1_brew.sh
 
 ### Read the new dotfiles once
 
