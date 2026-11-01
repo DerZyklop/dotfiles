@@ -109,8 +109,8 @@
 [includeIf "gitdir:~/S/prowo/"]
   path = .gitconfig-prowo
 [user]
-	name = Nils
-	email = nils@dr-plano.com
+	name = Anonymous
+	email = anon@anon.anon
 [commit]
 	template = /Users/nils/.gitmessage
 [mergetool]
