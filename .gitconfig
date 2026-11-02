@@ -102,15 +102,15 @@
 
 [credential]
   helper = osxkeychain
+[user]
+	name = Anonymous
+	email = anon@anon.anon
 [includeIf "gitdir:~/S/plano/"]
   path = .gitconfig-professional
 [includeIf "gitdir:~/S/personal/"]
   path = .gitconfig-personal
 [includeIf "gitdir:~/S/prowo/"]
   path = .gitconfig-prowo
-[user]
-	name = Anonymous
-	email = anon@anon.anon
 [commit]
 	template = /Users/nils/.gitmessage
 [mergetool]
