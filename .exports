@@ -18,6 +18,8 @@ export LC_MESSAGES="de_DE@currency=EUR";
 export GREP_OPTIONS="--color=auto";
 
 SOURCE="${BASH_SOURCE[0]}"
+# zsh has no BASH_SOURCE. `%x` is the path of the file that zsh sources now. `eval` hides the zsh syntax from bash.
+[ -n "$ZSH_VERSION" ] && eval 'SOURCE="${(%):-%x}"'
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
   DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
   SOURCE="$(readlink "$SOURCE")"
@@ -27,6 +29,18 @@ export DOTFILESDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 # Make nano the default terminal editor
 export EDITOR="nano"
+
+# Cli Colors
+export CLICOLOR=1
+
+# use yellow for dir’s
+export LSCOLORS=dxfxcxdxbxegedabagacad
+
+if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+	export TERM='gnome-256color';
+elif infocmp xterm-256color >/dev/null 2>&1; then
+	export TERM='xterm-256color';
+fi;
 
 # This makes it easyer to use colors in bash-output
 if tput setaf 1 &> /dev/null; then

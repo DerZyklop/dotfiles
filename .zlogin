@@ -1,5 +1,5 @@
-# This is the stuff for non-interactive shells, like when you run a script.  
-# It is not run for interactive shells, so it is not the right place to put 
-# things like aliases and functions.  Those should go in .zshrc instead.
+# zsh runs this file for login shells, after .zshrc.
+# .zshrc loads the shared dotfiles. .profile is for bash only.
 
-source ~/.profile
+# sometimes these rights get lost in our Plano app.
+chmod -R +x ~/S/plano/git/hooks/
