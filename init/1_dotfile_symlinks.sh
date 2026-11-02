@@ -28,6 +28,8 @@ echo "·${purple} ln -sf $DOTFILESDIR/.bashrc $HOME${reset}"
 ln -sf $DOTFILESDIR/.bashrc $HOME
 echo "·${purple} ln -sf $DOTFILESDIR/.zshrc $HOME${reset}"
 ln -sf $DOTFILESDIR/.zshrc $HOME
+echo "·${purple} ln -sf $DOTFILESDIR/.zshenv $HOME${reset}"
+ln -sf $DOTFILESDIR/.zshenv $HOME
 echo "·${purple} ln -sf $DOTFILESDIR/.zlogin $HOME${reset}"
 ln -sf $DOTFILESDIR/.zlogin $HOME
 

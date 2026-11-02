@@ -105,9 +105,9 @@ source $ZSH/oh-my-zsh.sh
 setopt APPEND_HISTORY
 
 # Load the shell dotfiles, and then some:
-# * ~/.extra can be used for other settings you don’t want to commit.
-for file in $HOME/.{exports,path,completions,aliases,functions,extra}; do
-  if [ ! -f "$file" ] && [ ! "$file" = "$HOME/.extra" ]; then
+# ~/.extra (settings that you do not commit) is loaded in .zshenv.
+for file in $HOME/.{exports,path,completions,aliases,functions}; do
+  if [ ! -f "$file" ]; then
     echo "${red}Expected file $file doesn't exist!${reset}"
   fi
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
