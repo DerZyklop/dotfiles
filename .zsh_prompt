@@ -1,0 +1,32 @@
+# zsh version of the prompt in .bash_prompt.
+# Line 1: user @ host in dir + git status, on top of a dark dash line that ends with date and time.
+# Line 2: `$ `
+
+setopt PROMPT_SUBST
+
+# Dash line with date and time at the right end. `\r` then moves back to column 0,
+# so the rest of line 1 is printed on top of the dashes.
+_zsh_prompt_dash_line() {
+  local dashes=${(l:$((COLUMNS - 21))::-:)}
+  print -nP -- "$dashes %D{%a %b %d} ---- %D{%H:%M}"$'\r'
+}
+
+_zsh_prompt_ssh=''
+if [[ -n "${SSH_TTY}" ]]; then
+  _zsh_prompt_ssh='%F{236} through %F{64}SSH%f'
+fi
+
+# Highlight the user name when logged in as root.
+if [[ "${USER}" == "root" ]]; then
+  _zsh_prompt_user='%F{124}%n%f'
+else
+  _zsh_prompt_user='%F{15}%n%f'
+fi
+
+# Line 1 is zero width (%{ %}), the same as in .bash_prompt. Only `$ ` counts for the cursor position.
+PROMPT='%F{236}%{$(_zsh_prompt_dash_line)%}'
+PROMPT+="%{${_zsh_prompt_user}%F{236} @ %F{244}%m%F{236} in %F{37}%1~%f\$(getGitPrompt 1)${_zsh_prompt_ssh}%}"
+PROMPT+=$'\n''%F{236}$ %f'
+RPROMPT=''
+
+PROMPT2='%F{136}→ %f'
