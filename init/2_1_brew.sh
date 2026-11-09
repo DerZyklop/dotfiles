@@ -13,13 +13,14 @@ for file in $DOTFILESDIR/.{exports,path,completions,bash_prompt,aliases,function
   fi
 done;
 
-if command -v brew >/dev/null 2>&1; then
-    echo "Homebrew is already installed. Skipping installation."
+# .path sets DOTFILES_BREW_PREFIX to the Homebrew folder of this user.
+if [ -O "$DOTFILES_BREW_PREFIX/bin/brew" ]; then
+    echo "Homebrew is already installed in $DOTFILES_BREW_PREFIX. Skipping installation."
 else
-    echo "Homebrew not found. Installing..."
+    echo "Homebrew not found. Installing into $DOTFILES_BREW_PREFIX..."
 
-    echo "·${purple} /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"${reset}"
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" -- --path /opt/brew
+    echo "·${purple} /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\" -- --path $DOTFILES_BREW_PREFIX${reset}"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" -- --path "$DOTFILES_BREW_PREFIX"
 
     echo "Homebrew installation completed."
 fi

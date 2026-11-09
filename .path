@@ -1,11 +1,60 @@
+# PATH for login shells. .zprofile (zsh) and .profile (bash) load this file.
+# Interactive shells get PATH from their login shell, so .zshrc does not load it.
+
+# zsh: keep each folder only once in PATH.
+[ -n "$ZSH_VERSION" ] && typeset -U path
+
+# Local node path
+export PATH=~/.npm-global/bin:$PATH
+
+# Android
+export ANDROID_HOME="/opt/homebrew/share/android-commandlinetools"
+export ANDROID_SDK_ROOT="/opt/homebrew/share/android-commandlinetools"
+export PATH="/opt/homebrew/share/android-commandlinetools/cmdline-tools/homebrew/bin/:$PATH"
+export PATH="$PATH:$ANDROID_HOME/tools"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+
+# Homebrew for this user. Each user of this Mac owns a separate Homebrew in /opt,
+# because the Homebrew of another user gives permission errors.
+# /opt/homebrew is not used, because another user can own it.
+# On Apple silicon, the Homebrew installer allows a prefix of 13 characters at most (the length of /opt/homebrew).
+# So a user with a name of more than 4 characters gets /opt/brew<user ID>.
+DOTFILES_BREW_PREFIX="/opt/brew${USER:-$(id -un)}"
+[ ${#DOTFILES_BREW_PREFIX} -le 13 ] || DOTFILES_BREW_PREFIX="/opt/brew$UID"
+# /opt/brew is an older name. The user who owns it keeps it.
+[ -O /opt/brew/bin/brew ] && DOTFILES_BREW_PREFIX=/opt/brew
+if [ -O "$DOTFILES_BREW_PREFIX/bin/brew" ]; then
+  eval "$("$DOTFILES_BREW_PREFIX/bin/brew" shellenv bash)"
+else
+  cat >&2 <<EOF
+.path: The user $(id -un) has no own Homebrew. This shell runs without Homebrew.
+Each user of this Mac needs an own Homebrew. The Homebrew of another user gives permission errors.
+To install your Homebrew in $DOTFILES_BREW_PREFIX:
+  1. Run: /bin/bash -c "\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" -- --path $DOTFILES_BREW_PREFIX
+  2. Do not do the "Next steps" that the installer shows. ~/.path adds Homebrew to PATH.
+  3. Open a new terminal.
+  4. To install the packages of the dotfiles, run: brew bundle install --file=~/.dotfiles/.brewfile
+EOF
+fi
+
+# pyenv. .exports runs `pyenv init -`: in zsh for interactive shells (from .zshrc), in bash for login shells (from .profile).
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/shims:$PATH"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+
 # More important than brew stuff is the java version that i usually install manually.
 # I install it manually to make sure i have the same java version than my colleagues.
-export JAVA_HOME=$(/usr/libexec/java_home -v 21)
-export PATH=$JAVA_HOME/bin:$PATH
+# Without a JDK, JAVA_HOME and PATH stay as they are, and nothing goes to stderr.
+if _java_home=$(/usr/libexec/java_home -v 21 2>/dev/null); then
+  export JAVA_HOME=$_java_home
+  export PATH=$JAVA_HOME/bin:$PATH
+fi
+unset _java_home
 
 # get my own commands
-export PATH=~/S/prettyping:$PATH # NOTE: This path has prio 2 after $DOTFILESDIR/bin
-export PATH=$DOTFILESDIR/bin:$PATH
+export PATH=~/S/prettyping:$PATH # NOTE: This path has prio 2 after the dotfiles bin
+export PATH=${DOTFILESDIR:-$HOME/.dotfiles}/bin:$PATH
 
 # needed for the kirby cli
 export PATH=~/.composer/vendor/bin:$PATH
@@ -15,5 +64,3 @@ export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 
 # add this when postgres gives error `initdb: command not found`
 # alias sudo='sudo env PATH=$PATH'
-
-PATH=$(pyenv root)/shims:$PATH

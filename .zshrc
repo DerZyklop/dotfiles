@@ -106,7 +106,8 @@ setopt APPEND_HISTORY
 
 # Load the shell dotfiles, and then some:
 # ~/.extra (settings that you do not commit) is loaded in .zshenv.
-for file in $HOME/.{exports,path,completions,aliases,functions}; do
+# ~/.path is loaded in .zprofile, for login shells only.
+for file in $HOME/.{exports,completions,aliases,functions}; do
   if [ ! -f "$file" ]; then
     echo "${red}Expected file $file doesn't exist!${reset}"
   fi
@@ -124,12 +125,3 @@ if [ -f /Users/nils/.tnsrc ]; then
     source /Users/nils/.tnsrc
 fi
 ###-tns-completion-end-###
-
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init - 2>/dev/null)" 2>/dev/null || true
-fi
-
-export PATH="$(pyenv root)/shims:${PATH}"
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
