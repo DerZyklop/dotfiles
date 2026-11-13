@@ -28,4 +28,6 @@ if command -v pyenv >/dev/null 2>&1; then
 fi
 
 # sometimes these rights get lost in our Plano app.
-chmod -R +x ~/S/plano/git/hooks/
+if [ -d "$HOME/S/plano/git/hooks" ]; then
+  chmod -R +x "$HOME/S/plano/git/hooks/"
+fi
