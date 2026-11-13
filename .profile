@@ -15,6 +15,12 @@ if type brew &>/dev/null; then
     source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
   else
     for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
+      if [ "${BASH_VERSINFO[0]:-0}" -lt 4 ] ||
+         { [ "${BASH_VERSINFO[0]:-0}" -eq 4 ] && [ "${BASH_VERSINFO[1]:-0}" -lt 4 ]; }; then
+        if grep -Eq 'complete[[:space:]].*-o[[:space:]]+nosort([[:space:]]|$)' "$COMPLETION"; then
+          continue
+        fi
+      fi
       [[ -r "$COMPLETION" ]] && source "$COMPLETION"
     done
   fi
@@ -31,3 +37,6 @@ fi
 if [ -d "$HOME/S/plano/git/hooks" ]; then
   chmod -R +x "$HOME/S/plano/git/hooks/"
 fi
+
+# Hermes Agent command
+case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) export PATH="$HOME/.local/bin:$PATH" ;; esac

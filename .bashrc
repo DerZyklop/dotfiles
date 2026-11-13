@@ -7,6 +7,17 @@ fi
 
 shopt -s histappend                      # append to history, don't overwrite it
 
+_BREW_PREFIX="/opt/brew$(id -un)"
+case ":$PATH:" in
+  *":$_BREW_PREFIX/bin:"*) ;;
+  *)
+    if [ -x "$_BREW_PREFIX/bin/brew" ]; then
+      eval "$("$_BREW_PREFIX/bin/brew" shellenv bash)"
+    fi
+    ;;
+esac
+unset _BREW_PREFIX
+
 
 shell_session_history_check () {
   if [ ${SHELL_SESSION_DID_HISTORY_CHECK:-0} -eq 0 ]; then
@@ -112,3 +123,6 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Hermes Agent command
+case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) export PATH="$HOME/.local/bin:$PATH" ;; esac
