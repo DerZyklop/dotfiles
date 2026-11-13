@@ -6,7 +6,7 @@
 for i in ${PROJECTDIRS[*]}
 do
   if [[ -d $i ]]; then
-    PROJECTS+="$(ls $i | tr "\n" " ")"
+    PROJECTS+="$(ls "$i" | tr "\n" " ")"
   fi
 done
 
