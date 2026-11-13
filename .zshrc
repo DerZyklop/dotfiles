@@ -8,6 +8,8 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
 ZSH_THEME="af-magic"
+# No theme. .zsh_prompt sets the prompt.
+ZSH_THEME=""
 
 
 # Set list of themes to pick from when loading at random
@@ -99,13 +101,15 @@ plugins=(git)
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export DOTFILESDIR="${DOTFILESDIR:-$HOME/.dotfiles}"
-source "$HOME/.path"
+case ":$PATH:" in
+  *":$DOTFILESDIR/bin:"*) ;;
+  *) source "$DOTFILESDIR/.path" ;;
+esac
 source "$HOME/.exports"
 unset PROMPT_COMMAND
 
-BREW_PREFIX="/opt/brew$(id -un)"
-if [ -d "$BREW_PREFIX/share/zsh/site-functions" ]; then
-  fpath=("$BREW_PREFIX/share/zsh/site-functions" $fpath)
+if [ -d "$DOTFILES_BREW_PREFIX/share/zsh/site-functions" ]; then
+  fpath=("$DOTFILES_BREW_PREFIX/share/zsh/site-functions" $fpath)
 fi
 
 if [ -s "$ZSH/oh-my-zsh.sh" ]; then
@@ -115,13 +119,15 @@ else
   compinit
   PROMPT='%n @ %m in %~ %# '
 fi
-unset BREW_PREFIX
 
 setopt APPEND_HISTORY
 
 source "$HOME/.aliases"
 source "$HOME/.functions"
-[ -r "$HOME/.extra" ] && source "$HOME/.extra"
+source "$DOTFILESDIR/.zsh_prompt"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 ###-tns-completion-start-###
 if [ -f /Users/nils/.tnsrc ]; then
@@ -198,3 +204,4 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -8,6 +8,8 @@ echo "·${purple} ln -sf $DOTFILESDIR/.completions $HOME${reset}"
 ln -sf $DOTFILESDIR/.completions $HOME
 echo "·${purple} ln -sf $DOTFILESDIR/.bash_prompt $HOME${reset}"
 ln -sf $DOTFILESDIR/.bash_prompt $HOME
+echo "·${purple} ln -sf $DOTFILESDIR/.zsh_prompt $HOME${reset}"
+ln -sf $DOTFILESDIR/.zsh_prompt $HOME
 echo "·${purple} ln -sf $DOTFILESDIR/.aliases $HOME${reset}"
 ln -sf $DOTFILESDIR/.aliases $HOME
 echo "·${purple} ln -sf $DOTFILESDIR/.functions $HOME${reset}"
@@ -26,6 +28,19 @@ echo "·${purple} ln -sf $DOTFILESDIR/.bashrc $HOME${reset}"
 ln -sf $DOTFILESDIR/.bashrc $HOME
 echo "·${purple} ln -sf $DOTFILESDIR/.zshrc $HOME${reset}"
 ln -sf $DOTFILESDIR/.zshrc $HOME
+echo "·${purple} ln -sf $DOTFILESDIR/.zshenv $HOME${reset}"
+ln -sf $DOTFILESDIR/.zshenv $HOME
+echo "·${purple} ln -sf $DOTFILESDIR/.zlogin $HOME${reset}"
+ln -sf $DOTFILESDIR/.zlogin $HOME
+# A real ~/.zprofile, e.g. from the Homebrew installer, goes to a backup file first.
+if [ -f "$HOME/.zprofile" ] && [ ! -L "$HOME/.zprofile" ]; then
+  _backup="$HOME/.zprofile.backup-$(date +%Y%m%d-%H%M%S)"
+  echo "·${yellow} mv $HOME/.zprofile $_backup${reset}"
+  mv "$HOME/.zprofile" "$_backup"
+  unset _backup
+fi
+echo "·${purple} ln -sf $DOTFILESDIR/.zprofile $HOME${reset}"
+ln -sf $DOTFILESDIR/.zprofile $HOME
 
 echo "·${purple} chmod +x $DOTFILESDIR/bin/${reset}"
 chmod +x $DOTFILESDIR/bin/*

@@ -13,7 +13,6 @@ brew "terminal-notifier"
 
 cask "network-radar"
 cask "wifi-explorer"
-cask "youtube-dl"
 brew "pidof"
 cask "pocket-casts"
 brew "procmail"

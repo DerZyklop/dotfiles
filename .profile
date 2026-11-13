@@ -1,6 +1,6 @@
 # Load the shell dotfiles, and then some:
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in $HOME/.{exports,path,completions,aliases,bash_prompt,functions,extra,bashrc}; do
+for file in $HOME/.{path,exports,completions,aliases,bash_prompt,functions,extra,bashrc}; do
   if [ ! -f "$file" ] && [ ! "$file" = "$HOME/.extra" ] && [ ! "$file" = "$HOME/.bashrc" ]; then
     echo "${red}Expected file $file doesn't exist!${reset}"
   fi
@@ -28,7 +28,7 @@ fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 if command -v pyenv >/dev/null 2>&1; then
   eval "$(pyenv init --path)"
 fi
