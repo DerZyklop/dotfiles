@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/nils/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,8 +72,6 @@ ZSH_THEME="af-magic"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -100,14 +98,30 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export DOTFILESDIR="${DOTFILESDIR:-$HOME/.dotfiles}"
+source "$HOME/.path"
+source "$HOME/.exports"
+unset PROMPT_COMMAND
+
+BREW_PREFIX="/opt/brew$(id -un)"
+if [ -d "$BREW_PREFIX/share/zsh/site-functions" ]; then
+  fpath=("$BREW_PREFIX/share/zsh/site-functions" $fpath)
+fi
+
+if [ -s "$ZSH/oh-my-zsh.sh" ]; then
+  source "$ZSH/oh-my-zsh.sh"
+else
+  autoload -Uz compinit
+  compinit
+  PROMPT='%n @ %m in %~ %# '
+fi
+unset BREW_PREFIX
+
 setopt APPEND_HISTORY
 
-source ~/.path
-source ~/.exports
-source ~/.completions
-source ~/.aliases
-source ~/.functions
-source ~/.extra
+source "$HOME/.aliases"
+source "$HOME/.functions"
+[ -r "$HOME/.extra" ] && source "$HOME/.extra"
 
 ###-tns-completion-start-###
 if [ -f /Users/nils/.tnsrc ]; then
