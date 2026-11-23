@@ -35,6 +35,19 @@ fi
 
 if [ -O "$DOTFILES_BREW_PREFIX/bin/brew" ]; then
   eval "$("$DOTFILES_BREW_PREFIX/bin/brew" shellenv bash)"
+  if [ -d /opt/brew ]; then
+    _DOTFILES_LEGACY_BREW_OWNER=$(stat -f '%Su' /opt/brew)
+    cat >&2 <<EOF
+${_DOTFILES_WARNING_COLOR}WARNING: A legacy Homebrew folder exists at /opt/brew, owned by ${_DOTFILES_LEGACY_BREW_OWNER}.${_DOTFILES_RESET_COLOR}
+
+Inspect all Homebrew folders and their owners before removing or changing anything:
+  ls -ld /opt/brew*
+
+Only if you have confirmed /opt/brew is no longer used by anyone, remove it with:
+  sudo rm -rf /opt/brew
+EOF
+    unset _DOTFILES_LEGACY_BREW_OWNER
+  fi
 elif [ -d /opt/brew ]; then
   cat >&2 <<EOF
 ${_DOTFILES_ERROR_COLOR}.path: ERROR: No Homebrew owned by $(id -un) found at $DOTFILES_BREW_PREFIX.${_DOTFILES_RESET_COLOR}
