@@ -130,8 +130,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 ###-tns-completion-start-###
-if [ -f /Users/nils/.tnsrc ]; then
-    source /Users/nils/.tnsrc
+if [ -f ~/.tnsrc ]; then
+    source ~/.tnsrc
 fi
 ###-tns-completion-end-###
 

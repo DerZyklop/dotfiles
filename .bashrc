@@ -1,7 +1,7 @@
 
 ###-tns-completion-start-###
-if [ -f /Users/nils/.tnsrc ]; then
-    source /Users/nils/.tnsrc
+if [ -f ~/.tnsrc ]; then
+    source ~/.tnsrc
 fi
 ###-tns-completion-end-###
 
@@ -36,8 +36,8 @@ shell_session_history_check () {
 }
 
 ###-tns-completion-start-###
-if [ -f /Users/nils/.tnsrc ]; then 
-    source /Users/nils/.tnsrc 
+if [ -f ~/.tnsrc ]; then 
+    source ~/.tnsrc 
 fi
 ###-tns-completion-end-###
 
