@@ -22,14 +22,42 @@ export PATH="$PATH:$ANDROID_HOME/emulator"
 # So a user with a name of more than 4 characters gets /opt/brew<user ID>.
 export DOTFILES_BREW_PREFIX="/opt/brew${USER:-$(id -un)}"
 [ ${#DOTFILES_BREW_PREFIX} -le 13 ] || DOTFILES_BREW_PREFIX="/opt/brew$UID"
-# /opt/brew is an older name. The user who owns it keeps it.
-[ -O /opt/brew/bin/brew ] && DOTFILES_BREW_PREFIX=/opt/brew
+
+if [ -t 2 ]; then
+  _DOTFILES_ERROR_COLOR=$(printf '\033[1;31m')
+  _DOTFILES_WARNING_COLOR=$(printf '\033[1;33m')
+  _DOTFILES_RESET_COLOR=$(printf '\033[0m')
+else
+  _DOTFILES_ERROR_COLOR=
+  _DOTFILES_WARNING_COLOR=
+  _DOTFILES_RESET_COLOR=
+fi
+
 if [ -O "$DOTFILES_BREW_PREFIX/bin/brew" ]; then
   eval "$("$DOTFILES_BREW_PREFIX/bin/brew" shellenv bash)"
+elif [ -d /opt/brew ]; then
+  cat >&2 <<EOF
+${_DOTFILES_ERROR_COLOR}.path: ERROR: No Homebrew owned by $(id -un) found at $DOTFILES_BREW_PREFIX.${_DOTFILES_RESET_COLOR}
+
+${_DOTFILES_WARNING_COLOR}WARNING: A legacy Homebrew folder exists at /opt/brew; it may belong to another user.${_DOTFILES_RESET_COLOR}
+
+Inspect all Homebrew folders and their owners before removing or changing anything:
+  ls -ld /opt/brew*
+
+Only if you have confirmed /opt/brew is no longer used by anyone, remove it with:
+  sudo rm -rf /opt/brew
+
+Install a Homebrew for this user at $DOTFILES_BREW_PREFIX:
+  /bin/bash -c "\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" -- --path $DOTFILES_BREW_PREFIX
+
+Open a new terminal afterward. Do not remove or change permissions on any other folder.
+EOF
 else
   cat >&2 <<EOF
-.path: The user $(id -un) has no own Homebrew. This shell runs without Homebrew.
+${_DOTFILES_ERROR_COLOR}.path: ERROR: The user $(id -un) has no own Homebrew. This shell runs without Homebrew.${_DOTFILES_RESET_COLOR}
+
 Each user of this Mac needs an own Homebrew. The Homebrew of another user gives permission errors.
+
 To install your Homebrew in $DOTFILES_BREW_PREFIX:
   1. Run: /bin/bash -c "\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" -- --path $DOTFILES_BREW_PREFIX
   2. Do not do the "Next steps" that the installer shows. ~/.path adds Homebrew to PATH.
@@ -37,6 +65,7 @@ To install your Homebrew in $DOTFILES_BREW_PREFIX:
   4. To install the packages of the dotfiles, run: brew bundle install --file=~/.dotfiles/.brewfile
 EOF
 fi
+unset _DOTFILES_ERROR_COLOR _DOTFILES_WARNING_COLOR _DOTFILES_RESET_COLOR
 
 # pyenv. .exports runs `pyenv init -`: in zsh for interactive shells (from .zshrc), in bash for login shells (from .profile).
 export PYENV_ROOT="$HOME/.pyenv"

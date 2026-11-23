@@ -5,7 +5,7 @@
 [push]
   default = simple
 [core]
-	excludesfile = /Users/nils/.gitignore_global
+	excludesfile = ~/.gitignore_global
   pager = diff-so-fancy | less --tabs=4 -RFX
 
 # Good explanation of git's fast forwarding: http://ariya.ofilabs.com/2013/09/fast-forward-git-merge.html
@@ -112,7 +112,7 @@
 [includeIf "gitdir:~/S/prowo/"]
   path = .gitconfig-prowo
 [commit]
-	template = /Users/nils/.gitmessage
+	template = ~/.gitmessage
 [mergetool]
 	keepBackup = false
   prompt = false

@@ -7,7 +7,12 @@ fi
 
 shopt -s histappend                      # append to history, don't overwrite it
 
-_BREW_PREFIX="/opt/brew$(id -un)"
+if [ -n "${DOTFILES_BREW_PREFIX:-}" ]; then
+  _BREW_PREFIX="$DOTFILES_BREW_PREFIX"
+else
+  _BREW_PREFIX="/opt/brew$(id -un)"
+  [ ${#_BREW_PREFIX} -le 13 ] || _BREW_PREFIX="/opt/brew$(id -u)"
+fi
 case ":$PATH:" in
   *":$_BREW_PREFIX/bin:"*) ;;
   *)
