@@ -88,7 +88,6 @@ Loremm | Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonum
 lovee | ❤️
 loveee | 💚
 musicc | 🎶
-Nilss | ΠίΙϛ
 partyy | 🎉
 peacee | ✌
 planee | ✈︎
